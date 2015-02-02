@@ -7,7 +7,7 @@ echo Templator::render('main.twig', [
     'title' => '喵',
     'head_ban' => [
        'class' => ['b2'],
-       'type' => 'ban',
+       'type' => 'hero',
        'content' => <<<CC
 探索萬艦齊發的世界
 =================
