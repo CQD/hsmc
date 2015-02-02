@@ -214,6 +214,7 @@ nav li ul li:hover{
 .ban.b1:before{background-image: url(../i/banner1.jpg);}
 .ban.b2:before{background-image: url(../i/banner2.jpg);}
 .ban.b3:before{background-image: url(../i/banner3.jpg);}
+.ban.bhiigara:before{background-image: url(../i/banner_hiigara.jpg);}
 
 .hero{
     min-height:300px;/*xxx*/
