@@ -13,6 +13,12 @@ class Templator
         return static::$twig->render($template_name, $params);
     }
 
+    public static function addExtension($ext)
+    {
+        static::prepareSingletonInstance();
+        static::$twig->addExtension($ext);
+    }
+
     private static function prepareSingletonInstance()
     {
         if (static::$loader !== null && static::$twig !== null) {
@@ -22,5 +28,4 @@ class Templator
         static::$loader = new \Twig_Loader_Filesystem(__DIR__ . '/../../../twig'); //TODO 要改成能用 memcache 處理 cache，以及能設定路徑
         static::$twig = new \Twig_Environment(static::$loader);
     }
-
 }
