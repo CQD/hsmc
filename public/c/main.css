@@ -216,6 +216,8 @@ nav li ul li:hover{
 .ban.b3:before{background-image: url(../i/banner3.jpg);}
 .ban.bhiigara:before{background-image: url(../i/banner_hiigara.jpg);}
 .ban.btaiidan:before{background-image: url(../i/banner_taiidan.jpg);}
+.ban.bbentusi:before{background-image: url(../i/banner_bentusi.jpg);}
+.ban.bturanic:before{background-image: url(../i/banner_turanic.jpg);}
 
 .hero{
     min-height:300px;/*xxx*/
