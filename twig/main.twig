@@ -77,14 +77,9 @@
                 </div>
             </header>
             <div class="wrapper">
-{% if head_ban.type=='hero' %}
-                <div class="hero">
+                <div class="{{head_ban.type}}">
 {{head_ban.content|markdown}}
                 </div>
-{% else %}
-                <h1>探索萬艦齊發的世界</h1>
-                <div class="caption">宇宙戰艦萬分精彩</div>
-{% endif %}
             </div>
             <span class="clearfix"></span>
         </div><!--ban-->
