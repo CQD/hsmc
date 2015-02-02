@@ -1,5 +1,5 @@
 <?php
-include __DIR__ . '/init.php';
+include __DIR__ . '/../src/init.php';
 
 echo \Q\Core\Templator::render('main.twig', [
     'title' => null,

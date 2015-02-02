@@ -1,5 +1,5 @@
 <?php
-include __DIR__ . '/init.php';
+include __DIR__ . '/../src/init.php';
 
 use \Q\Core\Templator;
 
