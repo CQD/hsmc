@@ -241,7 +241,12 @@ nav li ul li:hover{
 #content{
     font-size: 18px;
     background-color: #fff;
-    padding-bottom: 7em;
+    padding:1em 0 7em;
+    color:#555;
+}
+#content p{
+    line-height: 1.6em;
+    margin-bottom: 2em;
 }
 
 footer{
