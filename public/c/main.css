@@ -230,6 +230,14 @@ nav li ul li:hover{
     padding: 0;
 }
 
+.sidekick h1{
+    margin-bottom: -50px;
+}
+.sidekick p{
+    font-size:25px;
+    margin-left: 5px;
+}
+
 #content{
     font-size: 18px;
     background-color: #fff;
