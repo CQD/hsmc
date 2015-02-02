@@ -84,13 +84,13 @@
 <span class="clearfix"></span>
 </div><!--ban-->
 
+{% if content %}
 <div id="content">
-
 <div class="wrapper">
 {{content|markdown}}
 </div>
-
-</div><!-- main content -->
+</div>
+{% endif %}
 
 <footer>
 <div class="wrapper">
