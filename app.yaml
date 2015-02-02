@@ -1,0 +1,42 @@
+application: molten-gantry-844
+version: dev-master
+runtime: php
+api_version: 1
+threadsafe: true
+
+handlers:
+###################################################
+
+- url: /c
+  static_dir: public/c
+
+- url: /j
+  static_dir: public/j
+
+- url: /i
+  static_dir: public/i
+
+- url: /d
+  static_dir: public/d
+
+####################################################
+
+- url: /
+  script: public/index.php
+
+- url: (/(game/.*|info/.*|link/.*|mod/.*|tutorial/.*)?[a-z_]*).html?
+  script: public\1.php
+
+- url: /.*
+  script: error/404.php
+
+###################################################
+
+error_handlers:
+- file: error/default.html
+
+# - error_code: over_quota
+#   file: error/over_quota.html
+
+# - error_code: dos_api_denial
+#   file: error/over_quota.html
