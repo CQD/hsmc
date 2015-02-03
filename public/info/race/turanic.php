@@ -4,8 +4,9 @@ include __DIR__ . '/../../../src/init.php';
 echo \Q\Core\Templator::render('main.twig', [
     'title' => '土朗尼掠劫者',
     'desc' => '神出鬼沒並與泰丹帝國狼狽為奸的宇宙海盜',
+    'main_image' => 'banner_turanic.jpg',
     'head_ban' => [
-       'class' => ['bturanic'],
+       'class' => [],
        'type' => 'sidekick',
     ],
     'content' => <<<MC

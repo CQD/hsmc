@@ -4,8 +4,9 @@ include __DIR__ . '/../../../src/init.php';
 echo \Q\Core\Templator::render('main.twig', [
     'title' => '星塵戰爭',
     'desc' => '西亞加拉人再次失去家園',
+    'main_image' => 'banner_hw2.jpg',
     'head_ban' => [
-       'class' => ['bhw2'],
+       'class' => [],
        'type' => 'sidekick',
     ],
     'content' => <<<MC

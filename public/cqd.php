@@ -4,8 +4,9 @@ include __DIR__ . '/../src/init.php';
 echo \Q\Core\Templator::render('main.twig', [
     'title' => '關於本站作者 CQD',
     'desc' => '沒什麼，也就只是個 Google 認證的蘿莉控罷了',
+    'main_image' => 'banner_cqd.jpg',
     'head_ban' => [
-       'class' => ['bcqd'],
+       'class' => [],
        'type' => 'sidekick',
     ],
     'content' => <<<MC

@@ -224,18 +224,6 @@ nav li ul li:hover{
 .ban.b1:before{background-image: url(../i/banner1.jpg);}
 .ban.b2:before{background-image: url(../i/banner2.jpg);}
 .ban.b3:before{background-image: url(../i/banner3.jpg);}
-.ban.bcqd:before{background-image: url(../i/banner_cqd.jpg);}
-.ban.bhiigara:before{background-image: url(../i/banner_hiigara.jpg);}
-.ban.btaiidan:before{background-image: url(../i/banner_taiidan.jpg);}
-.ban.bbentusi:before{background-image: url(../i/banner_bentusi.jpg);}
-.ban.bturanic:before{background-image: url(../i/banner_turanic.jpg);}
-.ban.bkadesh:before{background-image: url(../i/banner_kadesh.jpg);}
-.ban.bvaygr:before{background-image: url(../i/banner_vaygr.jpg);}
-.ban.bkeeper:before{background-image: url(../i/banner_keeper.jpg);}
-.ban.bhw1:before{background-image: url(../i/banner_hw1.jpg);}
-.ban.bcat:before{background-image: url(../i/banner_cat.jpg);}
-.ban.bhw2:before{background-image: url(../i/banner_hw2.jpg);}
-.ban.bhanger15:before{background-image: url(../i/banner_hanger15.jpg);}
 
 .hero{
     min-height:300px;/*xxx*/

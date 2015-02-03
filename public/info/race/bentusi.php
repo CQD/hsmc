@@ -4,8 +4,9 @@ include __DIR__ . '/../../../src/init.php';
 echo \Q\Core\Templator::render('main.twig', [
     'title' => '班圖西人',
     'desc' => '擁有神秘科技的銀河商人',
+    'main_image' => 'banner_bentusi.jpg',
     'head_ban' => [
-       'class' => ['bbentusi'],
+       'class' => [],
        'type' => 'sidekick',
     ],
     'content' => <<<MC

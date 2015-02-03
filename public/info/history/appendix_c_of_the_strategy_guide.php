@@ -4,8 +4,9 @@ include __DIR__ . '/../../../src/init.php';
 echo \Q\Core\Templator::render('main.twig', [
     'title' => '二代攻略本附錄',
     'desc' => '遺忘了數千年的古老歷史',
+    'main_image' => 'banner_hanger15.jpg',
     'head_ban' => [
-       'class' => ['bhanger15'],
+       'class' => [],
        'type' => 'sidekick',
     ],
     'content' => <<<MC

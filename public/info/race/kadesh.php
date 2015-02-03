@@ -4,8 +4,9 @@ include __DIR__ . '/../../../src/init.php';
 echo \Q\Core\Templator::render('main.twig', [
     'title' => '卡地許花園的守衛',
     'desc' => '忘記自己根源的宗教狂熱份子',
+    'main_image' => 'banner_kadesh.jpg',
     'head_ban' => [
-       'class' => ['bkadesh'],
+       'class' => [],
        'type' => 'sidekick',
     ],
     'content' => <<<MC

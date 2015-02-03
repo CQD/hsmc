@@ -4,8 +4,9 @@ include __DIR__ . '/../../../src/init.php';
 echo \Q\Core\Templator::render('main.twig', [
     'title' => '回歸家園',
     'desc' => '數千年的離鄉，最後浴血回歸',
+    'main_image' => 'banner_hw1.jpg',
     'head_ban' => [
-       'class' => ['bhw1'],
+       'class' => [],
        'type' => 'sidekick',
     ],
     'content' => <<<MC

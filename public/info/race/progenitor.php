@@ -4,8 +4,9 @@ include __DIR__ . '/../../../src/init.php';
 echo \Q\Core\Templator::render('main.twig', [
     'title' => '先祖文明',
     'desc' => '已滅亡的先進超古代文明',
+    'main_image' => 'banner_keeper.jpg',
     'head_ban' => [
-       'class' => ['bkeeper'],
+       'class' => [],
        'type' => 'sidekick',
     ],
     'content' => <<<MC

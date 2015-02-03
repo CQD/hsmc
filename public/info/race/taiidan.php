@@ -3,9 +3,10 @@ include __DIR__ . '/../../../src/init.php';
 
 echo \Q\Core\Templator::render('main.twig', [
     'title' => '泰丹帝國',
-    'desc' => '殘酷統治數千年卻因庫沈人回歸西亞加拉而瞬間垮台',
+    'desc' => '殘酷統治數千年，卻因庫沈人回歸西亞加拉而瞬間垮台',
+    'main_image' => 'banner_taiidan.jpg',
     'head_ban' => [
-       'class' => ['btaiidan'],
+       'class' => [],
        'type' => 'sidekick',
     ],
     'content' => <<<MC

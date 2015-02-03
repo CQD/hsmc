@@ -4,8 +4,9 @@ include __DIR__ . '/../../../src/init.php';
 echo \Q\Core\Templator::render('main.twig', [
     'title' => '維格',
     'desc' => '來自銀河東緣的強大戰士民族',
+    'main_image' => 'banner_vaygr.jpg',
     'head_ban' => [
-       'class' => ['bvaygr'],
+       'class' => [],
        'type' => 'sidekick',
     ],
     'content' => <<<MC

@@ -4,8 +4,9 @@ include __DIR__ . '/../../../src/init.php';
 echo \Q\Core\Templator::render('main.twig', [
     'title' => '異獸危機',
     'desc' => '會連人帶太空船吃掉的宇宙殭屍',
+    'main_image' => 'banner_cat.jpg',
     'head_ban' => [
-       'class' => ['bcat'],
+       'class' => [],
        'type' => 'sidekick',
     ],
     'content' => <<<MC

@@ -4,8 +4,9 @@ include __DIR__ . '/../../../src/init.php';
 echo \Q\Core\Templator::render('main.twig', [
     'title' => '庫沈/西亞加拉人',
     'desc' => '流放三千年終能返鄉，卻不斷碰上殘酷的命運',
+    'main_image' => 'banner_hiigara.jpg',
     'head_ban' => [
-       'class' => ['bhiigara'],
+       'class' => [],
        'type' => 'sidekick',
     ],
     'content' => <<<MC
