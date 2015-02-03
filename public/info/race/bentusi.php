@@ -3,14 +3,10 @@ include __DIR__ . '/../../../src/init.php';
 
 echo \Q\Core\Templator::render('main.twig', [
     'title' => '班圖西人',
+    'desc' => '擁有神秘科技的銀河商人',
     'head_ban' => [
        'class' => ['bbentusi'],
        'type' => 'sidekick',
-       'content' => <<<CC
-班圖西人
-=================
-擁有神秘科技的銀河商人
-CC
     ],
     'content' => <<<MC
 班圖西人是今日銀河中最古老的文明，在已知的銀河種族中，他們的技術力似乎是最強大的，卻寧願選擇貿易而不是利用強大的技術力征服銀河。自稱為無縛者（the Unbound）的他們在各星域中進行著資源，情報，與科技的貿易，藉由超空間跳躍的技術遊走於各星域間，並且建立了外環貿易路線（trade routes of the Outer Limb）。不過他們卻甚少和外族分享自己的科技。另外，班圖西人對於銀河議會有相當程度的影響力。

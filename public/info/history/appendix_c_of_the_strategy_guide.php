@@ -3,14 +3,10 @@ include __DIR__ . '/../../../src/init.php';
 
 echo \Q\Core\Templator::render('main.twig', [
     'title' => '二代攻略本附錄',
+    'desc' => '遺忘了數千年的古老歷史',
     'head_ban' => [
        'class' => ['bhanger15'],
        'type' => 'sidekick',
-       'content' => <<<CC
-二代攻略本附錄
-=================
-遺忘了數千年的古老歷史
-CC
     ],
     'content' => <<<MC
 本文譯自 [Homeworld Shipyard](http://shipyards.relicnews.com/) 的[原文](http://shipyards.relicnews.com/hw2/hiigaran_history.htm)。

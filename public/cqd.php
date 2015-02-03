@@ -3,14 +3,10 @@ include __DIR__ . '/../src/init.php';
 
 echo \Q\Core\Templator::render('main.twig', [
     'title' => '關於本站作者 CQD',
+    'desc' => '沒什麼，也就只是個 Google 認證的蘿莉控罷了',
     'head_ban' => [
        'class' => ['bcqd'],
        'type' => 'sidekick',
-       'content' => <<<CC
-CQD
-=================
-沒什麼，也就只是個 Google 認證的蘿莉控罷了
-CC
     ],
     'content' => <<<MC
 CQD 是一種奇妙的生物。常出沒在網路上。最著名事蹟是在三十秒內接收了三萬人分的愛而變身成為巨大機器人。

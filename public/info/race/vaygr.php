@@ -3,14 +3,10 @@ include __DIR__ . '/../../../src/init.php';
 
 echo \Q\Core\Templator::render('main.twig', [
     'title' => '維格',
+    'desc' => '來自銀河東緣的強大戰士民族',
     'head_ban' => [
        'class' => ['bvaygr'],
        'type' => 'sidekick',
-       'content' => <<<CC
-維格
-=================
-強大的戰士民族
-CC
     ],
     'content' => <<<MC
 銀河東緣（Eastern Fringes ）是一片不宜人居的空域，到處都是不穩定的星系以及重力亂流。這一片空域和銀河的其他地方幾乎是隔絕的，充滿了海盜、土匪、及軍閥。在這其中最強大的就是維格人（Vaygr）。
