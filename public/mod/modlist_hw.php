@@ -39,7 +39,7 @@ echo \Q\Core\Templator::render('main.twig', [
 **[Fleet Action](http://www.strategyplanet.com/homeworld/fleetaction/index2.html)**<br>
 著名太空射擊遊戲銀河飛將(Wing Commander)的mod，算是歷史悠久了
 
-**[Trekmods.com(原Hiigaria Planetia)](http://www.trekmods.com/index.php)**<br>
+**[Trekmods.com(原Hiigara Planetia)](http://www.trekmods.com/index.php)**<br>
 有一些Star Trek的Mod，包括著名的[Sacrifice of Angels](http://www.trekmods.com/homeworld/soa.php)，[Innocence and Wrath](http://www.trekmods.com/homeworld/iaw.php)，[Beyond the Final Frontier](http://www.trekmods.com/cataclysm/btff.php) ，[The Wounded](http://www.trekmods.com/cataclysm/tw.php)。
 
 **[Homeworld:Battleground](http://www.strategyplanet.com/hwbattleground/bg.htm)**<br>
