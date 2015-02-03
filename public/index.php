@@ -5,8 +5,9 @@ echo \Q\Core\Templator::render('main.twig', [
 	'site_title' => '首頁',
     'title' => '探索萬艦齊發的世界',
     'desc' => '西亞加拉宇宙載具改裝中心提供各種萬艦齊發系列遊戲的相關資訊，包括歷史、考證、設定、Mod等等，希望能夠帶領中文玩家更進一步了解萬艦齊發故事所在的世界。',
+    'main_image' => 'banner1.jpg',
     'head_ban' => [
-       'class' => ['b1', 'light'],
+       'class' => ['light'],
        'type' => 'hero',
     ],
     'content' => <<<MC
