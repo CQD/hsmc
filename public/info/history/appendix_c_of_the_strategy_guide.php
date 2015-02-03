@@ -2,15 +2,17 @@
 include __DIR__ . '/../../../src/init.php';
 
 echo \Q\Core\Templator::render('main.twig', [
-    'title' => '二代攻略本附錄',
-    'desc' => '遺忘了數千年的古老歷史',
+    'title' => '末日前奏',
+    'desc' => '從遺忘了數千年的古老歷史，串聯到末日時代的開始',
     'main_image' => 'banner_hanger15.jpg',
     'head_ban' => [
        'class' => [],
        'type' => 'sidekick',
     ],
     'content' => <<<MC
-本文譯自 [Homeworld Shipyard](http://shipyards.relicnews.com/) 的[原文](http://shipyards.relicnews.com/hw2/hiigaran_history.htm)。
+本文譯自二代攻略本附錄電子書：[History of Hiigara: Prelude to the End Times](https://docs.google.com/file/d/0B2dsPjMpHKiYcWtsYkk1UFlIazg/edit?pli=1)
+
+[Homeworld Shipyard](http://shipyards.relicnews.com/) 也有[線上全文](http://shipyards.relicnews.com/hw2/hiigaran_history.htm)可閱讀
 
 *****
 
