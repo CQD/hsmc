@@ -231,6 +231,7 @@ nav li ul li:hover{
 .ban.bvaygr:before{background-image: url(../i/banner_vaygr.jpg);}
 .ban.bkeeper:before{background-image: url(../i/banner_keeper.jpg);}
 .ban.bhw1:before{background-image: url(../i/banner_hw1.jpg);}
+.ban.bcat:before{background-image: url(../i/banner_cat.jpg);}
 
 .hero{
     min-height:300px;/*xxx*/
