@@ -5,6 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 {% autoescape %}
 {% if not site_title %}{% set site_title = title %}{% endif %}
+{% if not main_image %}{% set main_image = 'banner1.jpg' %}{% endif %}
 <head>
 <meta charset="utf-8">
 <title>{% if site_title %}{{site_title}} - {% endif %}西亞加拉宇宙載具改裝中心：萬艦齊發系列遊戲資料主題網站</title>
@@ -15,7 +16,7 @@
 <meta name="og:site_name" content="西亞加拉宇宙載具改裝中心">
 <meta name="og:description" content="{{desc}}">
 <meta name="og:locale" content="zh_TW" />
-{% if main_image %}<meta name="og:image" content="/i/{{main_image}}">{% endif %}
+<meta name="og:image" content="/i/{{main_image}}">
 
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -25,7 +26,7 @@
 <link rel="stylesheet" href="/c/main.css">
 <link rel="shortcut icon" href="/i/favicon.png" />
 <link rel="apple-touch-icon" href="/i/touch-icon.png" />
-{% if main_image %}<style>#main_ban.ban:before{background-image: url('/i/{{main_image}}')}</style>{% endif %}
+<style>#main_ban.ban:before{background-image: url('/i/{{main_image}}')}</style>
 
 <script src="/j/modernizr-2.6.2.min.js"></script>
 </head>
