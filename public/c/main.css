@@ -61,6 +61,7 @@ textarea {
    Author's custom styles
    ========================================================================== */
 h1, h2{font-size: 45px; margin:0; padding:25px 0;color:#000;}
+h3,h4,h5,h6{color:#000; border-bottom:1px solid #ddd;}
 body{color:#444; background-color:#333;}
 
 blockquote {
@@ -233,6 +234,7 @@ nav li ul li:hover{
 .ban.bhw1:before{background-image: url(../i/banner_hw1.jpg);}
 .ban.bcat:before{background-image: url(../i/banner_cat.jpg);}
 .ban.bhw2:before{background-image: url(../i/banner_hw2.jpg);}
+.ban.bhanger15:before{background-image: url(../i/banner_hanger15.jpg);}
 
 .hero{
     min-height:300px;/*xxx*/
