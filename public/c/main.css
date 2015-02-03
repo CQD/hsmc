@@ -72,6 +72,9 @@ blockquote {
   quotes: "\201C""\201D""\2018""\2019";
 }
 
+table{border-spacing: 3px; border-collapse: separate;}
+th,td{background-color:#eee;cell-spacing:3px; padding:0.5em}
+
 .caption{font-size: 25px; margin-top:-30px; padding:0 6px 30px;}
 .well{
     color:#fff;
