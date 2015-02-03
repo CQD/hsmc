@@ -258,6 +258,9 @@ nav li ul li:hover{
     line-height: 1.6em;
     margin-bottom: 2em;
 }
+#content li{
+    margin-bottom:0.5em;
+}
 
 footer{
     background-color: #333;
