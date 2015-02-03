@@ -7,6 +7,10 @@ threadsafe: true
 handlers:
 ###################################################
 
+- url: /(.*\.(gif|png|jpg))$
+  static_files: public/\1
+  upload: public/.*\.(gif|png|jpg)$
+
 - url: /c
   static_dir: public/c
 
