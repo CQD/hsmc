@@ -4,7 +4,7 @@ include __DIR__ . '/../../../src/init.php';
 echo \Q\Core\Templator::render('main.twig', [
     'title' => '太初之戰',
     'desc' => '讓庫沈人失去家園的慘烈戰爭',
-    'main_image' => null,
+    'main_image' => 'banner_galaxy_poster.jpg',
     'head_ban' => [
        'class' => [],
        'type' => 'sidekick',
