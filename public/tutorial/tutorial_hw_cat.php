@@ -3,8 +3,8 @@ include __DIR__ . '/../../src/init.php';
 
 echo \Q\Core\Templator::render('main.twig', [
     'title' => '萬艦齊發/地動天驚 MOD 技術文件 ',
-    'desc' => '動手修改萬艦齊發/地動天驚的技術教學',
-    'main_image' => null,
+    'desc' => '基礎 Mod 技術教學',
+    'main_image' => "banner_hanger15.jpg",
     'head_ban' => [
        'class' => [],
        'type' => 'sidekick',
