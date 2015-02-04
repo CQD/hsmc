@@ -264,6 +264,8 @@ nav li ul li:hover{
 #content li{
     margin-bottom:0.5em;
 }
+#content a:link,#content a:visited{color:#39c; transition: color 0.2s;}
+#content a:link:hover,#content a:visited:hover{color:#C33;}
 
 footer{
     background-color: #333;
