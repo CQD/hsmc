@@ -229,10 +229,9 @@ nav li ul li:hover{
 .ban.b3:before{background-image: url(../i/banner3.jpg);}
 
 .hero{
-    min-height:300px;/*xxx*/
-    width:60%;
+    width:65%;
     margin:30px 20px;
-    background-color: rgba(0,0,0,0.65);
+    background-color: rgba(0,0,0,0.75);
     border-radius: 5px;
     box-sizing:border-box;
     padding:1.5em 2.5em;
