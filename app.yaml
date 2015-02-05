@@ -11,6 +11,10 @@ handlers:
   static_files: public/robots.txt
   upload: public/robots.txt
 
+- url: /favicon.ico
+  static_files: public/i/favicon.ico
+  upload: public/i/favicon.ico
+
 - url: /(.*\.(gif|png|jpg))$
   static_files: public/\1
   upload: public/.*\.(gif|png|jpg)$
