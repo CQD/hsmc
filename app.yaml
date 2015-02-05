@@ -31,7 +31,7 @@ handlers:
 - url: /
   script: public/index.php
 
-- url: (/(game/.*|info/.*|link/.*|mod/.*|tutorial/.*)?[a-z_]*).html?
+- url: (/(download/.*|game/.*|info/.*|link/.*|mod/.*|tutorial/.*)?[a-z_]*).html?
   script: public\1.php
 
 - url: /.*
