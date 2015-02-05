@@ -2,9 +2,9 @@
 include __DIR__ . '/../src/init.php';
 
 // 如果在 /d 資料夾裡面有這個檔案，redirect 過去
-$path_info = $_SERVER['PATH_INFO'];
-if (is_file(__DIR__ . "/../public/d{$path_info}")) {
-	header("Location: /d{$path_info}");
+$uri = $_SERVER['REQUEST_URI'];
+if (is_file(__DIR__ . "/../public/d{$uri}")) {
+	header("Location: /d{$uri}");
 	exit;
 }
 
