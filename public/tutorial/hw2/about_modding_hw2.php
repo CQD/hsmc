@@ -15,8 +15,8 @@ echo \Q\Core\Templator::render('main.twig', [
 
 Big 檔案裡面的檔案架構就像個把一堆檔案打包成一個虛擬的資料夾。這個資料夾一個給遊戲程式辨認用的別名（alias）。例如代表遊戲一般資料的「DATA」（對應的位置是萬艦二安裝資料夾下的 Data 資料夾），或是代表各種不同語言的文字資料的「LOCALE」（以英文版來說，對應的位置是萬艦二安裝資料夾下的 Data\Locale\的English 資料夾）。遊戲會利用這些別名來存取 big 裡面的檔案。
 
-<img style="float:left" src="/i/tutorial/hw2/about_modding_hw2/1.gif">
-用 Spooky 的 Relic Archive Tool 開啟萬艦二的 big 檔案時，可以看到左邊類似檔案總管的樹狀檔案列表（[例圖](/i/tutorial/hw2/about_modding_hw2/rat.gif)）。這就是 Big 檔案裡面的檔案結構，其中最上面的根目錄就是 alias 的名稱。像是這個範例，紅框內的檔案相當於 Homeworld2\data\ai\cpubuildsubsystem.lua。當遊戲加上「-overwritebig」參數時，big 裡面的這個檔案就會被 Homeworld2\data\ai\cpubuildsubsystem.lua 這個檔案給取代（如果有這個檔案的話）。
+<img style="float:left" src="/d/tutorial/hw2/about_modding_hw2/1.gif">
+用 Spooky 的 Relic Archive Tool 開啟萬艦二的 big 檔案時，可以看到左邊類似檔案總管的樹狀檔案列表（[例圖](/d/tutorial/hw2/about_modding_hw2/rat.gif)）。這就是 Big 檔案裡面的檔案結構，其中最上面的根目錄就是 alias 的名稱。像是這個範例，紅框內的檔案相當於 Homeworld2\data\ai\cpubuildsubsystem.lua。當遊戲加上「-overwritebig」參數時，big 裡面的這個檔案就會被 Homeworld2\data\ai\cpubuildsubsystem.lua 這個檔案給取代（如果有這個檔案的話）。
 
 萬艦二的遊戲資料檔是儲存在萬艦二安裝目錄 \Data 這個資料夾下的四個 .big 檔案裡面。他們分別是：
 
@@ -54,8 +54,8 @@ Big 檔案裡面的檔案架構就像個把一堆檔案打包成一個虛擬的�
 <a name="PS1"></a>
 註一：修改執行捷徑參數的方法如下
 
-- 在萬艦二執行捷徑上面按滑鼠右鍵，選內容（[圖例](/i/tutorial/hw2/about_modding_hw2/1.jpg)）。
-- 在「捷徑」標籤下的「目標」欄位是萬艦二的執行程式路徑。在路徑最後面「...orld2.exe」之後面加上「-overrideBigFile」。注意中間要格一個空白（[圖例](/i/tutorial/hw2/about_modding_hw2/2.jpg)） 。另外 homeworld2.exe 的路徑請用雙引號包起來，把參數留在雙引號外面。
+- 在萬艦二執行捷徑上面按滑鼠右鍵，選內容（[圖例](/d/tutorial/hw2/about_modding_hw2/1.jpg)）。
+- 在「捷徑」標籤下的「目標」欄位是萬艦二的執行程式路徑。在路徑最後面「...orld2.exe」之後面加上「-overrideBigFile」。注意中間要格一個空白（[圖例](/d/tutorial/hw2/about_modding_hw2/2.jpg)） 。另外 homeworld2.exe 的路徑請用雙引號包起來，把參數留在雙引號外面。
 - 按下確定鈕 。
 
 <a name="PS2"></a>
