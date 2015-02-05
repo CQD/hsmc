@@ -7,6 +7,10 @@ threadsafe: true
 handlers:
 ###################################################
 
+- url: /robots.txt
+  static_files: public/robots.txt
+  upload: public/robots.txt
+
 - url: /(.*\.(gif|png|jpg))$
   static_files: public/\1
   upload: public/.*\.(gif|png|jpg)$
