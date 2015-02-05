@@ -29,14 +29,26 @@ echo \Q\Core\Templator::render('main.twig', [
 **FX Mod：[ModDB](http://www.moddb.com/mods/homeworld-2-fx)、[RN討論串](http://forums.relicnews.com/showthread.php?275773)**<br>
 從大陸 9CCN 論壇（網站已隨風而逝）起家的 Mod，特點是大量的可用種族跟新船艦，以及精細的模型與動畫。
 
-**Freespace: Fleet Command v3：[ModDB](http://www.moddb.com/mods/freespace-fleet-command-v3)**<br>
+**Battlestar Galactica Fleet Commander：[RN討論串](http://forums.relicnews.com/showthread.php?97531)、[網頁](http://hw2bsg.sourceforge.net/)**<br>
+以科幻影集Battlestar Galatica 2003(台譯：2005星際大爭霸...的樣子)為主題的MOD。
+
+**Freespace: Fleet Command：[ModDB](http://www.moddb.com/mods/freespace-fleet-command-v3)**<br>
 以縱橫太空(Freespace)為主題的Mod。
+
+**Star Trek: Continuum：[ModDB](http://www.moddb.com/mods/star-trek-continuum)、[RN討論串](http://forums.relicnews.com/showthread.php?267128)**<br>
+Star Trek 的 Mod。
+
+**Star Wars Warlord／Clone Wars：[ModDB](http://www.moddb.com/mods/star-wars-warlords)、[網頁](http://warlords.swrebellion.com/wp/)**<br>
+星際大戰的 Mod。作者同時也參與了 [Sins of a Solar Empire](http://www.sinsofasolarempire.com/) 的星戰 Mod，[Sins of a Galactic Empire](http://www.moddb.com/mods/sins-of-a-galactic-empire)。
 
 **PDS Mod：[ModDB](http://www.moddb.com/mods/point-defense-systems)、[網站](http://www.pds.homeworldaccess.net)**<br>
 原本只是為船艦加上 Point Defense System，後來演變成子彈滿天飛的華麗戰爭。
 
 **Gundam Seed Mod：[ModDB](http://www.moddb.com/mods/homeworld-2-fx)、[RN討論串](http://forums.relicnews.com/showthread.php?104891)**<br>
 同樣是 9CCN 論壇起家的 Mod，以鋼彈 Seed 為背景
+
+**Gundam UC Mod：[ModDB](http://www.moddb.com/mods/gundam-mod-0079-to-0083)**<br>
+同樣是 9CCN 論壇起家的 Mod，時代背景為0079~0083，鋼彈迷絕對不可錯過。3.0版內附繁/簡體中文跟英文的語言檔，也可以獨立下載[繁體中文語言檔](/download/general.htm#HW2)。
 
 **Gundam UC Mod：[ModDB](http://www.moddb.com/mods/gundam-mod-0079-to-0083)**<br>
 同樣是 9CCN 論壇起家的 Mod，時代背景為0079~0083，鋼彈迷絕對不可錯過。3.0版內附繁/簡體中文跟英文的語言檔，也可以獨立下載[繁體中文語言檔](/download/general.htm#HW2)。
