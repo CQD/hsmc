@@ -1,0 +1,365 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>RDN文件-建造和研究腳本製作</title>
+<meta http-equiv="Content-Type" content="text/html; charset=big5">
+<link href="rdn_doc.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<table width="700" border="0" align="center" cellpadding="2" class="text">
+  <tr> 
+    <td><div align="center"><img src="hw2.gif" width="434" height="57"></div></td>
+  </tr>
+  <tr> 
+    <td><div align="center" class="textlarge">創造科技</div></td>
+  </tr>
+  <tr> 
+    <td> <p><a href="#Introduction">1.簡介</a><br>
+        <a href="#FileStructure">2.檔案結構</a><br>
+        <a href="#Research">3.研究</a><br>
+        　<a href="#Research_general">3.1 總論</a><br>
+        　<a href="#Research_Research_Field">3.2 研究欄位</a><br>
+        <a href="#Build">4.建造</a><br>
+        　<a href="#Build_general">4.1 總論</a><br>
+        　<a href="#Build_Build_Field">4.2 建造欄位</a><br>
+        <a href="#Walkthrough">5.實作</a><br>
+        　<a href="#Create_Research_Item">5.1 創造研究項目</a><br>
+        　<a href="#Create_Build_Item">5.2 創造建造項目</a><br>
+        <a href="#Declaration">6.聲明 </a></p></td>
+  </tr>
+  <tr> 
+    <td class="Inversed"><a name="Introduction">1.簡介</a></td>
+  </tr>
+  <tr> 
+    <td>這份文件解釋如何去使用建造和研究的腳本(script).這兩個腳本裡面描述了建造,研究,和昇級的一切項目</td>
+  </tr>
+  <tr> 
+    <td class="Inversed"> <a name="FileStructure" id="FileStructure">2.檔案結構</a> 
+    </td>
+  </tr>
+  <tr> 
+    <td><p>每個種族都有自己的腳本集(script set).在萬艦二安裝目錄下的:<br>
+        Data\Scripts\Building and Research\<br>
+        資料夾中,每個種族的目錄中都有兩個檔案,build.lua和research.lua</p></td>
+  </tr>
+  <tr> 
+    <td class="Inversed"> <a name="Research" id="Research">3.研究</a></td>
+  </tr>
+  <tr> 
+    <td><p><a name="Research_general" class="textUnderlined">3.1 總論</a><br>
+        研究檔案其實是一個大表格,裡面每個該種族能夠研究的項目都各自有著自己的次表格.每個研究項目都有幾個核心欄位,也有一些選擇性的項目,用來指定升級的資訊.升級系統是研究系統的一部分,指定了要升級哪些船以及升級的種類</p>
+      <p><a name="Research_Research_Field" class="textUnderlined" id="Research_Research_Field">3.2 
+        研究欄位</a>
+      <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#000000" class="text">
+        <tr bgcolor="#FFFFFF"> 
+          <td width="48%">Name (必需)</td>
+          <td width="52%">研究項目的名稱.檢查研究項目以及建造項目的相依性時會使用這個名字.</td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td>RequiredResearch (必需)</td>
+          <td>研究此項科技所需要的前置科技.你可以用布林運算(Boolean operation)來產生複雜的相依關係.運算符號有:「&amp;」(and),「|」(or),「!」(negation).你也可以使用括號.</td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td>RequiredSubSystems (必需)</td>
+          <td>研究此項科技時所需要有的子系統.在這裡使用的名稱是子系統的typeString而不是子系統的本身的名字,所以應該要使用「AdvancedFighterProduction」,而不是「Hgn_AdvancedFighterProduction」.可以利用布林運算來產生複雜的相依關係.</td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td>Cost (必需)</td>
+          <td>研究項目所需要的RU</td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td>Time (必需)</td>
+          <td>當只有一個研究子系統時研究這項科技所需要的時間,單位為秒.如果有不只一個研究設施的話研究速度會加快.</td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td>DisplayedName (必需)</td>
+          <td>在使用介面上所顯示的名稱</td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td>DisplayPriority (必需)</td>
+          <td>在使用介面上會依照這個數字來排列研究項目.數字較小的會顯示在比較上面</td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td>Description (必需)</td>
+          <td>研究項目的敘述,會顯示在使用介面上</td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td>UpgradeType</td>
+          <td>此項研究所帶來的升級類別,其值可以是<strong>Modifier</strong>(修正量)或<strong>Ability</strong>(能力)</td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td>TargetType</td>
+          <td>因為這項研究而受惠的單位類型.其值為<strong>AllShips</strong>(玩家艦隊中的所有單位),<strong>Family</strong>(某個指定的attack 
+            family,例如護衛艦),或是<strong>Ship</strong>(某種特定的船艦,例如離子砲艦)</td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td>TargetName</td>
+          <td>指定研究所影響的目標.這個參數對於Allship來說不需要,對於Family來說會是某個attack family的名稱.而對於Ship來說就會是某一個單位的名稱,例如Hgn_Scout(西加拉的偵察機)</td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td>UpgradeName</td>
+          <td>研究後會變更的數值或是能力.細節請看HW2_MultipliersAndAbilitiesHowTo.doc(譯註:RDN釋出的文件裡面並沒有這一份)</td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td>UpgradeValue</td>
+          <td>對於Modifer來說,這個值乘上要改變的數值就是新數值.對於Ability來說0表示取消掉某項能力,1表示啟動某項能力<br>
+            (譯註:在釋出版本的遊戲中的research.lua中,UpgradeType = Ability的研究項目都沒有UpgradeValue的參數)</td>
+        </tr>
+      </table>
+      </p></td>
+  </tr>
+  <tr> 
+    <td class="Inversed"> <a name="Build" id="Build">4.建造</a></td>
+  </tr>
+  <tr> 
+    <td><p><a name="Build_general" class="textUnderlined" id="Build_general">4.1 
+        總論</a><br>
+        研究檔案其實是一個大表格,裡面每個該種族能夠研究的項目都各自有著自己的次表格.造價和建造時間並不包含在裡面,這兩樣資訊記載在每個單位各自的.ship(船隻單位)或是.subs(子系統)文件中</p>
+      <p><a name="Build_Build_Field" class="textUnderlined" id="Build_Build_Field">4.2 
+        建造欄位 </a> 
+      <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#000000" class="text">
+        <tr bgcolor="#FFFFFF"> 
+          <td width="48%">Type</td>
+          <td width="52%"><strong>Ship</strong>(船隻單位)或是<strong>SubSystem</strong>(子系統)</td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td>ThingToBuild</td>
+          <td>所要建造的項目的名稱.例如Hgn_Scout(西加拉偵察機)或是Hgn_AdvancedFighterProduction(某個子系統,正式遊戲中沒這個東西)</td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td>RequiredResearch</td>
+          <td> 建造此單位所需要的前置科技.你可以用布林運算(Boolean operation)來產生複雜的相依關係.運算符號有:「&amp;」(and),「|」(or),「!」(negation).你也可以使用括號. 
+          </td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td>RequiredShipSubSystems</td>
+          <td>建造此單位所需要有的子系統.在這裡使用的名稱是子系統的typeString而不是子系統的本身的名字,所以應該要使用「AdvancedFighterProduction」,而不是「Hgn_AdvancedFighterProduction」.可以利用布林運算來產生複雜的相依關係.</td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td>DisplayedName</td>
+          <td>在使用介面上所顯示的名稱</td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td>DisplayPriority</td>
+          <td>在使用介面上會依照這個數字來排列建造項目.數字較小的會顯示在比較上面</td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td>Description</td>
+          <td>建造項目的敘述,會顯示在使用介面上</td>
+        </tr>
+      </table>
+      </p>
+    </td>
+  </tr>
+  <tr> 
+    <td class="Inversed"> <a name="Walkthrough" id="Walkthrough">5.實作</a></td>
+  </tr>
+  <tr> 
+    <td><p><a name="Create_Research_Item" class="textUnderlined" id="Create_Research_Item">5.1 
+        創造研究項目</a><br>
+        創造新的科技是很有趣的!這個例子告訴你如何增加新的研究項目到Vaygr的科技樹中.</p>
+      <table width="650" border="0" cellpadding="1" cellspacing="2" class="text">
+        <tr> 
+          <td width="19">{</td>
+          <td width="169">&nbsp;</td>
+          <td width="390">&nbsp;</td>
+        </tr>
+        <tr> 
+          <td><div align="right"><strong><font color="#3333FF">3</font></strong></div></td>
+          <td>Name =</td>
+          <td class="string">&quot;MissileCorvette&quot;,</td>
+        </tr>
+        <tr> 
+          <td rowspan="2"><div align="right"><strong><font color="#3333FF">4</font></strong></div></td>
+          <td>RequiredResearch =</td>
+          <td class="string">&quot;&quot;,</td>
+        </tr>
+        <tr> 
+          <td>RequiredShipSubSystems =</td>
+          <td class="string">&quot;Research &amp; CorvetteProduction&quot;,</td>
+        </tr>
+        <tr> 
+          <td rowspan="2"><div align="right"><strong><font color="#3333FF">5</font></strong></div>
+            <div align="right"></div></td>
+          <td>Cost =</td>
+          <td class="value">750,</td>
+        </tr>
+        <tr> 
+          <td>Time =</td>
+          <td class="value">40,</td>
+        </tr>
+        <tr> 
+          <td><div align="right"><strong><font color="#3333FF">6</font></strong></div></td>
+          <td>DisplayedName =</td>
+          <td class="string">&quot;Missile Corvette Technology&quot;,</td>
+        </tr>
+        <tr> 
+          <td><div align="right"><strong><font color="#3333FF">7</font></strong></div></td>
+          <td>DisplayPriority =</td>
+          <td class="value">2,</td>
+        </tr>
+        <tr> 
+          <td><div align="right"><strong><font color="#3333FF">8</font></strong></div></td>
+          <td>Description =</td>
+          <td class="string">&quot;Researching this technology will allow you 
+            to build Missile Corvettes&quot;,</td>
+        </tr>
+        <tr> 
+          <td><div align="right"><strong><font color="#3333FF">9</font></strong></div></td>
+          <td>TargetName =</td>
+          <td class="string">&quot;vgr_missilecorvette&quot;,</td>
+        </tr>
+        <tr> 
+          <td><div align="right"><strong><font color="#3333FF">10</font></strong></div></td>
+          <td>Icon =</td>
+          <td class="string">Icon_Tech,</td>
+        </tr>
+        <tr> 
+          <td><div align="right"><strong><font color="#3333FF">11</font></strong></div></td>
+          <td>ShortDisplayedName =</td>
+          <td class="string">&quot;Missile Corvette&quot;</td>
+        </tr>
+        <tr> 
+          <td>}</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+      <ol>
+        <li>開啟Homeworld2/Data/Scripts/Vaygr/Research.lua</li>
+        <li> 決定你要加入什麼科技.以這裡來說讓我們增加一項建造Vaygr飛彈攻擊艇的必要條件.</li>
+        <li> 給這個科技一個名字,讓我們叫他「MissileCorvette」.這個名字可以在research.lua和build.lua中交替使用</li>
+        <li>給這個科技一些前置需求.如果你希望這項科技不需要前置研究就能取得,將其留空.在我們的例子中,玩家需要Research和CorvetteProduction(研究和攻擊艇生產)模組. 
+          <ul>
+            <li>利用下面的符號來創造更複雜的相依關係,也可以使用括號.例如<br>
+              | = or<br>
+              &amp; = and<br>
+              ! = not</li>
+          </ul>
+        </li>
+        <li>給這個科技成本以及時間.例子中的MissileCorvette科技需要花費750 RU以及40秒來研究</li>
+        <li>DisplayedName會顯示在說明文字的標題列</li>
+        <li>DisplayPriority用來決定項目在使用介面上的順序,數字較小的會顯示在比較上面.如果有兩個科技的DisplayPriority相同並且同時都能夠被研究,則只有其中一個會顯示出來.</li>
+        <li>Description的文字是說明視窗的內容 </li>
+        <ul>
+          <li>可以利用\Homeworld2\data\Locale\English\buildresearch.dat,然後加入你想參考的對應文字,並且在前面加一個「$」,來達成介面的 localize (指改成不同的語言,或是使用不同的慣用語法) 
+            <ul>
+              <li>例如你想參照到buildresearch.dat中的line 7035的話,打入「Description = $7035」</li>
+            </ul>
+          </li>
+          <li>有許多方式可以用來將說明視窗文字作排版.下面是幾個例子: 
+            <ul>
+              <li>&lt;b&gt;Description:&lt;/b&gt;會在說明文字中顯示成「<strong>Description</strong>」(粗體字)</li>
+              <li>/n可以用來斷行,幫助你做文字分段</li>
+            </ul>
+          </li>
+        </ul>
+        <li>TargetName是在UI上顯示的科技名稱</li>
+        <li>圖示(icon)用來告訴使用者這項科技的作用 </li>
+        <ul>
+          <li>你可以藉由加入新的圖案以及位在research.lua最上方的參照來增加新的圖示.Icon_Tech參考到其他檔案的方法是: 
+            <ul>
+              <li>Icon_Tech = &quot;data:ui/newui/research/icons/tech.mres&quot;</li>
+            </ul>
+          </li>
+        </ul>
+        <li>最後一項你必須增加的是ShortDisplayedName(科技的簡名).這一欄會顯示在研究管理視窗中,長度不能超過14個字元.</li>
+      </ol>
+      <p><a name="Create_Build_Item" class="textUnderlined" id="Create_Build_Item">5.2 
+        創造建造項目</a></p>
+      <table width="650" border="0" cellpadding="1" cellspacing="2" class="text">
+        <tr> 
+          <td width="19">{</td>
+          <td width="169">&nbsp;</td>
+          <td width="390">&nbsp;</td>
+        </tr>
+        <tr> 
+          <td><div align="right"><strong><font color="#3333FF">3</font></strong></div></td>
+          <td>Type =</td>
+          <td>Ship</td>
+        </tr>
+        <tr> 
+          <td><div align="right"><strong><font color="#3333FF">4</font></strong></div></td>
+          <td>ThingToBuild =</td>
+          <td class="string">&quot;Vgr_LaserCorvette&quot;,</td>
+        </tr>
+        <tr> 
+          <td><div align="right"><strong><font color="#3333FF">5</font></strong></div></td>
+          <td>RequiredResearch =</td>
+          <td class="string">&quot;CorvetteLaser&quot;,</td>
+        </tr>
+        <tr> 
+          <td><div align="right"><strong><font color="#3333FF">6</font></strong></div></td>
+          <td>RequiredShipSubSystems =</td>
+          <td class="string">&quot;CorvetteProduction&quot;,</td>
+        </tr>
+        <tr> 
+          <td><div align="right"><strong><font color="#3333FF">7</font></strong></div></td>
+          <td>DisplayPriority =</td>
+          <td class="value">105,</td>
+        </tr>
+        <tr> 
+          <td><div align="right"><strong><font color="#3333FF">8</font></strong></div></td>
+          <td>DisplayedName =</td>
+          <td class="string">&quot;$7140&quot;,</td>
+        </tr>
+        <tr> 
+          <td><div align="right"><strong><font color="#3333FF">9</font></strong></div></td>
+          <td>Description =</td>
+          <td class="string">&quot;$7141&quot;,</td>
+        </tr>
+        <tr> 
+          <td>}</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+      <ol>
+        <li>開啟Homeworld2/Data/Scripts/Vaygr/Build.lua</li>
+        <li> 決定你要讓玩家能夠建造什麼東西.以這裡來說讓我們想像我們要增加雷射攻擊艇到遊戲中.</li>
+        <li> 首先你要描述這個單位的類型,可以是Ship或者Subsystem.以這裡來說是一艘船(Ship)</li>
+        <li> 接下來要填入把你想建造的東西.這個名字應該要和利用shiptuning.xls所輸出的船隻檔案名字相同</li>
+        <li>給他一些前置科技.本例中雷射攻擊艇需要corvettelaser科技,這個已經在research.lua中定義.</li>
+        <li>接下來加入建造船隻需要的子系統.攻擊艇需要CorvetteProduction </li>
+        <ul>
+          <li>CorvetteProduction是在subsytemtuning.xls所能找到的typestring.可以好幾個子系統共用相同的typestring</li>
+        </ul>
+        <li>DisplayPriority用來決定項目在使用介面上的順序,數字較小的會顯示在比較上面.</li>
+        <li>以上面的例子來說有 localize 的文字,可以在下列位置找到: </li>
+        <ul>
+          <li><strong>Homeworld2\data\Locale\English\buildresearch.dat </strong> 
+            <ul>
+              <li>「DisplayedName = $7140 」會在建造管理視窗中顯示「Laser Corvette」</li>
+            </ul>
+          </li>
+        </ul>
+        <li>以上面的例子來說有 localize 的文字,可以在下列位置找到: </li>
+        <ul>
+          <li><strong>Homeworld2\data\Locale\English\buildresearch.dat </strong> 
+            <ul>
+              <li>「DisplayedName = $7141 」會在說明視窗中顯示<br>
+                <strong>Description</strong>: Anti-Capital Ship Corvette Squadron. 
+                <br>
+                <strong>Strong vs</strong>: Frigates, Capital Ships <br>
+                <strong>Weak vs</strong>: Corvettes, Capital Ships 
+                <p><strong>Prerequisites</strong>: Corvette Facility, Research 
+                  Module and Corvette Laser <br>
+                  Research</p>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </ol>
+      </td>
+  </tr>
+  <tr> 
+    <td class="Inversed"> <a name="Declaration" id="Declaration">6.聲明</a></td>
+  </tr>
+  <tr>
+    <td>本文件主要是翻譯自Relic Developers Network所釋出的&quot;<span class="textUnderlined">HW2_BuildandResearchScripting.pdf</span>&quot;.<br>
+      翻譯者為西加拉宇宙載具改裝中心的CQD.原始文件版權為Relic所有.</td>
+  </tr>
+</table>
+</body>
+</html>

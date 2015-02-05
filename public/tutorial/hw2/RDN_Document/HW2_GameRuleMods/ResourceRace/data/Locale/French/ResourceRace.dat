@@ -1,0 +1,20 @@
+filerange 8000 8999
+rangestart 8000 8999
+
+//Strings from ResourceRace.lua
+8000	La course de resources
+8001	Le premier joueur a atteindre le nombre de resources cible remporte la partie. \n Le gagnant prend tout!
+
+8010	Progression du joueur
+
+//test options for HarvesterRace.lua
+8060	Resources cible
+8061	2000
+8062	5000
+8063	10000
+8064	15000
+8065	LE NOMBRE DE RESOURCES DONT VOUS AVEZ BESOIN POUR GAGNER
+
+rangeend
+
+

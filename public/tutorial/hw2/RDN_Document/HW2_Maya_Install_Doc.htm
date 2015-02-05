@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>RDN文件-安裝Maya Plug-in</title>
+<meta http-equiv="Content-Type" content="text/html; charset=big5">
+<link href="rdn_doc.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<table width="700" border="0" align="center" cellpadding="2" class="text">
+  <tr> 
+    <td><div align="center"><img src="hw2.gif" width="434" height="57"></div></td>
+  </tr>
+  <tr> 
+    <td><div align="center" class="textlarge">Maya 3.0 Tools – Installation for Homeworld 2 </div></td>
+  </tr>
+  <tr> 
+    <td><p>這份文件的目的是指導你設定萬艦齊發二RDN工具在Maya下工作。你必須先安裝好Maya 3.0或更新的版本。 注意：在這份文件釋出的時候，Maya的PLE版（個人學習版）並不能對應這些plug-in，和RDN工具並不相容。</p>
+      <p>（譯註：RDN官方工具內的plug-in據稱只能正常對應3.0版，能夠對應Maya5的Plug-in有國外玩家發佈在Relicnews討論版上。）</p>
+      <ol>
+        <li>下載並安裝RDN工具包。</li>
+        <li>確認已經設定好環境參數：
+          <ol>
+            <li>HW2_ROOT -&gt; “C:\Program Files\Sierra\Homeworld2，或是你安裝萬艦齊發二的資料夾。</li>
+            <li> MAYA_APP_DIR -&gt; “%HW2_ROOT%\Maya” </li>
+            <li> MAYA_INSTALL_DIR -&gt; “C:\AW\Maya3.0”或是你安裝Maya的位置。</li>
+          </ol>
+        </li>
+        <li>從[%HW2_ROOT%\Maya\3.0\plugins]把[IMFPSD.dll]複製到[%MAYA_INSTALL_DIR%\bin\plug-ins\image]，以讀取Photoshop的.PSD檔案。</li>
+        <li>從[%HW2_ROOT%\Maya\3.0\plugins]複製[msvci70.dll]到[%MAYA_INSTALL_DIR%\bin]，讓Maya能夠使用所釋出的plug-in。</li>
+        <li>如果你使用的Maya版本是4.0、4.5、或5.0，請執行下列的動作
+          <ol>
+            <li>將[%HW2_ROOT%\Maya\3.0]更名為[%HW2_ROOT%\Maya\#.#]，#.#是你的Maya的版本號碼(4.0、4.5、或5.0)。</li>
+          </ol>
+        </li>
+        <li>如果你不確定環境變數是否都正常設定的話，當你第一次載入Maya的時候，開啟Relic Tool Shelf。</li>
+        <li> 到Windows-&gt;Settings/Preferences-&gt;Plug-in Manager，並請確定下列的項目已經設為&quot;auto load&quot;（這些是萬艦二的plug-in，只要安裝設定正確就應該會出現）
+          <ol>
+            <li> AnimExport.mll</li>
+            <li> Annotation.mll</li>
+            <li> FlightManeuversExport.mll</li>
+            <li> FreezeShipScale.mll</li>
+            <li> Homeworld2Export.mll</li>
+            <li> HW2GetBB.mll</li>
+            <li> LeverExport.mll</li>
+            <li> Shizoom.mll</li>
+          </ol>
+        </li>
+        <li> 關閉並重新啟動Maya。</li>
+      </ol></td>
+  </tr>
+  <tr> 
+    <td class="Inversed"><a name="CH8">聲明</a></td>
+  </tr>
+  <tr>
+    <td>本文件主要是翻譯自Relic Developers Network所釋出的&quot;<span class="textUnderlined">HW2_Maya_Install_Doc.pdf</span>&quot;.<br>
+      翻譯者為西加拉宇宙載具改裝中心的CQD。原始文件版權為Relic所有。</td>
+  </tr>
+</table>
+</body>
+</html>

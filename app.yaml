@@ -23,6 +23,9 @@ handlers:
 - url: /d
   static_dir: public/d
 
+- url: /tutorial/hw2/RDN_Document
+  static_dir: public/tutorial/hw2/RDN_Document
+
 ####################################################
 
 - url: /

@@ -1,0 +1,513 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>RDN文件-SCAR</title>
+<meta http-equiv="Content-Type" content="text/html; charset=big5">
+<link href="rdn_doc.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<table width="700" border="0" align="center" cellpadding="2" class="text">
+  <tr> 
+    <td><div align="center"><img src="hw2.gif" width="434" height="57"></div></td>
+  </tr>
+  <tr> 
+    <td><div align="center" class="textlarge">SCAR–Scripting at Relic</div></td>
+  </tr>
+  <tr> 
+    <td> <p><a href="#CH1">1.SCAR的第一課</a><br>
+        <a href="#CH2">2.事件表</a><br>
+        　<a href="#CH2_1">2.1 建立事件</a><br>
+        <a href="#CH3">3 特殊函式</a><br>
+        <a href="#CH4">4.建立任務</a><br>
+        　<a href="#CH4_1">4.1建立戰役結構</a><br>
+        　　<a href="#CH4_1_1">4.1.1 建立 .level 檔案</a><br>
+        　<a href="#CH4_2">4.2 建立 .lua 檔案</a><br>
+        　　<a href="#CH4_2_1">4.2.1 範例Mission.lua script </a><br>
+        <a href="#CH5">5.設定 .CAMPAIGN 檔案</a><br>
+        <a href="#CH6">6.雜項檔案</a><br>
+        　<a href="#CH6_1">6.1 .DAT 檔案</a><br>
+        　　<a href="#CH6_1_1">6.1.1 將你的任務方言化(Localize)</a><br>
+        　<a href="#CH6_2">6.2 Teamcolour.lua</a><br>
+        　<a href="#CH6_3">6.3 AI.lua</a><br>
+        　<a href="#CH6_4">6.4 ReferenceFleet.lua</a><br>
+        　<a href="#CH6_5">6.5 Datfiles.lua</a><br>
+        　<a href="#CH6_6">6.6 Mission.tga</a><br>
+        <a href="#CH7">7.附錄</a><br>
+        <a href="#CH8">8.聲明</a></p></td>
+  </tr>
+  <tr> 
+    <td class="Inversed"><a name="CH1" id="CH1">1.SCAR的第一課</a></td>
+  </tr>
+  <tr> 
+    <td><p>SCAR(SCript At Relic)是一種線性的腳本語言(Script Language),用來建構一個規則導向(Rule Based)的系統,類似ICPC所使用的觸發導向(Trigger 
+        Based)系統.SCAR是以LUA這種 script 語言為基礎,包含了LUA大部分的內建功能.程式設計師透過一些函式來提供一個系統,用以存取遊戲中特定項目的狀態-例如下指令-並且修改這些項目的狀態.</p>
+      <p>規則(Rule)是一個使用者定義的函式,一但加入後,遊戲會每隔一段間隔作一次評估的動作.加入規則的方式是利用Rule_Add(&quot;name 
+        of Rule&quot;)函式,藉以傳遞你要加入的規則的名稱.每次評估規則的間隔時間預設值是一個frame的大小,也可以在使用Rule_Add的地方使用Rule_AddInterval函式來自訂間隔時間為幾秒.你可以給每個規則可以各自不同的評估時間間隔.</p>
+      <p>像是若我們想要加入一個每個frame都會在控制台(console)印出&quot;Hello world!&quot;字樣的規則,我們可能會有下列這幾行程式:</p>
+      <p><span class="value">-- 將 Rule_HelloWorld 加入要被評估的規則的序列之中</span><br>
+        Rule_Add(&quot;<span class="string">Rule_HelloWorld</span>&quot; )<br>
+        <br>
+        <span class="value">-- 在這裡,Rule_HelloWorld 函式以符合LUA標準的方式被定義</span><br>
+        function Rule_HelloWorld()<br>
+        　　　　print(&quot;<span class="string">Hello world!</span>&quot;)<br>
+        end</p>
+      <p>如以一來,每個frame都會在主控台印出「Hello world!」字樣</p>
+      <p>一但規則被加入,遊戲每隔一個間隔就會執行一次此規則.如果此規則的第一行敘述是條件敘述,那就能確保這個規則只有在條件適當的時候才會被執行.</p>
+      <p>讓我們利用條件敘述,讓「Hello world!」只有在玩家是西加拉人時才會被印出:</p>
+      <p>Rule_Add(&quot;<span class="string">Rule_HelloWorld</span>&quot;)<br>
+        <br>
+        function Rule_HelloWorld()<br>
+        　　　　<span class="value">-- 利用 Player_GetRace 函式來判定Player 0是不是Hiigaran</span><br>
+        　　　　if ( Player_GetRace( 0 ) == Race_Hiigaran ) then<br>
+        　　　　　　　　print(&quot;<span class="string">Hello world!</span>&quot;)<br>
+        　　　　　　　　Rule_Remove(&quot;<span class="string">Rule_HelloWorld</span>&quot;)<br>
+        　　　　end<br>
+        end</p>
+      <p>注意我們在這裡呼叫了 Rule_Remove .這會把規則從序列中移除,所以下一個間隔之後這個規則就不會被執行.如果你不再規則被執行後將之移除,那他將會繼續在每個時間間隔過評估一次.藉由 
+        Rule_Remove 我們可以確保規則只有在條件符合的時候被執行一次.</p>
+      <p>規則可以在你的程式的任何地方被移除,但是一直要到下一個間隔過後才會真正的被移出.如果你再規則的中間加上一除規則的敘述,規則剩下的部分還是會被執行,直到下個間隔為止.</p>
+      <p>看起來好像沒什麼不好,不過要是玩家的ID並不是0呢?或者在多人遊戲中我們希望能夠檢查每個玩家的話要怎麼做?我們可以把敘述包入一個 for 
+        迴圈中,於是就會跑過每一個玩家來檢查玩家是不是西加拉人.</p>
+      <p>function Rule_HelloWorld()<br>
+        　　　　 <span class="value">-- 我們使用for迴圈,一個Lua所提供的功能</span><br>
+        　　　　for i=1,Universe_PlayerCount() do<br>
+        　　　　　　　　if ( Player_GetRace( i ) == Race_Hiigaran ) then<br>
+        　　　　　　　　　　　　 print(&quot;<span class="string">Hello world!</span>&quot;)<br>
+        　　　　　　　　 end<br>
+        　　　　　　　　 <span class="value">-- 所有的玩家都檢查過了以後,移除這個規則</span><br>
+        　　　　　　　　 if ( i == Universe_PlayerCount() ) then<br>
+        　　　　　　　　　　　　 Rule_Remove(&quot;<span class="string">Rule_HelloWorld</span>&quot;)<br>
+        　　　　　　　　 end<br>
+        　　　　 end<br>
+        end</p>
+      <p>在這個規則中, for 迴圈會檢查遊戲中每個玩家,看看是不是西加拉人,是的話就印出「Hello world!」.當迴圈的 i 的值等於玩家的數目時,這條規則就會被移除</p>
+      <p>看到了這個簡單的規則很快的變的非常有用了嗎?這就是SCAR內藏的力量.在最基礎的層級上也能相當有用.而藉著更進階的Script技巧,它可以成為非常強大而且多用途的工具.</p>
+      <p>如同你所見的,規則只是一個函式.讓他成為規則的就只是我們在前面加上 Rule_ (這只是為了辨識方便),以及我們將他加到規則列表中被評估,而不是直接從script中呼叫.這表示你也可以在你的script中創造一些簡單的函式來作重複的動作,而不用建立一堆執行相同功能的規則.</p></td>
+  </tr>
+  <tr> 
+    <td class="Inversed"><a name="CH2" id="CH2">2.事件表</a> </td>
+  </tr>
+  <tr> 
+    <td><p>SCAR的另外一個功能是事件表(Event Table).事件表是一個項目清單,這些項目發生時會持續一段時間,事件表記載何時從某一段(segment)跳到下一段.他的流程是完全直線的,但是幾乎可以包含任何可以從規則中去呼叫的東西.僅有的例外是條件判斷式(像是 
+        if)或是迴圈(像是 for).</p>
+      <p>事件最典型的應用IntelEvent或Autofocus,或是其他你希望一連串的事情在你的控制之下一個接一個發生的場合.下面是一個事件的實例.</p>
+      <p><span class="value">-- 建立事件表</span><br>
+        Events = {} <span class="value">-- 表格的名稱必須是Events,遊戲會去查這個表格</span><br>
+        <span class="value">-- 這裡我們為事件取名字</span><br>
+        Events.intelevent_constructinterceptors =<br>
+        {<br>
+        　　{<br>
+        <span class="value">　　　　-- 這是事件的第一段</span><br>
+        <span class="value">　　　　-- 在這裡我們作一些基本的設定,啟動 universe skipping,打開 letterbox</span><br>
+        　　　　{ &quot;<span class="string">Universe_EnableSkip(1)</span>&quot;, 
+        &quot;&quot; },<br>
+        　　　　{ &quot;<span class="string">Sound_EnterIntelEvent()</span>&quot;,&quot;&quot; 
+        },<br>
+        　　　　{ &quot;<span class="string">Sound_SetMuteActor('Fleet')</span>&quot;, 
+        &quot;&quot;},<br>
+        　　　　HW2_Letterbox( 1 ),<br>
+        　　　　HW2_Wait(2),<br>
+        　　},<br>
+        　　{<br>
+        <span class="value">　　　　-- 在感應器管理介面中以fighterproduction為中心,產生一個圓圈</span><br>
+        　　　　{ &quot;<span class="string">Sensors_EnableCameraZoom( 0 )</span>&quot;,&quot;&quot; 
+        },<br>
+        　　　　{ &quot;<span class="string">Sensors_Toggle( 0 )</span>&quot;, &quot;&quot; 
+        },<br>
+        　　　　{ &quot;<span class="string">g_pointer_default = HW2_CreateEventPointerSubSystem( 
+        'FighterProduction', 'Mothership' )</span>&quot;,&quot;&quot; },<br>
+        　　　　{ &quot;<span class="string">Camera_Interpolate( 'here', 'camera_focusOnFighterSub', 
+        2)</span>&quot;,&quot;&quot;},<br>
+        　　　　HW2_SubTitleEvent( Actor_FleetCommand, &quot;<span class="string">$40550</span>&quot;, 
+        5 ),<br>
+        　　},<br>
+        　　{<br>
+        <span class="value">　　　　-- 艦隊指揮又來說話了!</span><br>
+        　　　　HW2_SubTitleEvent( Actor_FleetCommand, &quot;<span class="string">$40551</span>&quot;, 
+        5 ),<br>
+        　　},<br>
+        　　{<br>
+        　　　　HW2_Wait(1),<br>
+        　　},<br>
+        　　{<br>
+        <span class="value">　　　　-- 把圓圈移除,建立一個主要任務目標</span><br>
+        　　　　{ &quot;<span class="string">EventPointer_Remove(g_pointer_default)</span>&quot;, 
+        &quot;&quot; },<br>
+        　　　　{ &quot;<span class="string">obj_prim_buildtwointerceptors_id = Objective_Add( 
+        obj_prim_buildtwointerceptors, OT_Primary </span>)&quot;, &quot;&quot; 
+        },<br>
+        　　　　{ &quot;<span class="string">Objective_AddDescription( obj_prim_buildtwointerceptors_id, 
+        '$40965')</span>&quot;, &quot;&quot; },<br>
+        　　　　{ &quot;<span class="string">Objective_AddDescription( obj_prim_buildtwointerceptors_id, 
+        '$40966')</span>&quot;, &quot;&quot; },<br>
+        　　　　{ &quot;<span class="string">Player_UnrestrictBuildOption( g_playerID, 
+        'Hgn_Interceptor' )</span>&quot;,&quot;&quot;},<br>
+        　　　　HW2_SubTitleEvent( Actor_FleetIntel, &quot;<span class="string">$40552</span>&quot;, 
+        5 ),<br>
+        　　},<br>
+        　　{<br>
+        <span class="value">　　　　-- 停掉 letterbox,清除這個事件</span><br>
+        　　　　HW2_Letterbox( 0 ),<br>
+        　　　　HW2_Wait(2),<br>
+        　　　　{ &quot;<span class="string">Sound_SetMuteActor('')</span>&quot;, 
+        &quot;&quot;},<br>
+        　　　　{ &quot;<span class="string">Sound_ExitIntelEvent()</span>&quot;,&quot;&quot; 
+        },<br>
+        　　　　{ &quot;<span class="string">Sensors_EnableCameraZoom( 1 )</span>&quot;,&quot;&quot; 
+        },<br>
+        　　　　{ &quot;<span class="string">Universe_EnableSkip(0)</span>&quot;, 
+        &quot;&quot; },<br>
+        　　},<br>
+        }</p>
+      <p>事件是藉由 Event_Start( ) 函式來呼叫. Event_Start 函式會傳遞你想呼叫的事件.然後你呼叫的事件就會從頭開始執行到尾.讓我們來看這個如何和我們的 
+        HelloWorld 規則一起運作.我們來把沒什麼用處的列印敘述改成呼叫上面這個事件.</p>
+      <p>Rule_Add(&quot;<span class="string">Rule_HelloWorld</span>&quot;)<br>
+        <br>
+        function Rule_HelloWorld()<br>
+        　　　　<span class="value">-- we use the for loop, an functionality provided 
+        by Lua</span><br>
+        　　　　for i=1,Universe_PlayerCount() do<br>
+        　　　　　　　　if ( Player_GetRace( i ) == Race_Hiigaran ) then<br>
+        　　　　　　　　　　　　-- instead of printing Hello World, start the event<br>
+        　　　　　　　　　　　　Event_Start(&quot;<span class="string">intelevent_constructinterceptors</span>&quot;)<br>
+        　　　　　　　　end<br>
+        　　　　　　　　 <span class="value">-- 所有的玩家都檢查過了以後,移除這個規則</span><br>
+        　　　　　　　　 if ( i == Universe_PlayerCount() ) then<br>
+        　　　　　　　　　　　　 Rule_Remove(&quot;<span class="string">Rule_HelloWorld</span>&quot;)<br>
+        　　　　　　　　 end<br>
+        　　　　 end<br>
+        end</p>
+      <p>事件看起來是有點複雜,不過其實是很直覺的.讓我們把事件拆成幾個部分來看,以對整個架構有更深一步的認識.</p>
+      <p><a name="CH2_1" class="textUnderlined">2.1建立事件</a><br>
+        第一件要作的事情是把事件表格初始化.方法是:</p>
+      <p>Events = {}</p>
+      <p>一定要在你的事件開始時去作呼叫,只會呼叫一次,而且名字一定要叫做&quot;Events&quot;.因為遊戲會去查這個名字的表格.如果表格不是這個名字的話,你所有的事件都沒辦法運作.所以當你遇到問題時,記得檢查有沒有漏了這一行.</p>
+      <p>接下來是為你的事件取名.也就是是下面這一行:</p>
+      <p>Events.intelevent_constructinterceptors =</p>
+      <p>於是我們有了一個稱作&quot;intelevent_constructinterceptors&quot;的事件.等下我們會用這個名字來開始執行事件以及檢查事件是否已經完畢.因此事件的名字必須是獨一無二的,不能和其他事件重複.</p>
+      <p>接下來的就是事件的本體了,呼叫函試的區塊會決定接下來會發生什麼事情.如妥我們可以看到的,事件表被拆成好幾段.每一段都用大括號 { 和 } 
+        包起來.每個在相同括號裡面的呼叫都會同時被執行.所以接下來的:</p>
+      <p>}<br>
+        　　　　{&quot;<span class="string">Universe_EnableSkip(1)</span>&quot;, &quot;&quot; 
+        }, <br>
+        　　　　{&quot;<span class="string">Sound_EnterIntelEvent()</span>&quot;,&quot;&quot; 
+        }, <br>
+        　　　　{&quot;<span class="string">Sound_SetMuteActor('Fleet')</span>&quot;, 
+        &quot;&quot;}, <br>
+        　　　　HW2_Letterbox( 1 ), <br>
+        　　　　HW2_Wait(2), <br>
+        },</p>
+      <p>會同時啟動skipping,告訴聲音部分我們進入了一個Intelevent,讓艦隊指揮停止說話,打開Letterbox,並且等待2秒鐘.關鍵在於HW2_Wait( 
+        2 ).這相當於一個控制器,控制我們何時會進入到事件列表的下一個段落.以這裡來說是兩秒鐘後.</p>
+      <p>事件被分成好幾個分明的段落.所以我們可以在某個特定的段落中暫停一段時間,讓這個段落能在進入下個段落前跑完.</p>
+      <p>如同你所見,段落的內容不過就是函式的呼叫而已.注意到 Universe_EnableSkip(1) 和 HW2_Wait(2) 之間的不同.前者被包在大括號裡面,後面還有一個空的欄位,而後者是函式的呼叫.</p>
+      <p> 這兩者之間的差別是,HW2_Wait 是一個helper函式會回傳下列的值:</p>
+      <p>　　　　{&quot;<span class="string">wID = Wait_Start( 2 )</span>&quot;,&quot;<span class="string">Wait_End( 
+        wID )</span>&quot;},</p>
+      <p>注意到第二個元素是如何去包含其他的函式呼叫了嗎? The second element specifies the function that, 
+        when it returns true, ensures this Controller will step to the next segment 
+        of the Event list.</p>
+      <p>在上面的例子中,第一個項目是呼叫 Wait_Start ,這會回傳一個唯一的ID,第二個項目以這個 ID 作為參數呼叫 Wait_End 
+        函式.當指定的時間經過之後, Wait_End 會傳回 ture,讓這個控制器去允許進入下一個段落.</p>
+      <p>如果第二個項目是空的,那表示第一個函式只會單純的被執行,而不會作用為一個控制器.</p>
+      <p>所以,若是想要讓這個段落中間不包含helper函式,那看起來就會像這樣:</p>
+      <p>{ <br>
+        　　　　{&quot;<span class="string">Universe_EnableSkip(1)</span>&quot;,&quot;&quot;},<br>
+        　　　　{&quot;<span class="string">Sound_EnterIntelEvent()</span>&quot;,&quot;&quot;},<br>
+        　　　　{&quot;<span class="string">Sound_SetMuteActor('Fleet')</span>&quot;, 
+        &quot;&quot;},<br>
+        　　　　{&quot;<span class="string">Camera_SetLetterboxStateNoUI( 1, 2 )</span>&quot;,&quot;&quot;},<br>
+        　　　　{&quot;<span class="string">wID = Wait_Start( 2 )</span>&quot;,&quot;<span class="string">Wait_End( 
+        wID )</span>&quot;}, <br>
+        }, </p>
+      </td>
+  </tr>
+  <tr> 
+    <td class="Inversed"> <a name="CH3" id="CH3">3.特殊函式</a></td>
+  </tr>
+  <tr> 
+    <td><p>如果你已經看過萬艦二的關卡的SCAR script,你會注意到一些共通之處.像是 OnInit( ) 函式.</p>
+      <p>OnInit( ) 函式會在關卡第一次被起動時執行,通常包含了加入 Rule_Init( ) 的呼叫. OnInit( ) 和 Rule_Init( 
+        ) 之間的差別在於,當關卡被遊戲載入時,遊戲會自動尋找 OnInit( ). 這是遊戲用來開始關卡的進入點.如果 OnInit( ) 裡面沒有東西,那你的任務什麼也不會做!</p>
+      <p>注意 OnInit( ) 函式跟 OnStartOrLoad( ) 函式的差別. OnInit( ) 只會在關卡第一次被載入時執行,如果這個關卡是因為讀取遊戲存檔而被載入,那麼 
+        OnInit( ) 不會被執行.這就是為什麼要有 OnStartOrLoad( ).如果你有每次載入時-甚至從遊戲存檔中-都需要去啟動的東西(例如某些需要不斷重複的特效),把需要用到的呼叫放在OnStartOrLoad( 
+        ) 函式裡面.</p>
+      </td>
+  </tr>
+  <tr> 
+    <td class="Inversed"> <a name="CH4" id="CH4">4.建立任務</a></td>
+  </tr>
+  <tr> 
+    <td><p>這裡我們會概略描述為萬艦齊發二建立任務的基本步驟.首先我們要為這個教學建立一個新的戰役.然後為這個戰役建立一個基本的任務.</p>
+      <p>一但目錄結構已經正確的被建立好後,建立任務需要三個步驟.第一,建立並且匯出 mission.level 檔,第二,建立一個基本的 .lua 
+        檔案,第三,將這個任務加進 .campaign 檔裡面.</p>
+      <p>為了要執行這些步驟,你會需要:</p>
+      <ul>
+        <li> 安裝MAYA,並且正確的安裝了Relic的工具組.</li>
+        <li> 安裝萬艦二(你會需要的是source data,而不是.big檔案)</li>
+      </ul>
+      <p><a name="CH4_1" class="textUnderlined" id="CH4_1">4.1 建立戰役結構</a><br>
+        首先我們要建立一個資料夾,用來存放我們的新戰役.</p>
+      <p>一個戰役中的所有任務都會存放在 data\LevelData\Campaign 資料夾中.在這個資料夾裡面有許多的子目錄,每一個都存放了更多的子目錄,其中存放著真正的任務檔案本體.我們現在要建立一個&quot;Postmortem&quot;(分析用)戰役.</p>
+      <p>首先,在 data\LevelData\Campaign 資料夾下面建立一個&quot;Postmortem&quot;資料夾,這是我們新戰役的名稱(是沒什麼想像力,不過很適合我們的目的).全部的任務都會放在這裡面.</p>
+      <p>你可能已經注意到在 Campaign (戰役)資料夾裡面有幾個 .campaign 檔.他們定義了在戰役中會進行哪些任務,以及其他像是過場動畫之類的東西.我們等下在來看這些檔案.</p>
+      <p><a name="CH4_1_1" class="textUnderlined" id="CH4_1_1">4.1.1 建立 .level 
+        檔案</a><br>
+        既然我們已經開始建立戰役的結構,我們會需要建立一些真正的.level檔案給任務.要建立 .level 檔案,開啟Maya,然後開啟 LevelEd 
+        工具. LevelEd 工具的細部探討會在另外一份教學中提到.為了你的關卡能夠正確的工作,會需要這些基本元素:</p>
+      <ul>
+        <li>如果這一關的艦隊是來自上一關,那你會需要一個玩家開始點.如果不是的話,則需要一艘屬於Player0 的母艦.(要取得有關於如何建立以及使用固有艦隊(persistent 
+          fleet,指艦隊來自上一關剩下的兵力),請看&quot;Reactive Fleet postmortem&quot;)(譯註:RDN釋出的文件裡面並沒有這一份).</li>
+        <li> 敵對的兵力(任何不屬於 Player0 或是 Galaxy 的船隻)</li>
+        <li> 在地圖上放置資源.</li>
+        <li> 為所有你建立的玩家設定 Race ID.</li>
+        <li> 設定任務的背景</li>
+      </ul>
+      <p>由於我們正要建立的任務是我們的戰役的第一關,在你的 .level 檔案裡面放入這些項目:</p>
+      <ul>
+        <li>一艘屬於 Player0 的西亞加拉母艦,並且屬於&quot;Player_Mothership&quot;這個 SobGroup.</li>
+        <li>一艘屬於 Player1 的維格航空母艦,屬於&quot;AI1_Carrier&quot;這個SobGroup</li>
+        <li>將 Player0 的種族設為西亞加拉,而 Player1 的種族設為維格.</li>
+        <li>將背景設為M01.</li>
+      </ul>
+      <p>一但你已經把這些項目都放到你的地圖中,在萬艦二目錄下建立 &quot;datasrc\LevelData\Campaign\Postmortem\Mission_01&quot;資料夾,並且把MAYA產生的 
+        .ma 檔案存放在 Mission_01 資料夾中,而且檔名要和資料夾相同(也就是 Mission_01.ma )</p>
+      <p>接下來,把這個檔案匯出到你的&quot;Postmortem&quot;戰役資料夾中的 Mission_01 目錄,並且把 .level 
+        檔案取名為 Mission_01.level .現在你的 .level 檔案被存到了 data\LevelData\Campaign\Postmortem\Mission_01 
+        資料夾裡面.</p>
+      <p><a name="CH4_2" class="textUnderlined" id="CH4_2">4.2 建立 .lua 檔案</a> 
+        <br>
+        現在有了你的基本任務關卡檔案,你還需要建立你的任務 script . lua檔案是主要的任務script,他定義了你的任務中所有會用到的函式和事件.
+      <p>給任務用的 .lua 檔案裡面包含了所有任務中會用到的規則.他的檔名必須和 .level 檔的檔名一樣.以這裡來說,他會是 Mission_01.lua 
+        .他們必須放在同一個目錄裡面.
+      <p><a name="CH4_2_1" class="textUnderlined" id="CH4_2_1">4.2.1 範例 Mission.lua 
+        Script</a><br>
+        下面是一個基礎的 mission.lua 檔:</p>
+      <p><span class="value">-- 匯入 library 檔案,其中包含了所有的 helper 函式</span><br>
+        dofilepath(&quot;<span class="string">data:scripts/SCAR/SCAR_Util.lua</span>&quot;)<br>
+        <br>
+        <span class="value">-- 變數可以在最外面宣告,讓他成為全域性(global)變數</span><br>
+        obj_prim_newobj_id = 0 <br>
+        <br>
+        <span class="value">-- 呼叫OnInit,不然什麼都不會跑</span><br>
+        function OnInit()<br>
+        　　<span class="value">-- 加入Rule_Init</span><br>
+        　　Rule_Add(&quot;<span class="string">Rule_Init</span>&quot;)<br>
+        　　<span class="value">-- 因為 OnInit 不是規則,所以不用把他移除</span><br>
+        end<br>
+        <br>
+        <span class="value">-- 為了將任務標準化,我們都使用 Rule_Init 來讓事情開始動作</span><br>
+        function Rule_Init()<br>
+        　　<span class="value">-- 這裡我們會呼叫這個任務最初的 Intelevent</span><br>
+        　　Event_Start( &quot;<span class="string">intelevent_intro</span>&quot; 
+        )<br>
+        <br>
+        　　<span class="value">-- 加入用來決定任務結果的規則</span><br>
+        　　 Rule_Add( &quot;<span class="string">Rule_PlayerLoses</span>&quot; 
+        )<br>
+        <br>
+        　　Rule_Add( &quot;<span class="string">Rule_PlayerWins</span>&quot; ) 
+        <br>
+        <br>
+        　　<span class="value">-- 記得要移除 Rule_Init</span><br>
+        　　Rule_Remove( &quot;<span class="string">Rule_Init</span>&quot; )<br>
+        End <br>
+        <br>
+        <span class="value">-- 這條規則會檢查玩家的母艦是否被摧毀</span><br>
+        function Rule_PlayerLoses()<br>
+        　　if ( SobGroup_Empty( &quot;<span class="string">Player_Mothership</span>&quot; 
+        ) == 1 ) then<br>
+        <br>
+        　　　　<span class="value">-- 目標失敗</span><br>
+        　　　　Objective_SetState( obj_prim_newobj_id, OS_Failed )<br>
+        <br>
+        　　　　<span class="value">-- 玩家輸掉這個任務</span><br>
+        　　　　setMissionComplete( 0 )<br>
+        <br>
+        　　　　Rule_Remove(&quot;<span class="string">Rule_PlayerLoses</span>&quot;)<br>
+        　　end<br>
+        end <br>
+        <br>
+        -- <span class="value">這條規則會檢查玩家是否摧毀了敵方的航空母艦</span><br>
+        function Rule_PlayerWins()<br>
+        　　if ( SobGroup_Empty( &quot;<span class="string">AI1_Carrier</span>&quot; 
+        ) == 1 ) then <br>
+        <br>
+        　　　　<span class="value">-- 目標達成</span><br>
+        　　　　Objective_SetState( obj_prim_newobj_id, OS_Complete )<br>
+        <br>
+        　　　　<span class="value">-- 玩家贏得任務</span><br>
+        　　　　setMissionComplete( 1 )<br>
+        <br>
+        　　　　Rule_Remove( &quot;<span class="string">Rule_PlayerWins</span>&quot; 
+        )<br>
+        　　end<br>
+        end<br>
+        <br>
+        <span class="value">-- 別忘了建立事件表!</span><br>
+        Events = {}<br>
+        <br>
+        -- 這是開頭的 intelevent<br>
+        Events.intelevent_intro =<br>
+        {<br>
+        　　{<br>
+        　　　　{ &quot;<span class="string">Sound_EnableAllSpeech( 1 )</span>&quot;,&quot;&quot;}, 
+        <br>
+        　　　　{ &quot;<span class="string">Sound_EnterIntelEvent()</span>&quot;,&quot;&quot;},<br>
+        　　　　{ &quot;<span class="string">Universe_EnableSkip(1)</span>&quot;,&quot;&quot;}, 
+        <br>
+        　　　　HW2_LocationCardEvent( &quot;<span class="string">Postmortem Tutorial</span>&quot;, 
+        5 ),<br>
+        　　},<br>
+        　　{<br>
+        　　　　HW2_Letterbox( 1 ),<br>
+        　　　　HW2_Wait( 2 ),<br>
+        　　},<br>
+        　　{<br>
+        　　　　HW2_SubTitleEvent( Actor_FleetCommand, &quot;<span class="string">This 
+        is a tutorial script</span>&quot;, 5 ),<br>
+        　　},<br>
+        　　{<br>
+        　　　　HW2_Wait( 1 ),<br>
+        　　},<br>
+        　　{ <br>
+        　　　　{ &quot;<span class="string">obj_prim_newobj_id = Objective_Add(&quot;A 
+        new Objective&quot;, OT_Primary )</span>&quot;, &quot;&quot; },<br>
+        　　　　{ &quot;<span class="string">Objective_AddDescription( obj_prim_startresourcing_id,'Description')</span>&quot;, 
+        &quot;&quot; },<br>
+        　　　　HW2_SubTitleEvent( Actor_FleetIntel, &quot;<span class="string">I've 
+        just issued a new objective</span>&quot;, 4 ),<br>
+        　　},<br>
+        　　{<br>
+        　　　　HW2_Wait(1),<br>
+        　　},<br>
+        　　{<br>
+        　　　　HW2_Letterbox( 0 ),<br>
+        　　　　HW2_Wait(2),<br>
+        　　　　{ &quot;<span class="string">Universe_EnableSkip(0)</span>&quot;, 
+        &quot;&quot; },<br>
+        　　　　{ &quot;<span class="string">Sound_ExitIntelEvent()</span>&quot;,&quot;&quot; 
+        }, <br>
+        　　},<br>
+        } <br>
+      </p>
+      </td>
+  </tr>
+  <tr> 
+    <td class="Inversed"> <a name="CH5" id="CH5">5.設定</a> .campaign 檔案</td>
+  </tr>
+  <tr> 
+    <td><p>你需要為你的新戰役建立一個戰役檔案.戰役檔案指出了戰役的關卡存放在哪裡,他們的順序,動畫的一些資訊,諸如此類的東西.</p>
+      <p>為你的&quot;分析用&quot;戰役建立一個 Postmortem.campaign 檔案,放在 data\LevelData\Campaign 
+        資料夾裡.這個檔案的內容應該如下:</p>
+      <p><span class="value">-- ============================================================================= 
+        <br>
+        -- 名稱 : Postmortem.campaign <br>
+        -- 目的 : 教學分析用戰役<br>
+        --<br>
+        -- Copyright Relic Entertainment, Inc. All rights reserved. <br>
+        -- =============================================================================</span><br>
+        <br>
+        <span class="value">-- DAT strings found in UI.DAT</span><br>
+        <span class="value"><br>
+        -- 會在介面上顯示的名稱</span><br>
+        displayName = &quot;Postmortem&quot;<br>
+        <br>
+        <span class="value">-- 初始化</span><br>
+        Mission = { }　　<span class="value">-- 建立任務結構</span><br>
+        <br>
+        <span class="value">-- Mission 1</span><br>
+        Mission[1] = {<br>
+        <br>
+        　　postload = function () playAnimatic(&quot;<span class="string">data:animatics/A00.lua</span>&quot;,1,1); 
+        end, <br>
+        　　　　　　<span class="value">-- 接著的這個函式告訴遊戲在任務載入之前撥放動畫 A00.lua</span><br>
+        　　directory = &quot;<span class="string">Mission_01</span>&quot;,<br>
+        　　　　　　<span class="value">-- 這行是說要從哪個資料夾中載入任務.以這裡來說是 Data/Leveldata/Campiagn/Postmortem/Mission_01</span><br>
+        　　level = &quot;<span class="string">Mission_01.level</span>&quot;,<br>
+        　　　　　　<span class="value">-- 要載入的任務lua檔</span><br>
+        　　postlevel = function ( bWin ) if ( bWin == 1 ) then playAnimatic(&quot;<span class="string">data:animatics/A01.lua</span>&quot;, 
+        1, 0) else postLevelComplete() end end, <br>
+        　　　　　　<span class="value">-- 告訴遊戲當任務結束時要做什麼</span>.<br>
+        　　displayName = &quot;<span class="string">Mission 1</span>&quot;,<br>
+        　　　　　　<span class="value">-- 在戰役描述選單中會用到</span><br>
+        　　description = &quot;<span class="string">Mission 1</span>&quot;,<br>
+        　　　　　　<span class="value">-- 在戰役描述選單中會用到</span><br>
+        }</p>
+      <p>當你想要增加新的任務的時候,你需要在檔案中增加新的任務項目.<br>
+      </p></td>
+  </tr>
+  <tr> 
+    <td class="Inversed"> <a name="CH6" id="CH6">6.雜項檔案</a></td>
+  </tr>
+  <tr> 
+    <td><p> 你可能能會想做一些額外的動作,像是方言化( Localization ),增加特定的AI script ,建立任務載入畫面,或者為任務中的每一個玩家設定隊伍顏色.這些檔案放在任務資料夾裡面,包括了 
+        .dat 檔, Teamcolour.lua, AI.lua, ReferenceFleet.lua, datfiles.lua,以及 Mission.tga.</p>
+      <p><a name="CH6_1" class="textUnderlined" id="CH6_1">6.1 DAT 檔案</a><br>
+        方言化的文字使用 ID 編號過的字串,當看到方言呼叫(localization call),像是 $42999 這一類的東西時,遊戲就會去查找定義在 
+        .dat 檔案裡面的文字.例如:</p>
+      <p>42999 This is the localized text that would appear in the game</p>
+      <p>而這個是會去查找這行文字的的事件呼叫:</p>
+      <p>{<br>
+        HW2_SubTitleEvent( Actor_FleetCommand, &quot;<span class="string">$42999</span>&quot;, 
+        5 ), <br>
+        },</p>
+      <p>以這裡來說,這行Script會顯示 Actor Fleet Command 並且顯示這行字幕:&quot;This is the localized 
+        text that would appear in the game&quot;. 5標示出了文字會在螢幕上停留多久.以這裡來說是五秒鐘.</p>
+      <p>如果你有要用到音效檔案,遊戲會到 Data\Sound\english\Speech\MISSIONS 資料夾中尋找檔名和文字號碼相同的音效檔案.以這裡來說,音效檔案的名稱會是42999.fda</p>
+      <p><a name="CH6_1_1" class="textUnderlined" id="CH6_1_1">6.1.1 將你的任務方言化(Localize)</a><br>
+        要將你的任務方言化,你需要在 data\Locale\English\LevelData\Campaign\ 裡面加入一個與之類似的戰役結構.在裡面你需要放置一個格式正確的 
+        .dat 檔案,裡面包含了對應你的任務內容的文字.</p>
+      <p>接下來,你需要建立一個 datafiles.lua 檔案,和你的 mission.level 放在同一個資料夾裡面.這個檔案看起來會像這樣:</p>
+      <p>Dictionaries = { { name = &quot;<span class="string">locale:leveldata/campaign/postmortem/mission_01.dat</span>&quot;, 
+        }, } </p>
+      <p><a name="CH6_2" class="textUnderlined" id="CH6_2">6.2 Teamcolour.lua</a><br>
+        這個檔案指定了任務中所有玩家艦隊的底色,條紋顏色,也可以指定艦徽</p>
+      <p>要自定任務中玩家的隊伍顏色,建立 teamcolor.lua 檔案並且把他和你的任務放在同一個資料夾中. teamcolor.lua 的範例如下:</p>
+      <p><span class="value">-- [玩家索引號碼] = {{底色 R, G, B}, {條紋顏色 R, G, B}, &quot;艦徽檔案.tga&quot;, 
+        {尾流顏色 R, G, B}</span>, <span class="value">&quot;尾流檔案.tga&quot;</span>},<br>
+        <br>
+        teamcolours = <br>
+        {<br>
+        [0] =<br>
+        {{.365,.553,.667},{.800,.800,.800},&quot;<span class="string">DATA:Badges/Hiigaran.tga</span>&quot; 
+        ,{.365,.553,.667},&quot;<span class="string">data:/effect/trails/hgn_trail_clr.tga</span>&quot;},<br>
+        <span class="value">-- player </span><br>
+        <br>
+        [1]=<br>
+        {{.900,.900,.900},{.100,.100,.100},&quot;<span class="string">DATA:Badges/Vaygr.tga</span>&quot; 
+        ,{.921,.75,.419},&quot;<span class="string">data:/effect/trails/vgr_trail_clr.tga</span>&quot;}<br>
+        <span class="value">-- vaygr </span><br>
+        }</p>
+      <p><a name="CH6_3" class="textUnderlined" id="CH6_3">6.3 AI.lua</a><br>
+        AI script. 他會覆蓋或是啟動AI函式.要增加某個特定的 AI 到你的關卡中,你必須增加一個 AIX.lua到你的關卡資料夾, X 
+        是你想要自訂的 AI 的 ID 編號.</p>
+      <p>AIX.lua的內容已經超過了這份文件所預期要涵蓋的部分.</p>
+      <p><a name="CH6_4" class="textUnderlined" id="CH6_4">6.4 ReferenceFleet.lua</a><br>
+        用來指定AI的難度.關卡裡面需要增加相對應的艦隊欄位.</p>
+      <p><a name="CH6_5" class="textUnderlined" id="CH6_5">6.5 Datfiles.lua</a><br>
+        用來指定關卡會用到的 dat 檔案</p>
+      <p><a name="CH6_6" class="textUnderlined" id="CH6_6">6.6 Mission.tga</a><br>
+        是的,這是載入關卡時會顯示的載入畫面.載入畫面是一個 .tga 檔,跟 .level 放在同一個目錄裡面,而且檔名也相同</p>
+    </td>
+  </tr>
+  <tr> 
+    <td class="Inversed"><a name="CH7" id="CH7">7.附錄</a></td>
+  </tr>
+  <tr> 
+    <td>‧想要取得更多有關於 LUA 的資訊,請參考 <a href="http://www.lua.org" target="_blank">http://www.lua.org</a> 
+      的線上文件<br>
+      ‧推薦的 Lua 編輯程式? 你可以到 <a href="http://www.scintilla.org/SciTE.html" target="_blank">http://www.scintilla.org/SciTE.html</a> 
+      去取得 Scite</td>
+  </tr>
+  <tr> 
+    <td class="Inversed"><a name="CH8">8.聲明</a></td>
+  </tr>
+  <tr>
+    <td>本文件主要是翻譯自Relic Developers Network所釋出的&quot;<span class="textUnderlined">HW2_SCAR.pdf</span>&quot;.<br>
+      翻譯者為西加拉宇宙載具改裝中心的CQD.原始文件版權為Relic所有.</td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,123 @@
+Archive name="Resource Race 0.1"
+
+//********************************************
+// Data: TOC
+//********************************************
+TOCStart name="ResourceRaceData" alias="Data" relativeroot=""
+
+FileSettingsStart defcompression="1"
+
+	// Anything less than 100 bytes, just store, don't compress
+	Override wildcard="*.*" minsize="-1" maxsize="100" ct="0"
+
+	// Any of these file types we just store, don't compress
+	Override wildcard="*.mp3" minsize="-1" maxsize="-1" ct="0"
+	Override wildcard="*.wav" minsize="-1" maxsize="-1" ct="0"
+	Override wildcard="*.jpg" minsize="-1" maxsize="-1" ct="0"
+	Override wildcard="*.fda" minsize="-1" maxsize="-1" ct="0"
+
+	// Lua files we always compress, and then decompress in one shot
+	Override wildcard="*.lua"           minsize="-1" maxsize="-1" ct="2"
+	Override wildcard="*.txt"           minsize="-1" maxsize="-1" ct="2"
+	Override wildcard="*.ship"          minsize="-1" maxsize="-1" ct="2"
+	Override wildcard="*.resource"      minsize="-1" maxsize="-1" ct="2"
+	Override wildcard="*.pebble"        minsize="-1" maxsize="-1" ct="2"
+	Override wildcard="*.level"         minsize="-1" maxsize="-1" ct="2"
+	Override wildcard="*.wepn"          minsize="-1" maxsize="-1" ct="2"
+	Override wildcard="*.subs"          minsize="-1" maxsize="-1" ct="2"
+	Override wildcard="*.miss"          minsize="-1" maxsize="-1" ct="2"
+	Override wildcard="*.events"        minsize="-1" maxsize="-1" ct="2"
+	Override wildcard="*.madstate"      minsize="-1" maxsize="-1" ct="2"
+	Override wildcard="*.script"        minsize="-1" maxsize="-1" ct="2"
+	Override wildcard="*.ti"            minsize="-1" maxsize="-1" ct="2"
+	Override wildcard="*.st"            minsize="-1" maxsize="-1" ct="2"
+	Override wildcard="*.vp"            minsize="-1" maxsize="-1" ct="2"
+	Override wildcard="*.wf"            minsize="-1" maxsize="-1" ct="2"
+
+	// Skip all files that meet this criteria
+	SkipFile wildcard="*emptyfile.txt"  minsize="-1" maxsize="-1"
+    SkipFile wildcard="*.avi"           minsize="-1" maxsize="-1"
+    SkipFile wildcard="keeper.txt"      minsize="-1" maxsize="-1"
+    SkipFile wildcard="*.big"           minsize="-1" maxsize="-1"
+    SkipFile wildcard="*.sfap0"         minsize="-1" maxsize="-1"
+
+    //skip locale data as it will be in its own archive
+    SkipFile wildcard="X:\Homeworld2\Data\Locale\English\*"        minsize="-1" maxsize="-1"
+
+    //skip speech as it too will see it's own archive
+    SkipFile wildcard="X:\Homeworld2\Data\Sound\Speech\*"  minsize="-1" maxsize="-1"
+
+    //skip music as it too will see it's own archive
+    SkipFile wildcard="X:\Homeworld2\Data\Sound\Music\*"  minsize="-1" maxsize="-1"
+
+
+FileSettingsEnd
+
+
+X:\Homeworld2\Data\LevelData\Multiplayer\ResourceRace.lua
+X:\Homeworld2\Data\LevelData\Multiplayer\ResourceRace\2P_RR_KharamWreck.level
+X:\Homeworld2\Data\LevelData\Multiplayer\ResourceRace\2P_RR_KharamWreck_no_pebbles.level
+X:\Homeworld2\Data\LevelData\Multiplayer\ResourceRace\ATI.lua
+
+TOCEnd
+
+//********************************************
+// English Locale: TOC
+//********************************************
+
+TOCStart name="GRT_English" alias="Locale" relativeroot="Locale\English"
+
+FileSettingsStart defcompression="1"
+
+	// Anything less than 100 bytes, just store, don't compress
+	Override wildcard="*.*" minsize="-1" maxsize="100" ct="0"
+
+	// Any of these file types we just store, don't compress
+	Override wildcard="*.mp3" minsize="-1" maxsize="-1" ct="0"
+	Override wildcard="*.wav" minsize="-1" maxsize="-1" ct="0"
+	Override wildcard="*.fda" minsize="-1" maxsize="-1" ct="0"
+
+	// Lua files we always compress, and then decompress in one shot
+	Override wildcard="*.lua"           minsize="-1" maxsize="-1" ct="2"
+	Override wildcard="*.dat"           minsize="-1" maxsize="-1" ct="2"
+
+	// Skip all files that meet this criteria
+    SkipFile wildcard="*.big"           minsize="-1" maxsize="-1"
+    SkipFile wildcard="*.sfap0"         minsize="-1" maxsize="-1"
+
+FileSettingsEnd
+
+X:\Homeworld2\Data\Locale\English\ResourceRace.dat
+
+TOCEnd
+
+//********************************************
+// French Locale: TOC
+//********************************************
+
+TOCStart name="GRT_French" alias="Locale" relativeroot="Locale\French"
+
+FileSettingsStart defcompression="1"
+
+	// Anything less than 100 bytes, just store, don't compress
+	Override wildcard="*.*" minsize="-1" maxsize="100" ct="0"
+
+	// Any of these file types we just store, don't compress
+	Override wildcard="*.mp3" minsize="-1" maxsize="-1" ct="0"
+	Override wildcard="*.wav" minsize="-1" maxsize="-1" ct="0"
+	Override wildcard="*.fda" minsize="-1" maxsize="-1" ct="0"
+
+	// Lua files we always compress, and then decompress in one shot
+	Override wildcard="*.lua"           minsize="-1" maxsize="-1" ct="2"
+	Override wildcard="*.dat"           minsize="-1" maxsize="-1" ct="2"
+
+	// Skip all files that meet this criteria
+    SkipFile wildcard="*.big"           minsize="-1" maxsize="-1"
+    SkipFile wildcard="*.sfap0"         minsize="-1" maxsize="-1"
+
+FileSettingsEnd
+
+X:\Homeworld2\Data\Locale\French\ResourceRace.dat
+
+TOCEnd
+

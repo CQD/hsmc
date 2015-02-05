@@ -1,0 +1,545 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>RDN文件-壓縮工具</title>
+<meta http-equiv="Content-Type" content="text/html; charset=big5">
+<link href="rdn_doc.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<table width="700" border="0" align="center" cellpadding="2" class="text">
+  <tr> 
+    <td><div align="center"><img src="hw2.gif" width="434" height="57"></div></td>
+  </tr>
+  <tr> 
+    <td><h2>透過.MADSTATE檔案結合模型動畫(Mesh Animation)與遊戲事件</h2></td></tr>
+  <tr> 
+    <td> <p>
+        <a href="#CH1_1">.madState函式名稱介紹</a><br>
+        <a href="#CH1_2">範例</a><br>
+        <a href="#CH1_3">可用的函式</a><br>
+        <a href="#CH1_4">互斥(exclusive)與互相包含(inclusive)的狀態</a><br>
+		</p></td>
+  </tr>
+  <tr>
+    <td class="Inversed"><a name="CH0" id="CH0"></a>透過.MADSTATE檔案結合模型動畫(Mesh Animation)與遊戲事件</td>
+  </tr>
+  <tr>
+    <td><p>此份文件描述了.madState檔案的格式與用途。.madState檔案提供將儲存在.mad檔案中的模型動畫綁定給特定遊戲中事件的方法。.madState檔案是lua script，其中包含了一些在特定遊戲事件中會被執行的函式。例如你可以利用這個系統來將某個動畫指定給船隻離開港口的事件。每次遊戲中發生特定事件時都會呼叫對應的函式。因此，他們應該很單純。</p>
+      <p>這些函式會在SobWithMesh的MadState類別中被呼叫。MadState類別是一些被封裝起來的布林值狀態變數。當某個狀態變數的狀態被改變，將會呼叫.madstate中對應的函式（如果有的話）。</p>
+      <p>Mesh animations are deterministic in playback. Therefore, it is permissible to make the MadState dependent upon mesh animations and the game simulation dependent upon the MadState. This is one way to enable mesh animation to fit in with procedural animation. For example, we can require a ship to deploy its weapons (a mesh animation) before training them on targets (procedural animation). </p>
+      <h3><a name="CH1_1"></a>.madState函式名稱介紹</h3>
+      <p> .madState檔案中的函式名稱看起來像這樣：</p>
+      <p>&lt;ShipName&gt;_&lt;State&gt;_On&lt;Event&gt; </p>
+      <p>其中：</p>
+      <p>&lt;ShipName&gt;是船艦的名稱，例如 VGR_HEAVYMISSILEFRIGATE。</p>
+      <p> &lt;State&gt;則是狀態變數。例如 Launching</p>
+      <p>下面是狀態表：</p>
+      <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#000000" class="text">
+        <tr bgcolor="#FFFFFF" class="Inversed">
+          <td width="180">狀態名稱</td>
+          <td>用途</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>Normal</td>
+          <td>當船艦在遊戲中被創造時呼叫</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>Open</td>
+          <td>當船艦被「開啟(Open)」或被「施放」（譯注：如施放維格探測器）時呼叫。</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>Closed</td>
+          <td>船艦不再處於「開啟(Open)」或被「施放」</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>CodeRed</td>
+          <td>當船艦嘗試發射武器時被呼叫（譯注：如開啟飛彈護衛艦的飛彈艙門）</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>CodeGreen</td>
+          <td>當船艦不再發射武器時被呼叫（呼叫前會有一小段時間延遲）</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>ResourceStart</td>
+          <td>船艦準備開始採集資源。當船艦正要進入資源採集位置時被呼叫</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>ResourceDo</td>
+          <td>船艦已經鎖定在資源採集點上，正在採集資源</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>ResourceEnd</td>
+          <td>船艦離開資源採集點</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>RepairStart</td>
+          <td>船艦正要進入修理其他單位的定點時被呼叫</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>RepairDo</td>
+          <td>船艦鎖定在修理點上，正在進行修理動作</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>RepairEnd</td>
+          <td>完成維修的動作</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>DockPathOpen</td>
+          <td>進入有連結動畫的停泊路徑（animation linked dock path，在hod檔案中設定）。要停靠或發射的船艦會等待這個狀態被設定。</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>DockPathClosed</td>
+          <td>離開有連結動畫的停泊路徑</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>Launched</td>
+          <td>船隻已完成發射離港的動作</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>Docked</td>
+          <td>船隻正在進行停泊的最後動作</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>DefenseFieldActivate</td>
+          <td>嘗試啟動防禦場。遊戲指令在這個狀態被設定前不會被啟動（譯著：我看不懂第二句話的意思...）</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>DefenseFieldDeActivate</td>
+          <td>解除防禦場</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>CloakFieldActivate</td>
+          <td>嘗試啟動隱形狀態</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>CloakFieldDeactivate</td>
+          <td>解除隱形狀態</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>HyperspaceGateActivate</td>
+          <td>超空間門就定位，正在進行超空間門的連結</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>HyperspaceGateDeActivate</td>
+          <td>超空間門的連結被解除</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>DoingFlightManeuver</td>
+          <td>船艦正在進行飛行動作（譯注：應該是指攻擊時的飛行動作，在「addAbility ( NewShipType , &quot; CanAttack &quot;...」中設定）</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>CaptureActive</td>
+          <td>船艦開始捕捉其他單位</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>CaptureInActive</td>
+          <td>船艦停止捕捉其他單位</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>NIS00</td>
+          <td>由NIS動畫呼叫</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>NIS01</td>
+          <td>由NIS動畫呼叫</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>NIS02</td>
+          <td>由NIS動畫呼叫</td>
+        </tr>
+      </table>      
+      <p>事件（event）則有下列幾種：</p>
+      <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#000000" class="text">
+        <tr bgcolor="#FFFFFF" class="Inversed">
+          <td width="180">事件</td>
+          <td>用途</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>OnSet</td>
+          <td>當遊戲觸發特定的狀態時會被呼叫</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>OnPause</td>
+          <td>當狀態相關的動畫被暫停時會被呼叫</td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td>OnEnd</td>
+          <td>當狀態相關的動畫停止時會被呼叫</td>
+        </tr>
+      </table>      
+      <h3><a name="CH1_2"></a>範例：</h3>
+      <p>這裡有個.madState腳本的範例：</p>
+      <pre class="dos">VGR_HEAVYMISSILEFRIGATE_CodeRed_OnSet = function(ship) 
+    setState(ship, "CodeRed", 0) 
+    startAnim(ship, "Open") 
+    startEffect(ship, "Open") 
+    setPauseTime(ship, "Open", 1000) 
+end 
+ 
+VGR_HEAVYMISSILEFRIGATE_CodeRed_OnPause = function(ship) 
+    setState(ship, "CodeRed", 1) 
+end 
+
+VGR_HEAVYMISSILEFRIGATE_CodeGreen_OnSet = function(ship) 
+    startAnim(ship, "Close") 
+    startEffect(ship, "Close") 
+    setTime(ship,"Close",0) 
+    setPauseTime(ship, "Close", 1000) 
+end 
+</pre>
+      <p>很明顯的，這是給維格重型飛彈護衛艦使用的script。其中定義了進入「Code Red」以及「Code Green」狀態的動畫。當進入Code Red時，開啟飛彈艙門的動畫會被啟動，並且在動畫結束時暫停動作（這裡使用的時間長度為1000秒，理由只是因為這個數字夠大）。按照預設，系統在呼叫script的同時也會設定狀態變數，所以我們這裡必須先取消Code Red，避免武器在動畫完成前就發射。在OnPause函式中我們再手動設定Code Red狀態為啟動。當進入「Code Green」狀態時，關閉飛彈艙門的動畫被啟動，同時「Code Green」狀態也會被呼叫這段函式的程式碼所設定。</p>
+      <h3><a name="CH1_3"></a>可用的函式：</h3>
+    <p>在事件函式中，你可以呼叫任何可以使用的Lua函式。然而我們也定義了一些動畫╱狀態相關的函式：</p>
+    <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#000000" class="text">
+      <tr bgcolor="#FFFFFF">
+        <td colspan="3"><p>setState(<span class="value">ship</span>, <span class="value">stateName</span>, <span class="value">state</span>)</p>
+          <p> 設定船艦的MADState類別中所儲存的狀態。這個函式不會觸發對應的_OnSet函式。這在 making the setting of a state dependent 
+            upon an animation completing, or reaching a pause point 時特別有用</p>
+          </td>
+        </tr>
+      <tr bgcolor="#FFFFFF">
+        <td width="100">ship</td>
+        <td width="100">sob*</td>
+        <td>由遊戲傳入</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>stateName</td>
+        <td>字串</td>
+        <td>狀態的名稱，詳見上列的狀態表</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>state</td>
+        <td>布林值（0或1）</td>
+        <td>狀態被啟動╱關閉</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>回傳值</td>
+        <td>無</td>
+        <td>&nbsp;</td>
+      </tr>
+    </table>    
+    <br>
+    <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#000000" class="text">
+      <tr bgcolor="#FFFFFF">
+        <td colspan="3"><p>getState(<span class="value">ship</span>, <span class="value">stateName</span>)</p>
+            <p> 查詢船艦的MADstate類別中特定狀態的值</p></td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td width="100">ship</td>
+        <td width="100">sob*</td>
+        <td>由遊戲傳入</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>stateName</td>
+        <td>字串</td>
+        <td>狀態的名稱，詳見上列的狀態表</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>回傳值</td>
+        <td>布林值（0或1）</td>
+        <td>狀態被啟動╱關閉</td>
+      </tr>
+    </table>    
+    <br>
+    <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#000000" class="text">
+      <tr bgcolor="#FFFFFF">
+        <td colspan="3"><p>startAnim(<span class="value">ship</span>, <span class="value">animName</span>)</p>
+            <p> 啟動指定的模型動畫。正在執行的動畫不會被重新啟動。如果指定的動畫沒有被找到將會產生一個assert。</p></td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td width="100">ship</td>
+        <td width="100">sob*</td>
+        <td>由遊戲傳入</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>animName</td>
+        <td>字串</td>
+        <td>.mad中儲存的動畫名稱</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>回傳值</td>
+        <td>無</td>
+        <td>&nbsp;</td>
+      </tr>
+    </table>    
+    <br>
+    <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#000000" class="text">
+      <tr bgcolor="#FFFFFF">
+        <td colspan="3"><p>startParamAnim(<span class="value">ship</span>, <span class="value">animName</span>, <span class="value">param</span>)</p>
+            <p> 啟動包含參數的模型動畫（parameterized mesh animation）。 包含參數的模型動畫的時間由一個額外傳入的參數決定，參數的範圍0到1。正在執行的動畫不會被重新啟動。如果指定的動畫沒有被找到將會產生一個assert。</p></td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td width="100">ship</td>
+        <td width="100">sob*</td>
+        <td>由遊戲傳入</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>animName</td>
+        <td>字串</td>
+        <td>.mad中儲存的動畫名稱</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>param</td>
+        <td>字串</td>
+        <td><p>變數的名稱。</p>
+          <p>「HorizontalRotation」與「VerticalRotation」是內建的動畫，依照船艦的旋轉推進器來決定船隻的旋轉，類似引擎的火光加入參數的方法。</p>
+          </td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>回傳值</td>
+        <td>無</td>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+    <br>
+    <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#000000" class="text">
+      <tr bgcolor="#FFFFFF">
+        <td colspan="3"><p>stopAnim(<span class="value">ship</span>, <span class="value">animName</span>)</p>
+            <p> 停止模型動畫。被指定的動畫不需要處於執行中的狀態。</p></td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td width="100">ship</td>
+        <td width="100">sob*</td>
+        <td>由遊戲傳入</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>animName</td>
+        <td>字串</td>
+        <td>.mad中儲存的動畫名稱</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>回傳值</td>
+        <td>無</td>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+    <br>
+    <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#000000" class="text">
+      <tr bgcolor="#FFFFFF">
+        <td colspan="3"><p>pauseAnim(<span class="value">ship</span>, <span class="value">animName</span>)</p>
+          <p>暫時停止模型動畫。被指定的動畫不需要處於執行中的狀態。</p></td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td width="100">ship</td>
+        <td width="100">sob*</td>
+        <td>由遊戲傳入</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>animName</td>
+        <td>字串</td>
+        <td>.mad中儲存的動畫名稱</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>回傳值</td>
+        <td>無</td>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+    <br>
+    <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#000000" class="text">
+      <tr bgcolor="#FFFFFF">
+        <td colspan="3"><p>unpauseAnim(<span class="value">ship</span>, <span class="value">animName</span>)</p>
+            <p>繼續播放被暫停的模型動畫。被指定的動畫不需要處於執行中或是暫停中的狀態。</p></td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td width="100">ship</td>
+        <td width="100">sob*</td>
+        <td>由遊戲傳入</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>animName</td>
+        <td>字串</td>
+        <td>.mad中儲存的動畫名稱</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>回傳值</td>
+        <td>無</td>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+    <br>
+    <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#000000" class="text">
+      <tr bgcolor="#FFFFFF">
+        <td colspan="3"><p>setPauseTime(<span class="value">ship</span>, <span class="value">animName</span>, <span class="value">time</span>)</p>
+            <p>將指定的動畫暫停一段時間。</p></td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td width="100">ship</td>
+        <td width="100">sob*</td>
+        <td>由遊戲傳入</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>animName</td>
+        <td>字串</td>
+        <td>.mad中儲存的動畫名稱</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>time</td>
+        <td>浮點數</td>
+        <td><p>動畫會暫停的時間長度，單位是秒。Pass a very large number to pause at the end. </p>
+          </td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>回傳值</td>
+        <td>無</td>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+    <br>
+    <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#000000" class="text">
+      <tr bgcolor="#FFFFFF">
+        <td colspan="3"><p>getPauseTime(<span class="value">ship</span>, <span class="value">animName</span>)</p>
+            <p>查詢特定動畫的暫停時間。</p></td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td width="100">ship</td>
+        <td width="100">sob*</td>
+        <td>由遊戲傳入</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>animName</td>
+        <td>字串</td>
+        <td>.mad中儲存的動畫名稱</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>回傳值</td>
+        <td>浮點數</td>
+        <td><p>動畫會暫停的時間長度，單位是秒。Pass a very large number to pause at the end. </p></td>
+      </tr>
+    </table>
+    <br>
+    <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#000000" class="text">
+      <tr bgcolor="#FFFFFF">
+        <td colspan="3"><p>setTime(<span class="value">ship</span>, <span class="value">animName</span>, <span class="value">time</span>)</p>
+            <p>設定動畫要跳躍到哪個時間點（FF或Rew）</p></td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td width="100">ship</td>
+        <td width="100">sob*</td>
+        <td>由遊戲傳入</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>animName</td>
+        <td>字串</td>
+        <td>.mad中儲存的動畫名稱</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>time</td>
+        <td>浮點數</td>
+        <td><p>動畫要跳躍到哪個時間點，單位是秒。超過動畫播放時間會被定在動畫的結束點。</p></td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>回傳值</td>
+        <td>無</td>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+    <br>
+    <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#000000" class="text">
+      <tr bgcolor="#FFFFFF">
+        <td colspan="3"><p>getTime(<span class="value">ship</span>, <span class="value">animName</span>)</p>
+            <p>查詢動畫目前的時間點。</p></td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td width="100">ship</td>
+        <td width="100">sob*</td>
+        <td>由遊戲傳入</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>animName</td>
+        <td>字串</td>
+        <td>.mad中儲存的動畫名稱</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>回傳值</td>
+        <td>浮點數</td>
+        <td><p>動畫目前的時間點，單位是秒。</p></td>
+      </tr>
+    </table>
+    <br>
+    <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#000000" class="text">
+      <tr bgcolor="#FFFFFF">
+        <td colspan="3"><p>setLoopCount(<span class="value">ship</span>, <span class="value">animName</span>, <span class="value">nLoops</span>)</p>
+            <p>設定動畫要重複播放的次數。預設為0</p></td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td width="100">ship</td>
+        <td width="100">sob*</td>
+        <td>由遊戲傳入</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>animName</td>
+        <td>字串</td>
+        <td>.mad中儲存的動畫名稱</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>nLoops</td>
+        <td>整數</td>
+        <td><p>動畫要複播放的次數</p></td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>回傳值</td>
+        <td>無</td>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+    <br>
+    <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#000000" class="text">
+      <tr bgcolor="#FFFFFF">
+        <td colspan="3"><p>getLoopCount(<span class="value">ship</span>, <span class="value">animName</span>)</p>
+            <p>設定動畫會重複播放的次數。</p></td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td width="100">ship</td>
+        <td width="100">sob*</td>
+        <td>由遊戲傳入</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>animName</td>
+        <td>字串</td>
+        <td>.mad中儲存的動畫名稱</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>回傳值</td>
+        <td>整數</td>
+        <td><p>動畫要複播放的次數。不會重複播放的動畫會回傳0</p></td>
+      </tr>
+    </table>
+    <br>
+    <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#000000" class="text">
+      <tr bgcolor="#FFFFFF">
+        <td colspan="3"><p>startEffect(<span class="value">ship</span>, <span class="value">eventName</span>)</p>
+            <p>啟動船艦.event檔案中所指定的特效事件。</p></td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td width="100">ship</td>
+        <td width="100">sob*</td>
+        <td>由遊戲傳入</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>eventName</td>
+        <td>字串</td>
+        <td>要播放的特效名稱</td>
+      </tr>
+      <tr bgcolor="#FFFFFF">
+        <td>回傳值</td>
+        <td>Effect 
+          handle </td>
+        <td><p>被啟動的特效的handle</p></td>
+      </tr>
+    </table>    
+    <h3><a name="CH1_4"></a>互斥(exclusive)與互相包含(inclusive)的狀態</h3>
+    <p>狀態可以是互斥的或是互相包含的。這讓某些動畫的行為更容易被使用在船艦上。在Scripts/MeshAnimation.lua文件中，包含了名為inclusive（互相包含）與exclusive（互斥）的表格，列出了互相排斥以互相包含的狀態配對。當互相包含的狀態中的前者被設定時，後者也會跟著被設定。當互斥的配對中前者被設定時，後者將會被清除。這些規則的應用就像利用.madState script設定狀態一樣：他們不會呼叫lua函式，因此不會觸發動畫。</p>
+    </td>
+  </tr>
+  <tr>
+    <td class="Inversed">聲明</td>
+  </tr>
+  <tr>
+    <td>本文件主要是翻譯自Relic Developers Network所釋出的「HW2_MadState.pdf」。<br>
+      翻譯者為西加拉宇宙載具改裝中心的CQD。原始文件版權為Relic所有。</td>
+  </tr>
+</table>
+</body>
+</html>
