@@ -49,7 +49,7 @@ NUMBER_OF_GUNS改成4。之後加上gun2和gun3，內容如下：
 
 其實就是把原來阿克萊的飛彈架搬過來用（從那裡copy過來的）這樣在用特殊能力時才不會跳出遊戲。但是要增加武器的話，還要修改 MEX 檔案才行。把 dAcolyte\Rl0\LOD0\dAcolyte.mex 用 mex editor 打開（不要用Visual Mex Editor，那個不能用在地動上）。增加武器點 gun2 和 gun3，特性分別和 gun0 和 gun1 一樣（也就是飛彈會從原來離子炮的位置發射），之後存檔。
 
-最後，把所有的檔名和資料夾名凡是有 dacolyte 的改成 sacolyte，另外 dAcolyte\Rl0\ 裡的 lod1 和 lod3 可以砍掉，節省空間（反正沒用到）把資料夾 sacolyte 下的 acolyte.shp、 acolyte.lod、acolyte.mad 這三個檔案丟到 race_sect 資料夾裡就可以啦。如果還是不行的話，可以下載這個[超級阿克萊mod](/tutorial/hw_cat/super_acolyte.zip)看看有何不同之處。
+最後，把所有的檔名和資料夾名凡是有 dacolyte 的改成 sacolyte，另外 dAcolyte\Rl0\ 裡的 lod1 和 lod3 可以砍掉，節省空間（反正沒用到）把資料夾 sacolyte 下的 acolyte.shp、 acolyte.lod、acolyte.mad 這三個檔案丟到 race_sect 資料夾裡就可以啦。如果還是不行的話，可以下載這個[超級阿克萊mod](/d/tutorial/hw_cat/super_acolyte.zip)看看有何不同之處。
 
 雖然說這一篇說的是超級阿克萊，但是其實要置換任兩艘船的技巧都是類似的。特別要注意的就是特殊功能常會造成置換上的問題，所以要幫松濤換船比更換異獸的船艦要麻煩的多。
 
