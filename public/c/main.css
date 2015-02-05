@@ -258,13 +258,22 @@ nav li ul li:hover{
 }
 #content p{
     line-height: 1.6em;
-    margin-bottom: 2em;
+    margin: 1.5em 0 1.5em;
 }
 #content li{
     margin-bottom:0.5em;
 }
 #content a:link,#content a:visited{color:#39c; transition: color 0.2s;}
 #content a:link:hover,#content a:visited:hover{color:#C33;}
+
+#content code {
+    display:block;
+    padding:1em;
+    background-color: #000;
+    color:#aaa;
+    margin: 0 1em;
+    border-radius:4px;
+}
 
 footer{
     background-color: #333;
