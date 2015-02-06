@@ -3,6 +3,7 @@ include __DIR__ . '/../src/init.php';
 
 // 如果在 /d 資料夾裡面有這個檔案，redirect 過去
 $uri = $_SERVER['REQUEST_URI'];
+var_dump(__DIR__ . "/../public/d{$uri}");
 if (is_file(__DIR__ . "/../public/d{$uri}")) {
 	header("Location: /d{$uri}");
 	exit;
