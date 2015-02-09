@@ -1,6 +1,12 @@
 <?php
 include __DIR__ . '/../../src/init.php';
 
+$uri = $_SERVER['REQUEST_URI'];
+if ( '/link/all.htm' !== $uri) {
+    header('Location: /link/all.htm');
+    die();
+}
+
 echo \Q\Core\Templator::render('main.twig', [
     'title' => '相關連結',
     'desc' => '收錄各種相關網站',

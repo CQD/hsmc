@@ -39,6 +39,9 @@ handlers:
 - url: /
   script: public/index.php
 
+- url: /link/.*\.html?
+  script: public/link/all.php
+
 - url: (/(download/.*|game/.*|info/.*|link/.*|mod/.*|tutorial/.*)?[a-z_]*).html?
   script: public\1.php
 
