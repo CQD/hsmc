@@ -32,6 +32,8 @@ echo \Q\Core\Templator::render('main.twig', [
 - [遊戲基地萬艦齊發討論板](http://www.gamebase.com.tw/forum/1535)
 - [The Gaming Union討論版](http://www.thegamingunion.co.uk/forums/)<br>
   在萬艦齊發一代有不少老字號的MOD將討論版設在此處。例如Star Trek， Star Wars， B5.....等等。
+- [西亞加拉年代記](http://www.geocities.jp/hiigara_chronicle/)<br>
+  難得的日文網站，曾經在自炊日文化，已經停頓
 
 MC
 ]);
