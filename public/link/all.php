@@ -23,7 +23,7 @@ echo \Q\Core\Templator::render('main.twig', [
   介紹萬艦系列的各種船艦。
 - [Encyclopedia Hiigara](http://homeworld.wikia.com)<br>
   西亞加拉大百科是萬艦系列主題 Wiki
-- [KarosGraveyard](http://hw2wiki.net/wiki/index.php?title=KarosGraveyard)<br>
+- [KarosGraveyard](http://hw2wiki.net/wiki.hw2.info/KarosGraveyard.html)<br>
   萬艦 Mod 技術主題 Wiki
 - ModDB 的[萬艦一代](http://www.moddb.com/games/homeworld)與[萬艦二代](http://www.moddb.com/games/homeworld-2)專區
 - 深度時空論壇的[家園討論板](http://bbs.deeptimes.org/forum.php?mod=forumdisplay&fid=42)<br>
