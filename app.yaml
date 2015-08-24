@@ -1,6 +1,6 @@
 application: molten-gantry-844
 version: prod
-runtime: php
+runtime: php55
 api_version: 1
 threadsafe: true
 
