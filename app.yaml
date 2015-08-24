@@ -1,5 +1,5 @@
 application: molten-gantry-844
-version: dev-master
+version: prod
 runtime: php
 api_version: 1
 threadsafe: true
