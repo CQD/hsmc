@@ -158,6 +158,7 @@ nav li ul{
     background-color: #000;
     border-right: 1px solid rgba(255,255,255,0.2);
     font-size: 17px;
+    z-index:1;
     transition:all 0.2s;
     -webkit-transition:all 0.2s;
 }
