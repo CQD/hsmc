@@ -19,6 +19,8 @@ echo \Q\Core\Templator::render('main.twig', [
 
 - [Relicnews](http://www.relicnews.com) 與其[討論區](http://forums.relicnews.com)<br>
   追蹤 Relic 工作室最新消息的資訊網站。討論區有歷史悠久的愛好者社群。
+- Gearbox 的[萬艦重製版討論區](http://forums.gearboxsoftware.com/c/homeworld)
+- Blackbird Interactive  的[卡拉克荒漠討論區](http://forums.blackbirdinteractive.com/forum/deserts-of-kharak)
 - [Homeworld Shipyard](http://shipyards.relicnews.com/)<br>
   介紹萬艦系列的各種船艦。
 - [Encyclopedia Hiigara](http://homeworld.wikia.com)<br>
