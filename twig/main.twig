@@ -4,7 +4,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 {% autoescape %}
-{% if not site_title %}{% set site_title = title %}{% endif %}
+{% if site_title is not defined %}{% set site_title = title %}{% endif %}
 {% if not main_image %}{% set main_image = 'banner1.jpg' %}{% endif %}
 <head>
 <meta charset="utf-8">
