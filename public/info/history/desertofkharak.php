@@ -3,7 +3,7 @@ include __DIR__ . '/../../../src/init.php';
 
 echo \Q\Core\Templator::render('main.twig', [
     'title' => '荒漠探索',
-    'desc' => '發現長眠於黃沙之下，人民的過去與未來',
+    'desc' => '發現長眠於卡拉克荒漠之下，人民的過去與未來',
     'main_image' => 'banner_dok.jpg',
     'head_ban' => [
        'class' => [],
