@@ -7,7 +7,7 @@
 </head>
 
 <body>
-<table width="700" border="0" align="center" cellpadding="2" class="text">
+<table border="0" align="center" cellpadding="2" class="text">
   <tr> 
     <td><div align="center"><img src="hw2.gif" width="434" height="57"></div></td>
   </tr>
@@ -71,8 +71,8 @@
   </tr>
   <tr> 
     <td><p>要定義一個新的遊戲模式,你需要建立一個&lt;遊戲規則&gt;.lua檔案,並且把他放在 Data/LevelData/Multiplayer 目錄下.這個檔案可以被放在打包成 big 檔的mod裡面,或者是直接放在硬碟上.不管怎樣都必須放在 LevelData/Multiplayer 內.在啟動的時候遊戲會建立這個檔案的 MD5 checksum,可以用來作為辨認檔案用,確保在多人遊戲中每個玩家的這個檔案都會相同.</p>
-      &lt;遊戲規則&gt;.lua的格式如下:
-<table width="600" cellpadding="1" cellspacing="1" bgcolor="#000000" class="text">
+      &lt;遊戲規則&gt;.lua 的格式如下:
+<table cellpadding="1" cellspacing="1" bgcolor="#000000" class="text">
         <tr class="Inversed"> 
           <td>名稱</td>
           <td>類別</td>
@@ -114,7 +114,7 @@
       </table>
       <br>
       表格&quot;GameSetupOptions&quot;的格式如下
-<table width="600" cellpadding="1" cellspacing="1" bgcolor="#000000" class="text">
+<table cellpadding="1" cellspacing="1" bgcolor="#000000" class="text">
         <tr class="Inversed"> 
           <td>名稱</td>
           <td>類別</td>
@@ -161,8 +161,8 @@
       </table>
       <p>這個檔案後面的部分(包括 OnInit 函式)是標準的 SCAR 碼.請參考 SCAR 文件以瞭解有哪些函數可以使用.</p></td>
   </tr>
-  <tr class="Inversed">
-    <td><a name="CH6" id="CH6"></a>MOD的方言化(Localization)</td>
+  <tr>
+    <td class="Inversed"><a name="CH6" id="CH6"></a>MOD的方言化(Localization)</td>
   </tr>
   <tr>
     <td><p>對於遊戲規則 Mod 來說,你可以藉由建立一個內有許多 TOC 的壓縮檔來加入方言化的內容.如果這些TOC中有一個被 alias 到 &quot;locale&quot;去,那麼他就會改變 locale 內的資料(譯註,遊戲內預設 locale 是對應到 &quot;萬艦二安裝資料夾\data\Locale\English&quot; 這個資料夾下).你也可以在 Mod 中加入不同的語言,方法是將數個 TOC 的 alias 都定義成 &quot;locale&quot;.而 TOC 的名稱代表了對應的語言.要注意的是,由於在所有載入的檔案中的 TOC 的名稱都必須不同,所以你應該確保你將語言的名字<em><strong>以及</strong></em> Mod 的名稱/版本包含在 TOC 的名稱中.</p>
@@ -170,14 +170,14 @@
       <p>請參考未壓縮的 Resource Race 資料裡面的 script來當作建立內含數個 TOC 的範例.</p>
       <p>要注意的是,保留給遊戲規則 Mod 的方言化 ID 範圍是 8000-8999,因此你所使用的方言化 ID 應該要在此範圍內,以避免發生問題.</p></td>
   </tr>
-  <tr class="Inversed">
-    <td><a name="CH7" id="CH7"></a>建立遊戲規則</td>
+  <tr>
+    <td class="Inversed"><a name="CH7" id="CH7"></a>建立遊戲規則</td>
   </tr>
   <tr>
     <td>在 &lt;遊戲規則&gt;.lua 裡面的 OnInit() 函式中,你應該去執行需要的起始化動作,並且建立至少一個監視函式(watch function).監視函式會在每個 simulation step 被呼叫,用來確認遊戲的結束條件.你也可以隨著遊戲的進展增加或是移除額外的規則.</td>
   </tr>
-  <tr class="Inversed">
-    <td><a name="CH8" id="CH8"></a>顯示特定的螢幕介面</td>
+  <tr>
+    <td class="Inversed"><a name="CH8" id="CH8"></a>顯示特定的螢幕介面</td>
   </tr>
   <tr>
     <td><p>在你的 &lt;遊戲規則&gt;.lua 中,你可以藉著由 watch function 去呼叫 ATI_xxx() 函式,以顯示特定的介面.達成的方法是去呼叫 ATI (Advanced Tactical Interface,進階戰術介面)的 SCAR 函式.請參考 SCAR 文件以瞭解有關於這些函數的更多資訊.並參考 Resource Race 來當作其用處的範例.</p>
