@@ -1,8 +1,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>RDN���-�سy�M��s�}���s�@</title>
-<meta http-equiv="Content-Type" content="text/html; charset=big5">
+<title>RDN文件-建造和研究腳本製作</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="rdn_doc.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -12,153 +12,153 @@
     <td><div align="center"><img src="hw2.gif" width="434" height="57"></div></td>
   </tr>
   <tr> 
-    <td><div align="center" class="textlarge">�гy���</div></td>
+    <td><div align="center" class="textlarge">創造科技</div></td>
   </tr>
   <tr> 
-    <td> <p><a href="#Introduction">1.²��</a><br>
-        <a href="#FileStructure">2.�ɮ׵��c</a><br>
-        <a href="#Research">3.��s</a><br>
-        �@<a href="#Research_general">3.1 �`��</a><br>
-        �@<a href="#Research_Research_Field">3.2 ��s���</a><br>
-        <a href="#Build">4.�سy</a><br>
-        �@<a href="#Build_general">4.1 �`��</a><br>
-        �@<a href="#Build_Build_Field">4.2 �سy���</a><br>
-        <a href="#Walkthrough">5.��@</a><br>
-        �@<a href="#Create_Research_Item">5.1 �гy��s����</a><br>
-        �@<a href="#Create_Build_Item">5.2 �гy�سy����</a><br>
-        <a href="#Declaration">6.�n�� </a></p></td>
+    <td> <p><a href="#Introduction">1.簡介</a><br>
+        <a href="#FileStructure">2.檔案結構</a><br>
+        <a href="#Research">3.研究</a><br>
+        　<a href="#Research_general">3.1 總論</a><br>
+        　<a href="#Research_Research_Field">3.2 研究欄位</a><br>
+        <a href="#Build">4.建造</a><br>
+        　<a href="#Build_general">4.1 總論</a><br>
+        　<a href="#Build_Build_Field">4.2 建造欄位</a><br>
+        <a href="#Walkthrough">5.實作</a><br>
+        　<a href="#Create_Research_Item">5.1 創造研究項目</a><br>
+        　<a href="#Create_Build_Item">5.2 創造建造項目</a><br>
+        <a href="#Declaration">6.聲明 </a></p></td>
   </tr>
   <tr> 
-    <td class="Inversed"><a name="Introduction">1.²��</a></td>
+    <td class="Inversed"><a name="Introduction">1.簡介</a></td>
   </tr>
   <tr> 
-    <td>�o���������p��h�ϥΫسy�M��s���}��(script).�o��Ӹ}���̭��y�z�F�سy,��s,�M�@�Ū��@������</td>
+    <td>這份文件解釋如何去使用建造和研究的腳本(script).這兩個腳本裡面描述了建造,研究,和昇級的一切項目</td>
   </tr>
   <tr> 
-    <td class="Inversed"> <a name="FileStructure" id="FileStructure">2.�ɮ׵��c</a> 
+    <td class="Inversed"> <a name="FileStructure" id="FileStructure">2.檔案結構</a> 
     </td>
   </tr>
   <tr> 
-    <td><p>�C�Ӻرڳ����ۤv���}����(script set).�b�Uĥ�G�w�˥ؿ��U��:<br>
+    <td><p>每個種族都有自己的腳本集(script set).在萬艦二安裝目錄下的:<br>
         Data\Scripts\Building and Research\<br>
-        ��Ƨ���,�C�Ӻرڪ��ؿ�����������ɮ�,build.lua�Mresearch.lua</p></td>
+        資料夾中,每個種族的目錄中都有兩個檔案,build.lua和research.lua</p></td>
   </tr>
   <tr> 
-    <td class="Inversed"> <a name="Research" id="Research">3.��s</a></td>
+    <td class="Inversed"> <a name="Research" id="Research">3.研究</a></td>
   </tr>
   <tr> 
-    <td><p><a name="Research_general" class="textUnderlined">3.1 �`��</a><br>
-        ��s�ɮר��O�@�Ӥj����,�̭��C�ӸӺرگ����s�����س��U�ۦ��ۦۤv��������.�C�Ӭ�s���س����X�Ӯ֤����,�]���@�ǿ�ܩʪ�����,�Ψӫ��w�ɯŪ���T.�ɯŨt�άO��s�t�Ϊ��@����,���w�F�n�ɯŭ��ǲ�H�ΤɯŪ�����</p>
+    <td><p><a name="Research_general" class="textUnderlined">3.1 總論</a><br>
+        研究檔案其實是一個大表格,裡面每個該種族能夠研究的項目都各自有著自己的次表格.每個研究項目都有幾個核心欄位,也有一些選擇性的項目,用來指定升級的資訊.升級系統是研究系統的一部分,指定了要升級哪些船以及升級的種類</p>
       <p><a name="Research_Research_Field" class="textUnderlined" id="Research_Research_Field">3.2 
-        ��s���</a>
+        研究欄位</a>
       <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#000000" class="text">
         <tr bgcolor="#FFFFFF"> 
-          <td width="48%">Name (����)</td>
-          <td width="52%">��s���ت��W��.�ˬd��s���إH�Ϋسy���ت��̩ۨʮɷ|�ϥγo�ӦW�r.</td>
+          <td width="48%">Name (必需)</td>
+          <td width="52%">研究項目的名稱.檢查研究項目以及建造項目的相依性時會使用這個名字.</td>
         </tr>
         <tr bgcolor="#FFFFFF"> 
-          <td>RequiredResearch (����)</td>
-          <td>��s������ީһݭn���e�m���.�A�i�H�Υ��L�B��(Boolean operation)�Ӳ��ͽ������ۨ����Y.�B��Ÿ���:�u&amp;�v(and),�u|�v(or),�u!�v(negation).�A�]�i�H�ϥάA��.</td>
+          <td>RequiredResearch (必需)</td>
+          <td>研究此項科技所需要的前置科技.你可以用布林運算(Boolean operation)來產生複雜的相依關係.運算符號有:「&amp;」(and),「|」(or),「!」(negation).你也可以使用括號.</td>
         </tr>
         <tr bgcolor="#FFFFFF"> 
-          <td>RequiredSubSystems (����)</td>
-          <td>��s������ޮɩһݭn�����l�t��.�b�o�̨ϥΪ��W�٬O�l�t�Ϊ�typeString�Ӥ��O�l�t�Ϊ��������W�r,�ҥH���ӭn�ϥΡuAdvancedFighterProduction�v,�Ӥ��O�uHgn_AdvancedFighterProduction�v.�i�H�Q�Υ��L�B��Ӳ��ͽ������ۨ����Y.</td>
+          <td>RequiredSubSystems (必需)</td>
+          <td>研究此項科技時所需要有的子系統.在這裡使用的名稱是子系統的typeString而不是子系統的本身的名字,所以應該要使用「AdvancedFighterProduction」,而不是「Hgn_AdvancedFighterProduction」.可以利用布林運算來產生複雜的相依關係.</td>
         </tr>
         <tr bgcolor="#FFFFFF"> 
-          <td>Cost (����)</td>
-          <td>��s���ةһݭn��RU</td>
+          <td>Cost (必需)</td>
+          <td>研究項目所需要的RU</td>
         </tr>
         <tr bgcolor="#FFFFFF"> 
-          <td>Time (����)</td>
-          <td>���u���@�Ӭ�s�l�t�ήɬ�s�o����ީһݭn���ɶ�,��쬰��.�p�G�����u�@�Ӭ�s�]�I���ܬ�s�t�׷|�[��.</td>
+          <td>Time (必需)</td>
+          <td>當只有一個研究子系統時研究這項科技所需要的時間,單位為秒.如果有不只一個研究設施的話研究速度會加快.</td>
         </tr>
         <tr bgcolor="#FFFFFF"> 
-          <td>DisplayedName (����)</td>
-          <td>�b�ϥΤ����W����ܪ��W��</td>
+          <td>DisplayedName (必需)</td>
+          <td>在使用介面上所顯示的名稱</td>
         </tr>
         <tr bgcolor="#FFFFFF"> 
-          <td>DisplayPriority (����)</td>
-          <td>�b�ϥΤ����W�|�̷ӳo�ӼƦr�ӱƦC��s����.�Ʀr���p���|��ܦb����W��</td>
+          <td>DisplayPriority (必需)</td>
+          <td>在使用介面上會依照這個數字來排列研究項目.數字較小的會顯示在比較上面</td>
         </tr>
         <tr bgcolor="#FFFFFF"> 
-          <td>Description (����)</td>
-          <td>��s���ت��ԭz,�|��ܦb�ϥΤ����W</td>
+          <td>Description (必需)</td>
+          <td>研究項目的敘述,會顯示在使用介面上</td>
         </tr>
         <tr bgcolor="#FFFFFF"> 
           <td>UpgradeType</td>
-          <td>������s�ұa�Ӫ��ɯ����O,��ȥi�H�O<strong>Modifier</strong>(�ץ��q)��<strong>Ability</strong>(��O)</td>
+          <td>此項研究所帶來的升級類別,其值可以是<strong>Modifier</strong>(修正量)或<strong>Ability</strong>(能力)</td>
         </tr>
         <tr bgcolor="#FFFFFF"> 
           <td>TargetType</td>
-          <td>�]���o����s�Ө��f���������.��Ȭ�<strong>AllShips</strong>(���aĥ�������Ҧ����),<strong>Family</strong>(�Y�ӫ��w��attack 
-            family,�Ҧp�@��ĥ),�άO<strong>Ship</strong>(�Y�دS�w����ĥ,�Ҧp���l��ĥ)</td>
+          <td>因為這項研究而受惠的單位類型.其值為<strong>AllShips</strong>(玩家艦隊中的所有單位),<strong>Family</strong>(某個指定的attack 
+            family,例如護衛艦),或是<strong>Ship</strong>(某種特定的船艦,例如離子砲艦)</td>
         </tr>
         <tr bgcolor="#FFFFFF"> 
           <td>TargetName</td>
-          <td>���w��s�Ҽv�T���ؼ�.�o�ӰѼƹ��Allship�ӻ����ݭn,���Family�ӻ��|�O�Y��attack family���W��.�ӹ��Ship�ӻ��N�|�O�Y�@�ӳ�쪺�W��,�ҦpHgn_Scout(��[�Ԫ������)</td>
+          <td>指定研究所影響的目標.這個參數對於Allship來說不需要,對於Family來說會是某個attack family的名稱.而對於Ship來說就會是某一個單位的名稱,例如Hgn_Scout(西加拉的偵察機)</td>
         </tr>
         <tr bgcolor="#FFFFFF"> 
           <td>UpgradeName</td>
-          <td>��s��|�ܧ󪺼ƭȩάO��O.�Ӹ`�Ь�HW2_MultipliersAndAbilitiesHowTo.doc(Ķ��:RDN���X�����̭��èS���o�@��)</td>
+          <td>研究後會變更的數值或是能力.細節請看HW2_MultipliersAndAbilitiesHowTo.doc(譯註:RDN釋出的文件裡面並沒有這一份)</td>
         </tr>
         <tr bgcolor="#FFFFFF"> 
           <td>UpgradeValue</td>
-          <td>���Modifer�ӻ�,�o�ӭȭ��W�n���ܪ��ƭȴN�O�s�ƭ�.���Ability�ӻ�0���ܨ������Y����O,1���ܱҰʬY����O<br>
-            (Ķ��:�b���X�������C������research.lua��,UpgradeType = Ability����s���س��S��UpgradeValue���Ѽ�)</td>
+          <td>對於Modifer來說,這個值乘上要改變的數值就是新數值.對於Ability來說0表示取消掉某項能力,1表示啟動某項能力<br>
+            (譯註:在釋出版本的遊戲中的research.lua中,UpgradeType = Ability的研究項目都沒有UpgradeValue的參數)</td>
         </tr>
       </table>
       </p></td>
   </tr>
   <tr> 
-    <td class="Inversed"> <a name="Build" id="Build">4.�سy</a></td>
+    <td class="Inversed"> <a name="Build" id="Build">4.建造</a></td>
   </tr>
   <tr> 
     <td><p><a name="Build_general" class="textUnderlined" id="Build_general">4.1 
-        �`��</a><br>
-        ��s�ɮר��O�@�Ӥj����,�̭��C�ӸӺرگ����s�����س��U�ۦ��ۦۤv��������.�y���M�سy�ɶ��ä��]�t�b�̭�,�o��˸�T�O���b�C�ӳ��U�۪�.ship(����)�άO.subs(�l�t��)���</p>
+        總論</a><br>
+        研究檔案其實是一個大表格,裡面每個該種族能夠研究的項目都各自有著自己的次表格.造價和建造時間並不包含在裡面,這兩樣資訊記載在每個單位各自的.ship(船隻單位)或是.subs(子系統)文件中</p>
       <p><a name="Build_Build_Field" class="textUnderlined" id="Build_Build_Field">4.2 
-        �سy��� </a> 
+        建造欄位 </a> 
       <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#000000" class="text">
         <tr bgcolor="#FFFFFF"> 
           <td width="48%">Type</td>
-          <td width="52%"><strong>Ship</strong>(����)�άO<strong>SubSystem</strong>(�l�t��)</td>
+          <td width="52%"><strong>Ship</strong>(船隻單位)或是<strong>SubSystem</strong>(子系統)</td>
         </tr>
         <tr bgcolor="#FFFFFF"> 
           <td>ThingToBuild</td>
-          <td>�ҭn�سy�����ت��W��.�ҦpHgn_Scout(��[�԰����)�άOHgn_AdvancedFighterProduction(�Y�Ӥl�t��,�����C�����S�o�ӪF��)</td>
+          <td>所要建造的項目的名稱.例如Hgn_Scout(西加拉偵察機)或是Hgn_AdvancedFighterProduction(某個子系統,正式遊戲中沒這個東西)</td>
         </tr>
         <tr bgcolor="#FFFFFF"> 
           <td>RequiredResearch</td>
-          <td> �سy�����һݭn���e�m���.�A�i�H�Υ��L�B��(Boolean operation)�Ӳ��ͽ������ۨ����Y.�B��Ÿ���:�u&amp;�v(and),�u|�v(or),�u!�v(negation).�A�]�i�H�ϥάA��. 
+          <td> 建造此單位所需要的前置科技.你可以用布林運算(Boolean operation)來產生複雜的相依關係.運算符號有:「&amp;」(and),「|」(or),「!」(negation).你也可以使用括號. 
           </td>
         </tr>
         <tr bgcolor="#FFFFFF"> 
           <td>RequiredShipSubSystems</td>
-          <td>�سy�����һݭn�����l�t��.�b�o�̨ϥΪ��W�٬O�l�t�Ϊ�typeString�Ӥ��O�l�t�Ϊ��������W�r,�ҥH���ӭn�ϥΡuAdvancedFighterProduction�v,�Ӥ��O�uHgn_AdvancedFighterProduction�v.�i�H�Q�Υ��L�B��Ӳ��ͽ������ۨ����Y.</td>
+          <td>建造此單位所需要有的子系統.在這裡使用的名稱是子系統的typeString而不是子系統的本身的名字,所以應該要使用「AdvancedFighterProduction」,而不是「Hgn_AdvancedFighterProduction」.可以利用布林運算來產生複雜的相依關係.</td>
         </tr>
         <tr bgcolor="#FFFFFF"> 
           <td>DisplayedName</td>
-          <td>�b�ϥΤ����W����ܪ��W��</td>
+          <td>在使用介面上所顯示的名稱</td>
         </tr>
         <tr bgcolor="#FFFFFF"> 
           <td>DisplayPriority</td>
-          <td>�b�ϥΤ����W�|�̷ӳo�ӼƦr�ӱƦC�سy����.�Ʀr���p���|��ܦb����W��</td>
+          <td>在使用介面上會依照這個數字來排列建造項目.數字較小的會顯示在比較上面</td>
         </tr>
         <tr bgcolor="#FFFFFF"> 
           <td>Description</td>
-          <td>�سy���ت��ԭz,�|��ܦb�ϥΤ����W</td>
+          <td>建造項目的敘述,會顯示在使用介面上</td>
         </tr>
       </table>
       </p>
     </td>
   </tr>
   <tr> 
-    <td class="Inversed"> <a name="Walkthrough" id="Walkthrough">5.��@</a></td>
+    <td class="Inversed"> <a name="Walkthrough" id="Walkthrough">5.實作</a></td>
   </tr>
   <tr> 
     <td><p><a name="Create_Research_Item" class="textUnderlined" id="Create_Research_Item">5.1 
-        �гy��s����</a><br>
-        �гy�s����ެO�ܦ��쪺!�o�ӨҤl�i�D�A�p��W�[�s����s���ب�Vaygr����޾�.</p>
+        創造研究項目</a><br>
+        創造新的科技是很有趣的!這個例子告訴你如何增加新的研究項目到Vaygr的科技樹中.</p>
       <table width="650" border="0" cellpadding="1" cellspacing="2" class="text">
         <tr> 
           <td width="19">{</td>
@@ -227,47 +227,47 @@
         </tr>
       </table>
       <ol>
-        <li>�}��Homeworld2/Data/Scripts/Vaygr/Research.lua</li>
-        <li> �M�w�A�n�[�J������.�H�o�̨ӻ����ڭ̼W�[�@���سyVaygr���u�����������n����.</li>
-        <li> ���o�Ӭ�ޤ@�ӦW�r,���ڭ̥s�L�uMissileCorvette�v.�o�ӦW�r�i�H�bresearch.lua�Mbuild.lua������ϥ�</li>
-        <li>���o�Ӭ�ޤ@�ǫe�m�ݨD.�p�G�A�Ʊ�o����ޤ��ݭn�e�m��s�N����o,�N��d��.�b�ڭ̪��Ҥl��,���a�ݭnResearch�MCorvetteProduction(��s�M�������Ͳ�)�Ҳ�. 
+        <li>開啟Homeworld2/Data/Scripts/Vaygr/Research.lua</li>
+        <li> 決定你要加入什麼科技.以這裡來說讓我們增加一項建造Vaygr飛彈攻擊艇的必要條件.</li>
+        <li> 給這個科技一個名字,讓我們叫他「MissileCorvette」.這個名字可以在research.lua和build.lua中交替使用</li>
+        <li>給這個科技一些前置需求.如果你希望這項科技不需要前置研究就能取得,將其留空.在我們的例子中,玩家需要Research和CorvetteProduction(研究和攻擊艇生產)模組. 
           <ul>
-            <li>�Q�ΤU�����Ÿ��ӳгy��������ۨ����Y,�]�i�H�ϥάA��.�Ҧp<br>
+            <li>利用下面的符號來創造更複雜的相依關係,也可以使用括號.例如<br>
               | = or<br>
               &amp; = and<br>
               ! = not</li>
           </ul>
         </li>
-        <li>���o�Ӭ�ަ����H�ήɶ�.�Ҥl����MissileCorvette��޻ݭn��O750 RU�H��40���Ӭ�s</li>
-        <li>DisplayedName�|��ܦb������r�����D�C</li>
-        <li>DisplayPriority�ΨӨM�w���ئb�ϥΤ����W������,�Ʀr���p���|��ܦb����W��.�p�G����Ӭ�ު�DisplayPriority�ۦP�åB�P�ɳ�����Q��s,�h�u���䤤�@�ӷ|��ܥX��.</li>
-        <li>Description����r�O�������������e </li>
+        <li>給這個科技成本以及時間.例子中的MissileCorvette科技需要花費750 RU以及40秒來研究</li>
+        <li>DisplayedName會顯示在說明文字的標題列</li>
+        <li>DisplayPriority用來決定項目在使用介面上的順序,數字較小的會顯示在比較上面.如果有兩個科技的DisplayPriority相同並且同時都能夠被研究,則只有其中一個會顯示出來.</li>
+        <li>Description的文字是說明視窗的內容 </li>
         <ul>
-          <li>�i�H�Q��\Homeworld2\data\Locale\English\buildresearch.dat,�M��[�J�A�Q�ѦҪ�������r,�åB�b�e���[�@�ӡu$�v,�ӹF�������� localize (���令���P���y��,�άO�ϥΤ��P���D�λy�k) 
+          <li>可以利用\Homeworld2\data\Locale\English\buildresearch.dat,然後加入你想參考的對應文字,並且在前面加一個「$」,來達成介面的 localize (指改成不同的語言,或是使用不同的慣用語法) 
             <ul>
-              <li>�Ҧp�A�Q�ѷӨ�buildresearch.dat����line 7035����,���J�uDescription = $7035�v</li>
+              <li>例如你想參照到buildresearch.dat中的line 7035的話,打入「Description = $7035」</li>
             </ul>
           </li>
-          <li>���\�h�覡�i�H�ΨӱN����������r�@�ƪ�.�U���O�X�ӨҤl: 
+          <li>有許多方式可以用來將說明視窗文字作排版.下面是幾個例子: 
             <ul>
-              <li>&lt;b&gt;Description:&lt;/b&gt;�|�b������r����ܦ��u<strong>Description</strong>�v(����r)</li>
-              <li>/n�i�H�Ψ��_��,���U�A����r���q</li>
+              <li>&lt;b&gt;Description:&lt;/b&gt;會在說明文字中顯示成「<strong>Description</strong>」(粗體字)</li>
+              <li>/n可以用來斷行,幫助你做文字分段</li>
             </ul>
           </li>
         </ul>
-        <li>TargetName�O�bUI�W��ܪ���ަW��</li>
-        <li>�ϥ�(icon)�Ψӧi�D�ϥΪ̳o����ު��@�� </li>
+        <li>TargetName是在UI上顯示的科技名稱</li>
+        <li>圖示(icon)用來告訴使用者這項科技的作用 </li>
         <ul>
-          <li>�A�i�H�ǥѥ[�J�s���ϮץH�Φ�bresearch.lua�̤W�誺�ѷӨӼW�[�s���ϥ�.Icon_Tech�ѦҨ��L�ɮת���k�O: 
+          <li>你可以藉由加入新的圖案以及位在research.lua最上方的參照來增加新的圖示.Icon_Tech參考到其他檔案的方法是: 
             <ul>
               <li>Icon_Tech = &quot;data:ui/newui/research/icons/tech.mres&quot;</li>
             </ul>
           </li>
         </ul>
-        <li>�̫�@���A�����W�[���OShortDisplayedName(��ު�²�W).�o�@��|��ܦb��s�޲z������,���פ���W�L14�Ӧr��.</li>
+        <li>最後一項你必須增加的是ShortDisplayedName(科技的簡名).這一欄會顯示在研究管理視窗中,長度不能超過14個字元.</li>
       </ol>
       <p><a name="Create_Build_Item" class="textUnderlined" id="Create_Build_Item">5.2 
-        �гy�سy����</a></p>
+        創造建造項目</a></p>
       <table width="650" border="0" cellpadding="1" cellspacing="2" class="text">
         <tr> 
           <td width="19">{</td>
@@ -316,29 +316,29 @@
         </tr>
       </table>
       <ol>
-        <li>�}��Homeworld2/Data/Scripts/Vaygr/Build.lua</li>
-        <li> �M�w�A�n�����a����سy����F��.�H�o�̨ӻ����ڭ̷Q���ڭ̭n�W�[�p�g��������C����.</li>
-        <li> �����A�n�y�z�o�ӳ�쪺����,�i�H�OShip�Ϊ�Subsystem.�H�o�̨ӻ��O�@����(Ship)</li>
-        <li> ���U�ӭn��J��A�Q�سy���F��.�o�ӦW�r���ӭn�M�Q��shiptuning.xls�ҿ�X����ɮצW�r�ۦP</li>
-        <li>���L�@�ǫe�m���.���Ҥ��p�g�������ݭncorvettelaser���,�o�Ӥw�g�bresearch.lua���w�q.</li>
-        <li>���U�ӥ[�J�سy��ݭn���l�t��.�������ݭnCorvetteProduction </li>
+        <li>開啟Homeworld2/Data/Scripts/Vaygr/Build.lua</li>
+        <li> 決定你要讓玩家能夠建造什麼東西.以這裡來說讓我們想像我們要增加雷射攻擊艇到遊戲中.</li>
+        <li> 首先你要描述這個單位的類型,可以是Ship或者Subsystem.以這裡來說是一艘船(Ship)</li>
+        <li> 接下來要填入把你想建造的東西.這個名字應該要和利用shiptuning.xls所輸出的船隻檔案名字相同</li>
+        <li>給他一些前置科技.本例中雷射攻擊艇需要corvettelaser科技,這個已經在research.lua中定義.</li>
+        <li>接下來加入建造船隻需要的子系統.攻擊艇需要CorvetteProduction </li>
         <ul>
-          <li>CorvetteProduction�O�bsubsytemtuning.xls�ү��쪺typestring.�i�H�n�X�Ӥl�t�Φ@�άۦP��typestring</li>
+          <li>CorvetteProduction是在subsytemtuning.xls所能找到的typestring.可以好幾個子系統共用相同的typestring</li>
         </ul>
-        <li>DisplayPriority�ΨӨM�w���ئb�ϥΤ����W������,�Ʀr���p���|��ܦb����W��.</li>
-        <li>�H�W�����Ҥl�ӻ��� localize ����r,�i�H�b�U�C��m���: </li>
+        <li>DisplayPriority用來決定項目在使用介面上的順序,數字較小的會顯示在比較上面.</li>
+        <li>以上面的例子來說有 localize 的文字,可以在下列位置找到: </li>
         <ul>
           <li><strong>Homeworld2\data\Locale\English\buildresearch.dat </strong> 
             <ul>
-              <li>�uDisplayedName = $7140 �v�|�b�سy�޲z��������ܡuLaser Corvette�v</li>
+              <li>「DisplayedName = $7140 」會在建造管理視窗中顯示「Laser Corvette」</li>
             </ul>
           </li>
         </ul>
-        <li>�H�W�����Ҥl�ӻ��� localize ����r,�i�H�b�U�C��m���: </li>
+        <li>以上面的例子來說有 localize 的文字,可以在下列位置找到: </li>
         <ul>
           <li><strong>Homeworld2\data\Locale\English\buildresearch.dat </strong> 
             <ul>
-              <li>�uDisplayedName = $7141 �v�|�b�������������<br>
+              <li>「DisplayedName = $7141 」會在說明視窗中顯示<br>
                 <strong>Description</strong>: Anti-Capital Ship Corvette Squadron. 
                 <br>
                 <strong>Strong vs</strong>: Frigates, Capital Ships <br>
@@ -354,11 +354,11 @@
       </td>
   </tr>
   <tr> 
-    <td class="Inversed"> <a name="Declaration" id="Declaration">6.�n��</a></td>
+    <td class="Inversed"> <a name="Declaration" id="Declaration">6.聲明</a></td>
   </tr>
   <tr>
-    <td>�����D�n�O½Ķ��Relic Developers Network�����X��&quot;<span class="textUnderlined">HW2_BuildandResearchScripting.pdf</span>&quot;.<br>
-      ½Ķ�̬���[�Ԧt�z�����ˤ��ߪ�CQD.��l����v��Relic�Ҧ�.</td>
+    <td>本文件主要是翻譯自Relic Developers Network所釋出的&quot;<span class="textUnderlined">HW2_BuildandResearchScripting.pdf</span>&quot;.<br>
+      翻譯者為西加拉宇宙載具改裝中心的CQD.原始文件版權為Relic所有.</td>
   </tr>
 </table>
 </body>

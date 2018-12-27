@@ -1,8 +1,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>RDN���-�C���W�hMOD</title>
-<meta http-equiv="Content-Type" content="text/html; charset=big5">
+<title>RDN文件-遊戲規則MOD</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="rdn_doc.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -12,96 +12,96 @@
     <td><div align="center"><img src="hw2.gif" width="434" height="57"></div></td>
   </tr>
   <tr> 
-    <td><div align="center" class="textlarge">�C���W�hMOD<br>
+    <td><div align="center" class="textlarge">遊戲規則MOD<br>
 (GAME RULE MODS)      </div></td>
   </tr>
   <tr> 
-    <td> <p><a href="#CH1">²��</a><br>
-        <a href="#CH2">�w���ݨD</a><br>
-        <a href="#CH3">��@���[</a><br>
-        <a href="#CH4">BIG�ɮ׮榡</a><br>
-        <a href="#CH5">&lt;�C���W�h&gt;.LUA</a>        <br>
-        <a href="#CH6">MOD���訥��(Localization)</a><br>
-        <a href="#CH7">�إ߹C���W�h</a><br>
-        <a href="#CH8"> ��ܯS�w���ù�����</a><br>
-        <a href="#Declaration">�n��</a></p></td>
+    <td> <p><a href="#CH1">簡介</a><br>
+        <a href="#CH2">預先需求</a><br>
+        <a href="#CH3">實作概觀</a><br>
+        <a href="#CH4">BIG檔案格式</a><br>
+        <a href="#CH5">&lt;遊戲規則&gt;.LUA</a>        <br>
+        <a href="#CH6">MOD的方言化(Localization)</a><br>
+        <a href="#CH7">建立遊戲規則</a><br>
+        <a href="#CH8"> 顯示特定的螢幕介面</a><br>
+        <a href="#Declaration">聲明</a></p></td>
   </tr>
   <tr> 
-    <td class="Inversed"><a name="CH1" id="CH1">²��</a></td>
+    <td class="Inversed"><a name="CH1" id="CH1">簡介</a></td>
   </tr>
   <tr> 
-    <td><p>�o���������p�󬰸Uĥ�G�������إ߷s���C���W�h(Game Rule).�C���W�h Mod �O�@�ةw�q�F�h�H�C���W�h�� Mod .���n�N�C���W�h Mod �M���O�C Mod (command-line mod)�d�V�F.���O�C Mod �|�b�t�~�@����󤤴���.</p>
-      <p>�o�@�������a�F�@�ӥΨӷ��@�d�Ҫ��C���W�h Mod &quot;Resource Race&quot;,�A�i�H�q<a href="http://www.relic.com/rdn/" target="_blank">http://www.relic.com/rdn/</a>���o.�o�ӹC���Ҧ��D�`���,�Ĥ@�ӱĶ��쨬���ƶq�귽���H�o��ӧQ.�ڭ̷|�Q�γo��Mod�ӻ���:</p>
+    <td><p>這份文件解釋如何為萬艦二的引擎建立新的遊戲規則(Game Rule).遊戲規則 Mod 是一種定義了多人遊戲規則的 Mod .不要將遊戲規則 Mod 和指令列 Mod (command-line mod)搞混了.指令列 Mod 會在另外一份文件中提到.</p>
+      <p>這一份文件附帶了一個用來當作範例的遊戲規則 Mod &quot;Resource Race&quot;,你可以從<a href="http://www.relic.com/rdn/" target="_blank">http://www.relic.com/rdn/</a>取得.這個遊戲模式非常單純,第一個採集到足夠數量資源的人得到勝利.我們會利用這個Mod來說明:</p>
       <ol>
-        <li>���A��Mod�R�W,�H�Τ��e�y�z</li>
-        <li>          �����ǵ��A���C���Ҧ��M�Ϊ����d���w�ؿ�</li>
-        <li>���w�A���C���Ҧ��S�w���ﶵ</li>
-        <li>�إߥΨӽT�w�ӭt���a���C���W�h</li>
-        <li>��ܯS�w���ù�����</li>
+        <li>為你的Mod命名,以及內容描述</li>
+        <li>          為那些給你的遊戲模式專用的關卡指定目錄</li>
+        <li>指定你的遊戲模式特定的選項</li>
+        <li>建立用來確定勝負玩家的遊戲規則</li>
+        <li>顯示特定的螢幕介面</li>
       </ol></td>
   </tr>
   <tr> 
-    <td class="Inversed"> <a name="CH2" id="CH2">�ݨD</a> 
+    <td class="Inversed"> <a name="CH2" id="CH2">需求</a> 
     </td>
   </tr>
   <tr> 
-    <td><p>�n�إߤ@�ӹC���Ҧ�Mod,�A�|�ݭn�U�C�o�Ǥu��M���.�o���ɮ׳��i�H�b<a href="http://www.relic.com/rdn/" target="_blank">http://www.relic.com/rdn/</a>���o.</p>
-      <p><strong>Archive.exe</strong> �X �Ψӫإ�.big�ɪ��u��.�C���Ҧ� Mod �n�H�o�خ榡�Ӥu�@.<br>
-        <strong>SCAR���</strong> �X �Uĥ�G�� AI script �O�H�o�خ榡�g����.�o�Ӱ򥻤W�N�O Lua(Ķ��:�@��Script Language),�u�O�̭����@�� HW2 �M�Ϊ��������e.<br>
-        <strong>�����Y��ResourceRace</strong> �X ResourceRace.big�����e,�H�Ϋإ߳o���ɮשһݭn��script.</p>
-      <p>(Ķ��:�A�i�H�z�L�U�C���s���������o�o�Ǹ귽:<a href="http://www.relicnews.com/files/homeworld2/HW2_ScarDocumentation/" target="_blank">SCAR���</a> , <a href="HW2_GameRuleMods/ResourceRace.zip">ResourceRace����l���e</a> , <a href="HW2_GameRuleMods/ResourceRace.big">ResourceRace.big</a>)</p></td>
+    <td><p>要建立一個遊戲模式Mod,你會需要下列這些工具和文件.這些檔案都可以在<a href="http://www.relic.com/rdn/" target="_blank">http://www.relic.com/rdn/</a>取得.</p>
+      <p><strong>Archive.exe</strong> — 用來建立.big檔的工具.遊戲模式 Mod 要以這種格式來工作.<br>
+        <strong>SCAR文件</strong> — 萬艦二的 AI script 是以這種格式寫成的.這個基本上就是 Lua(譯註:一種Script Language),只是裡面有一些 HW2 專用的延伸內容.<br>
+        <strong>未壓縮的ResourceRace</strong> — ResourceRace.big的內容,以及建立這個檔案所需要的script.</p>
+      <p>(譯註:你可以透過下列的連結直接取得這些資源:<a href="http://www.relicnews.com/files/homeworld2/HW2_ScarDocumentation/" target="_blank">SCAR文件</a> , <a href="HW2_GameRuleMods/ResourceRace.zip">ResourceRace的原始內容</a> , <a href="HW2_GameRuleMods/ResourceRace.big">ResourceRace.big</a>)</p></td>
   </tr>
   <tr> 
-    <td class="Inversed"> <a name="CH3" id="CH3">��@���[</a></td>
+    <td class="Inversed"> <a name="CH3" id="CH3">實作概觀</a></td>
   </tr>
   <tr> 
-    <td><p>�C���Ҧ�Mod�|�s�@�� big �ɮ�,�]�N�O�@�����Y��(���ɦW�O .big),�æs��b bin\GAMERULES ��Ƨ��U.�b�Uĥ�G�Ұʪ��ɭ�,�|�h���y�o�ӥؿ�,�åB�q�����쪺big�ɮפ����J�������ԭz��T.���إߤ@�Ӧh�H�C���άO�MCPU��Ԫ��C����,�ϥΪ̥i�H��ܥi�Ϊ��C���Ҧ�.�̰򥻪��C���覡-�����Ҧ�-�`�O�|��ܥX��.�ӥ���b�o�x�q���W��쪺�C���Ҧ��]�|�[�J��i�ιC���Ҧ����C����.</p>
-      <p>���׬O�z�LGamespy�Ϊ̬O�ϰ����LAN�s�u,�b�h�H�s�u�j�U���|��ܹC���W�h���W��.�p�G�n�s�u���q���S��������.big��,���N����[�J�ϥΨ��ǳW�h���C��.
-      <p>���C���}�l���ɭ�,big�ɷ|�Q���J,�s�b��C�����D�nbig�ɮ�(���OHomeworld2.big)�����ɮ׭Y�O�M�o�̪��ɮצ��ҭ���,����C����������ƱN�|�Q����,�|�H�Ҹ��J���C���Ҧ�Mod���ɮ׬��D.</td>
+    <td><p>遊戲模式Mod會製作成 big 檔案,也就是一個壓縮檔(副檔名是 .big),並存放在 bin\GAMERULES 資料夾下.在萬艦二啟動的時候,會去掃描這個目錄,並且從任何找到的big檔案中載入有關的敘述資訊.當建立一個多人遊戲或是和CPU對戰的遊戲時,使用者可以選擇可用的遊戲模式.最基本的遊戲方式-死鬥模式-總是會顯示出來.而任何在這台電腦上找到的遊戲模式也會加入到可用遊戲模式的列表中.</p>
+      <p>不論是透過Gamespy或者是區域網路LAN連線,在多人連線大廳中會顯示遊戲規則的名稱.如果要連線的電腦沒有對應的.big檔,那就不能加入使用那些規則的遊戲.
+      <p>當遊戲開始的時候,big檔會被載入,存在於遊戲的主要big檔案(像是Homeworld2.big)中的檔案若是和這裡的檔案有所重複,那麼遊戲本身的資料將會被忽略,會以所載入的遊戲模式Mod的檔案為主.</td>
   </tr>
   <tr> 
-    <td class="Inversed"> <a name="CH4" id="CH4">BIG�ɮ׮榡</a></td>
+    <td class="Inversed"> <a name="CH4" id="CH4">BIG檔案格式</a></td>
   </tr>
   <tr> 
-    <td><p>Big �ɮ׮榡�O�@�إΨӧ�@���ɮץ��]���@�Ӥj�ɮת���k.�o�˷|��Ū�����t�פ����,�åB�]�|���C�����t������e��.�b big �ɮפ�,���ܦh���ɮ׳Q�s�Ʀ����P�� TOC (Table of Content,�o�̷N���ƦC��������Ƥ��e).�C���W�h Mod �ֻ̤ݭn�@�� TOC : data.�b data ���ܤֻݭn�@���ɮ�:LevelData\Multiplayer\&lt;�C���W�h&gt;.lua.�䤤&lt;�C���W�h&gt;�N�M�A�n�s�W���C���W�h�W�r�ۦP.�o���ɮ׬��A��Mod�w�q�F�h�H�C�����C���W�h,���w�ݭn���ﶵ,�H�Ψ�L����.</p>
-      <p>�b���椤�i�H������ƶq�����d(level)�ɮ�,�訥�Ƹ�T,�ƦܬO��L�@��ʪ����,���O�s���.</td>
+    <td><p>Big 檔案格式是一種用來把一堆檔案打包成一個大檔案的方法.這樣會讓讀取的速度比較快,並且也會讓遊戲的配給比較容易.在 big 檔案中,有很多的檔案被編排成不同的 TOC (Table of Content,這裡意指排列成表的資料內容).遊戲規則 Mod 最少需要一個 TOC : data.在 data 中至少需要一個檔案:LevelData\Multiplayer\&lt;遊戲規則&gt;.lua.其中&lt;遊戲規則&gt;就和你要新增的遊戲規則名字相同.這個檔案為你的Mod定義了多人遊戲的遊戲規則,指定需要的選項,以及其他項目.</p>
+      <p>在表格中可以有任何數量的關卡(level)檔案,方言化資訊,甚至是其他一般性的資料,像是新的船隻.</td>
   </tr>
   <tr> 
-    <td class="Inversed"> <a name="CH5" id="CH5">&lt;</a>�C���W�h&gt;.LUA</td>
+    <td class="Inversed"> <a name="CH5" id="CH5">&lt;</a>遊戲規則&gt;.LUA</td>
   </tr>
   <tr> 
-    <td><p>�n�w�q�@�ӷs���C���Ҧ�,�A�ݭn�إߤ@��&lt;�C���W�h&gt;.lua�ɮ�,�åB��L��b Data/LevelData/Multiplayer �ؿ��U.�o���ɮץi�H�Q��b���]�� big �ɪ�mod�̭�,�Ϊ̬O������b�w�ФW.���ޫ�˳�������b LevelData/Multiplayer ��.�b�Ұʪ��ɭԹC���|�إ߳o���ɮת� MD5 checksum,�i�H�Ψӧ@����{�ɮץ�,�T�O�b�h�H�C�����C�Ӫ��a���o���ɮ׳��|�ۦP.</p>
-      &lt;�C���W�h&gt;.lua���榡�p�U:
+    <td><p>要定義一個新的遊戲模式,你需要建立一個&lt;遊戲規則&gt;.lua檔案,並且把他放在 Data/LevelData/Multiplayer 目錄下.這個檔案可以被放在打包成 big 檔的mod裡面,或者是直接放在硬碟上.不管怎樣都必須放在 LevelData/Multiplayer 內.在啟動的時候遊戲會建立這個檔案的 MD5 checksum,可以用來作為辨認檔案用,確保在多人遊戲中每個玩家的這個檔案都會相同.</p>
+      &lt;遊戲規則&gt;.lua的格式如下:
 <table width="600" cellpadding="1" cellspacing="1" bgcolor="#000000" class="text">
         <tr class="Inversed"> 
-          <td>�W��</td>
-          <td>���O</td>
-          <td>�y�z</td>
+          <td>名稱</td>
+          <td>類別</td>
+          <td>描述</td>
         </tr>
         <tr> 
           <td bgcolor="#FFFFFF">GameRulesName</td>
           <td bgcolor="#FFFFFF">String or quoted locID</td>
-          <td bgcolor="#FFFFFF">�訥�ƪ��C���W�h�W��,�i�H�O�r��Ϊ̬O�訥��ID( localization ID, ²�g��locID),�Ҧp&quot;$8000&quot;</td>
+          <td bgcolor="#FFFFFF">方言化的遊戲規則名稱,可以是字串或者是方言化ID( localization ID, 簡寫成locID),例如&quot;$8000&quot;</td>
         </tr>
         <tr> 
           <td bgcolor="#FFFFFF">Description</td>
           <td bgcolor="#FFFFFF">String or quoted locID</td>
-          <td bgcolor="#FFFFFF">�訥�ƪ��C���W�h�ԭz.�|�b�C���]�w�e�������.���׭��256�Ӧr��.</td>
+          <td bgcolor="#FFFFFF">方言化的遊戲規則敘述.會在遊戲設定畫面中顯示.長度限制為256個字元.</td>
         </tr>
         <tr>
           <td bgcolor="#FFFFFF">Directories</td>
           <td bgcolor="#FFFFFF">Table of named strings</td>
-          <td bgcolor="#FFFFFF">�o�Ӫ��椺�e���ؿ������|. Currently only Levels = is supported(Ķ��:�ڤ��T�w�L�o�y�ܪ��N��...).���o�Ӷ��سQ�S�O�������ɭ�,�|���w���ǱM�����F�o�ӹC���Ҧ��]�p�����d�n�s��b���ӥؿ���.</td>
+          <td bgcolor="#FFFFFF">這個表格內容為目錄的路徑. Currently only Levels = is supported(譯註:我不確定他這句話的意思...).當這個項目被特別指明的時候,會指定那些專門為了這個遊戲模式設計的關卡要存放在哪個目錄中.</td>
         </tr>
         <tr> 
           <td bgcolor="#FFFFFF">GameSetupOptions</td>
           <td bgcolor="#FFFFFF">Table of tables</td>
-          <td bgcolor="#FFFFFF">�O���C���]�w�ﶵ������.�榡�аѦҤU��������.</td>
+          <td bgcolor="#FFFFFF">記載遊戲設定選項的表格.格式請參考下面的表格.</td>
         </tr>
         <tr>
           <td bgcolor="#FFFFFF">OnInit</td>
           <td bgcolor="#FFFFFF">Function</td>
-          <td bgcolor="#FFFFFF">��script �}�l���ɭԷ|�Q�I�s.�γo�Өӥ[�J�W�h,�W�h�̤֭n���@��.</td>
+          <td bgcolor="#FFFFFF">當script 開始的時候會被呼叫.用這個來加入規則,規則最少要有一條.</td>
         </tr>
         
         
@@ -113,42 +113,42 @@
         
       </table>
       <br>
-      ����&quot;GameSetupOptions&quot;���榡�p�U
+      表格&quot;GameSetupOptions&quot;的格式如下
 <table width="600" cellpadding="1" cellspacing="1" bgcolor="#000000" class="text">
         <tr class="Inversed"> 
-          <td>�W��</td>
-          <td>���O</td>
-          <td>�y�z</td>
+          <td>名稱</td>
+          <td>類別</td>
+          <td>描述</td>
         </tr>
         <tr> 
           <td bgcolor="#FFFFFF">Name</td>
           <td bgcolor="#FFFFFF">String</td>
-          <td bgcolor="#FFFFFF">�o�ӿﶵ�b Script ���ҨϥΪ��W��</td>
+          <td bgcolor="#FFFFFF">這個選項在 Script 中所使用的名稱</td>
         </tr>
         <tr> 
           <td bgcolor="#FFFFFF">locName</td>
           <td bgcolor="#FFFFFF">String or quoted locID</td>
-          <td bgcolor="#FFFFFF">�訥�ƪ��W�r,�ΨӦb�C���]�w�e�������</td>
+          <td bgcolor="#FFFFFF">方言化的名字,用來在遊戲設定畫面中顯示</td>
         </tr>
         <tr>
           <td bgcolor="#FFFFFF">Tooltip</td>
           <td bgcolor="#FFFFFF">String or quoted locID</td>
-          <td bgcolor="#FFFFFF">����o�ӿﶵ���ԭz.�|�X�{�b�e���U�誺 tooltip �C</td>
+          <td bgcolor="#FFFFFF">關於這個選項的敘述.會出現在畫面下方的 tooltip 列</td>
         </tr>
         <tr> 
           <td bgcolor="#FFFFFF">default</td>
           <td bgcolor="#FFFFFF">int</td>
-          <td bgcolor="#FFFFFF">�o�ӿﶵ���w�]��,�o�@�����ȬO�ﶵ�������޽s��,�q0�}�l��.�Ҧp�w�]���ﶵ�O���椤���Ĥ@��,���o�@���|�]�w��&quot;0&quot;</td>
+          <td bgcolor="#FFFFFF">這個選項的預設值,這一項的值是選項表的索引編號,從0開始數.例如預設的選項是表格中的第一個,那這一項會設定為&quot;0&quot;</td>
         </tr>
         <tr>
           <td bgcolor="#FFFFFF">Visible</td>
           <td bgcolor="#FFFFFF">bool</td>
-          <td bgcolor="#FFFFFF">���]�� 0 �ɪ��ܳo�ӨϥΪ̤��|�b�e���W�ݨ�o�ӿﶵ,�u��q��l�X���ݨ�o�ӿﶵ.���}�ҹC���ɷ|������ܹw�]���ﶵ.�o�ӭȥi�H�Ψӳ]�w�@�Ǥ@�Ǥ��Ʊ�Q�ϥΪ̽վ㪺�ﶵ.</td>
+          <td bgcolor="#FFFFFF">當設為 0 時表示這個使用者不會在畫面上看到這個選項,只能從原始碼中看到這個選項.當開啟遊戲時會視為選擇預設的選項.這個值可以用來設定一些一些不希望被使用者調整的選項.</td>
         </tr>
         <tr>
           <td bgcolor="#FFFFFF">choices</td>
           <td bgcolor="#FFFFFF">table of locID/string pairs</td>
-          <td bgcolor="#FFFFFF">�x�s�F�ﶵ���W��,���e�O�H locID �M�r�ꬰ�@�ӳ椸�Ҳզ����}�C. loc ID �|��ܦ��訥�ƪ���r.�r��h�O�ﶵ�b Script ���ҨϥΪ��W��.</td>
+          <td bgcolor="#FFFFFF">儲存了選項的名稱,內容是以 locID 和字串為一個單元所組成的陣列. loc ID 會顯示成方言化的文字.字串則是選項在 Script 中所使用的名稱.</td>
         </tr>
         
         
@@ -159,37 +159,37 @@
         
         
       </table>
-      <p>�o���ɮ׫᭱������(�]�A OnInit �禡)�O�зǪ� SCAR �X.�аѦ� SCAR ���H�A�Ѧ����Ǩ�ƥi�H�ϥ�.</p></td>
+      <p>這個檔案後面的部分(包括 OnInit 函式)是標準的 SCAR 碼.請參考 SCAR 文件以瞭解有哪些函數可以使用.</p></td>
   </tr>
   <tr class="Inversed">
-    <td><a name="CH6" id="CH6"></a>MOD���訥��(Localization)</td>
+    <td><a name="CH6" id="CH6"></a>MOD的方言化(Localization)</td>
   </tr>
   <tr>
-    <td><p>���C���W�h Mod �ӻ�,�A�i�H�ǥѫإߤ@�Ӥ����\�h TOC �����Y�ɨӥ[�J�訥�ƪ����e.�p�G�o��TOC�����@�ӳQ alias �� &quot;locale&quot;�h,����L�N�|���� locale �������(Ķ��,�C�����w�] locale �O������ &quot;�Uĥ�G�w�˸�Ƨ�\data\Locale\English&quot; �o�Ӹ�Ƨ��U).�A�]�i�H�b Mod ���[�J���P���y��,��k�O�N�ƭ� TOC �� alias ���w�q�� &quot;locale&quot;.�� TOC ���W�٥N���F�������y��.�n�`�N���O,�ѩ�b�Ҧ����J���ɮפ��� TOC ���W�ٳ��������P,�ҥH�A���ӽT�O�A�N�y�����W�r<em><strong>�H��</strong></em> Mod ���W��/�����]�t�b TOC ���W�٤�.</p>
-      <p>���@�����Y�ɤ����\�h�� TOC ��,�u���Uĥ�G�ثe�ҨϥΪ��y���|�Q�������ɮרt�Ϊ� &quot;Locale&quot; �o�Ӧ�m.�p�G�S�����w�ثe���y������,�|�۰ʫ��w�� &quot;English&quot;.�p���@�ӴN�i�H���ϥΤ��P�y�������a�ϥΦP�˪� Mod ���۹��.�ϥΤ��P�y�������a�b�e���W�|�ݨ줣�P����r,�åB���|�o�ͤ��P�B�����p.</p>
-      <p>�аѦҥ����Y�� Resource Race ��Ƹ̭��� script�ӷ��@�إߤ��t�ƭ� TOC ���d��.</p>
-      <p>�n�`�N���O,�O�d���C���W�h Mod ���訥�� ID �d��O 8000-8999,�]���A�ҨϥΪ��訥�� ID ���ӭn�b���d��,�H�קK�o�Ͱ��D.</p></td>
+    <td><p>對於遊戲規則 Mod 來說,你可以藉由建立一個內有許多 TOC 的壓縮檔來加入方言化的內容.如果這些TOC中有一個被 alias 到 &quot;locale&quot;去,那麼他就會改變 locale 內的資料(譯註,遊戲內預設 locale 是對應到 &quot;萬艦二安裝資料夾\data\Locale\English&quot; 這個資料夾下).你也可以在 Mod 中加入不同的語言,方法是將數個 TOC 的 alias 都定義成 &quot;locale&quot;.而 TOC 的名稱代表了對應的語言.要注意的是,由於在所有載入的檔案中的 TOC 的名稱都必須不同,所以你應該確保你將語言的名字<em><strong>以及</strong></em> Mod 的名稱/版本包含在 TOC 的名稱中.</p>
+      <p>當一個壓縮檔中有許多的 TOC 時,只有萬艦二目前所使用的語言會被對應到檔案系統的 &quot;Locale&quot; 這個位置.如果沒有指定目前的語言的話,會自動指定為 &quot;English&quot;.如此一來就可以讓使用不同語言的玩家使用同樣的 Mod 互相對戰.使用不同語言的玩家在畫面上會看到不同的文字,並且不會發生不同步的狀況.</p>
+      <p>請參考未壓縮的 Resource Race 資料裡面的 script來當作建立內含數個 TOC 的範例.</p>
+      <p>要注意的是,保留給遊戲規則 Mod 的方言化 ID 範圍是 8000-8999,因此你所使用的方言化 ID 應該要在此範圍內,以避免發生問題.</p></td>
   </tr>
   <tr class="Inversed">
-    <td><a name="CH7" id="CH7"></a>�إ߹C���W�h</td>
+    <td><a name="CH7" id="CH7"></a>建立遊戲規則</td>
   </tr>
   <tr>
-    <td>�b &lt;�C���W�h&gt;.lua �̭��� OnInit() �禡��,�A���ӥh����ݭn���_�l�ưʧ@,�åB�إߦܤ֤@�Ӻʵ��禡(watch function).�ʵ��禡�|�b�C�� simulation step �Q�I�s,�ΨӽT�{�C������������.�A�]�i�H�H�۹C�����i�i�W�[�άO�����B�~���W�h.</td>
+    <td>在 &lt;遊戲規則&gt;.lua 裡面的 OnInit() 函式中,你應該去執行需要的起始化動作,並且建立至少一個監視函式(watch function).監視函式會在每個 simulation step 被呼叫,用來確認遊戲的結束條件.你也可以隨著遊戲的進展增加或是移除額外的規則.</td>
   </tr>
   <tr class="Inversed">
-    <td><a name="CH8" id="CH8"></a>��ܯS�w���ù�����</td>
+    <td><a name="CH8" id="CH8"></a>顯示特定的螢幕介面</td>
   </tr>
   <tr>
-    <td><p>�b�A�� &lt;�C���W�h&gt;.lua ��,�A�i�H�ǵۥ� watch function �h�I�s ATI_xxx() �禡,�H��ܯS�w������.�F������k�O�h�I�s ATI (Advanced Tactical Interface,�i���ԳN����)�� SCAR �禡.�аѦ� SCAR ���H�A�Ѧ�����o�Ǩ�ƪ���h��T.�ðѦ� Resource Race �ӷ��@��γB���d��.</p>
-      <p>²�檺��,�A�ݭn���J�@���ɮ�,�o���ɮ׸̭��y�z�F�@�өμƭӤ��t�n��ܪ����ت�
-ATI �˥�(template).�A�� script �i�H�b�ù��W���w�� 2D ��m��ܳo�Ǽ˥�,�åB���@�ǿﶵ�i�ѽվ�.s</p></td>
+    <td><p>在你的 &lt;遊戲規則&gt;.lua 中,你可以藉著由 watch function 去呼叫 ATI_xxx() 函式,以顯示特定的介面.達成的方法是去呼叫 ATI (Advanced Tactical Interface,進階戰術介面)的 SCAR 函式.請參考 SCAR 文件以瞭解有關於這些函數的更多資訊.並參考 Resource Race 來當作其用處的範例.</p>
+      <p>簡單的說,你需要載入一個檔案,這個檔案裡面描述了一個或數個內含要顯示的項目的
+ATI 樣本(template).你的 script 可以在螢幕上指定的 2D 位置顯示這些樣本,並且有一些選項可供調整.s</p></td>
   </tr>
   <tr> 
-    <td class="Inversed"> <a name="Declaration" id="Declaration">�n��</a></td>
+    <td class="Inversed"> <a name="Declaration" id="Declaration">聲明</a></td>
   </tr>
   <tr>
-    <td>�����D�n�O½Ķ��Relic Developers Network�����X��&quot;<span class="textUnderlined">HW2_GameRuleMods.pdf</span>&quot;.<br>
-      ½Ķ�̬���[�Ԧt�z�����ˤ��ߪ�CQD.��l����v��Relic�Ҧ�.</td>
+    <td>本文件主要是翻譯自Relic Developers Network所釋出的&quot;<span class="textUnderlined">HW2_GameRuleMods.pdf</span>&quot;.<br>
+      翻譯者為西加拉宇宙載具改裝中心的CQD.原始文件版權為Relic所有.</td>
   </tr>
 </table>
 </body>

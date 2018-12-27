@@ -1,8 +1,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>RDN���-���Y�u��</title>
-<meta http-equiv="Content-Type" content="text/html; charset=big5">
+<title>RDN文件-壓縮工具</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="rdn_doc.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -12,163 +12,163 @@
     <td><div align="center"><img src="hw2.gif" width="434" height="57"></div></td>
   </tr>
   <tr> 
-    <td><div align="center" class="textlarge">���Y�u����
+    <td><div align="center" class="textlarge">壓縮工具文件
 </div>
       <div align="center">
-        ��󪩥�1.01</div></td>
+        文件版本1.01</div></td>
   </tr>
   <tr> 
-    <td> <p><a href="#CH0">0.²��</a><br>
-        <a href="#CH1">1.�R�O�C�Ѽ�</a><br>
-        <a href="#CH2">2.���Y�u��\��</a><br>
-        <a href="#CH3">3.�إ����Y��</a><br>
-�@<a href="#CH3_1">3.1 �إ�Script�y�k</a><br>
-        <a href="#CH4">4.����A-�d��Script</a><br>
-        <a href="#CH5">5.����B</a><br>
-        �@<a href="#CH5_1">5.1 �C���W�h</a><br>
-        �@<a href="#CH5_2">5.2 Total Conversion<br>
-        </a><a href="#CH6">6.�ɥR</a><a href="#CH5_2">        </a><br>
-        <a href="#CH7">7.�n��</a></p></td>
+    <td> <p><a href="#CH0">0.簡介</a><br>
+        <a href="#CH1">1.命令列參數</a><br>
+        <a href="#CH2">2.壓縮工具功能</a><br>
+        <a href="#CH3">3.建立壓縮檔</a><br>
+　<a href="#CH3_1">3.1 建立Script語法</a><br>
+        <a href="#CH4">4.附錄A-範例Script</a><br>
+        <a href="#CH5">5.附錄B</a><br>
+        　<a href="#CH5_1">5.1 遊戲規則</a><br>
+        　<a href="#CH5_2">5.2 Total Conversion<br>
+        </a><a href="#CH6">6.補充</a><a href="#CH5_2">        </a><br>
+        <a href="#CH7">7.聲明</a></p></td>
   </tr>
   <tr>
-    <td class="Inversed"><a name="CH0" id="CH0"></a>0.²��</td>
+    <td class="Inversed"><a name="CH0" id="CH0"></a>0.簡介</td>
   </tr>
   <tr>
-    <td><p>&quot;���Y�u��(Archive Tool)&quot;�O�F����Ϊ�? Archive Tool�� modder �����L�̪���ƥ��]�_��,�n�t����@��ϥΪ̪���W.�L�]�� modder ����h�إ߼@���]�M�~�[�\��. Archive Tool �O�@�өR�O�C(command line)���u��{��.</p>
+    <td><p>&quot;壓縮工具(Archive Tool)&quot;是幹什麼用的? Archive Tool讓 modder 能夠把他們的資料打包起來,好配給到一般使用者的手上.他也讓 modder 能夠去建立劇情包和外加功能. Archive Tool 是一個命令列(command line)的工具程式.</p>
       <p>
-      �o�����ԭz�F�p��h�ϥ� Archive Tool</p>
-      <p>(Ķ��:�Uĥ���o�G�ҨϥΪ� .big�ɮשMRelic�Ҷ}�o���t�~�@�ڹC��&quot;Impossible Creature&quot;�ҥΨ��x�s��ƪ� .sga �ɮ׮榡�O�@�˪�,�ߤ@���t�O�u�O���ɦW���P�Ӥw.�ҥH�U�����������M�|�ϥ� .sga �ӧ@���d�Ҥ���,���O��� .big �ӻ��]�O�@�˦X�Ϊ�.�һݭn���u�� archive.exe �i�H�b <a href="http://www.relic.com/rdn" target="_blank">Relic Developers Network</a> ���Uĥ�G�u�㭶�W�U��,�U���ݭn�bRDN���K�O�����U.<br>
+      這份文件敘述了如何去使用 Archive Tool</p>
+      <p>(譯註:萬艦齊發二所使用的 .big檔案和Relic所開發的另外一款遊戲&quot;Impossible Creature&quot;所用來儲存資料的 .sga 檔案格式是一樣的,唯一的差別只是副檔名不同而已.所以下面的介紹雖然會使用 .sga 來作為範例之用,但是對於 .big 來說也是一樣合用的.所需要的工具 archive.exe 可以在 <a href="http://www.relic.com/rdn" target="_blank">Relic Developers Network</a> 的萬艦二工具頁上下載,下載需要在RDN做免費的註冊.<br>
         <br>
-�t�~,�Uĥ�@�N�� .big �ɮשM�G�N�� .big �ɮ׮榡�ä��ۦP,�L�k�� archive.exe �Ӱ��B�z)</p></td>
+另外,萬艦一代的 .big 檔案和二代的 .big 檔案格式並不相同,無法用 archive.exe 來做處理)</p></td>
   </tr>
   <tr> 
-    <td class="Inversed"><a name="CH1" id="CH1">1.�R�O�C�Ѽ�</a></td>
+    <td class="Inversed"><a name="CH1" id="CH1">1.命令列參數</a></td>
   </tr>
   <tr> 
-    <td><p>�U��������C�X�F�o�Ӥu��i�Ϊ��Ѽ�,�åB�����U�ӰѼƪ��γ~.�[�W&lt; &gt;�������b��ڨϥήɭn������������J�Ѽ�.</p>
+    <td><p>下面的表格列出了這個工具可用的參數,並且解釋各個參數的用途.加上&lt; &gt;的部分在實際使用時要換成對應的輸入參數.</p>
       <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#000000" class="text">
         <tr bgcolor="#FFFFFF">
-          <td width="180">�Ѽ�</td>
-          <td>�y�z</td>
+          <td width="180">參數</td>
+          <td>描述</td>
         </tr>
         <tr bgcolor="#FFFFFF">
           <td>-a &lt;archive file&gt;</td>
-          <td><p>�}�ҩҫ��w�����Y��,&lt;archive file&gt;�O���Y�ɪ��ɮצW�٩M���|</p></td>
+          <td><p>開啟所指定的壓縮檔,&lt;archive file&gt;是壓縮檔的檔案名稱和路徑</p></td>
         </tr>
         <tr bgcolor="#FFFFFF">
           <td>-c &lt;buildfile&gt; -r &lt;rootpath&gt;</td>
-          <td><p>�o��ӿﶵ�O�Ψӫإ����Y��. �ҫإߪ��ɮ״N�O�Q�� -a �ѼƩҫ��w���ɮ�.&lt;buildfile&gt;�������O�إ����Y�ɮɩҷ|�ѦҪ� build script ���ɮצW�٩M���|. &lt;rootpath&gt;�h���ӳ]�w���n���]�i���Y�ɪ��ɮשҦb����Ƨ����|.���� build script ���y�k�аѦ�<a href="#CH4">�ĥ|�`</a>.</p></td>
+          <td><p>這兩個選項是用來建立壓縮檔. 所建立的檔案就是利用 -a 參數所指定的檔案.&lt;buildfile&gt;的部分是建立壓縮檔時所會參考的 build script 的檔案名稱和路徑. &lt;rootpath&gt;則應該設定成要打包進壓縮檔的檔案所在的資料夾路徑.關於 build script 的語法請參考<a href="#CH4">第四節</a>.</p></td>
         </tr>
         <tr bgcolor="#FFFFFF">
           <td>-l</td>
-          <td>            <p>�C�X�Q�� -a �ѼƩҫ��w���ɮת����e</p></td>
+          <td>            <p>列出利用 -a 參數所指定的檔案的內容</p></td>
         </tr>
         <tr bgcolor="#FFFFFF">
           <td>-e &lt;extract location&gt;</td>
-          <td><p>�N -a �ѼƩҫ��w���ɮת��������e(�]�A���t����Ƨ�)�����Y��&lt;extract location&gt;�ҫ��w����m</p></td>
+          <td><p>將 -a 參數所指定的檔案的全部內容(包括內含的資料夾)解壓縮到&lt;extract location&gt;所指定的位置</p></td>
         </tr>
         <tr bgcolor="#FFFFFF">
           <td>-t</td>
-          <td><p>���� -a �ѼƩҫ��w���ɮ�.�o�|�p���x�s���ɮת�CRC�O�_���T.</p></td>
+          <td><p>測試 -a 參數所指定的檔案.這會計算儲存的檔案的CRC是否正確.</p></td>
         </tr>
         <tr bgcolor="#FFFFFF">
           <td>-hash</td>
-          <td>��X���Y�ɪ� hash.�o�i�H�Ψӧ@����{���Y�ɪ��̾�</td>
+          <td>輸出壓縮檔的 hash.這可以用來作為辨認壓縮檔的依據</td>
         </tr>
         <tr bgcolor="#FFFFFF">
           <td>-v</td>
-          <td><p>�i�H�M�W��������ѼƦX��.���ϥήɷ|��ܰ���ɩҵo�ͪ��Ҧ��i�઺ĵ�i/���~.</p></td>
+          <td><p>可以和上面的任何參數合用.當使用時會顯示執行時所發生的所有可能的警告/錯誤.</p></td>
         </tr>
       </table></td>
   </tr>
   <tr> 
-    <td class="Inversed"><a name="CH2" id="CH2">2.</a>���Y�u��\��</td>
+    <td class="Inversed"><a name="CH2" id="CH2">2.</a>壓縮工具功能</td>
   </tr>
   <tr> 
-    <td><p>�Q�ΤW�����R�O�C�Ѽ�,�i�H�F�����Y�u�㪺�|�ӥD�n�\��.�o�|�ӥ\��p�U���ҥ�:</p>
+    <td><p>利用上面的命令列參數,可以達成壓縮工具的四個主要功能.這四個功能如下表所示:</p>
       <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#000000" class="text">
         <tr bgcolor="#FFFFFF">
-          <td width="181">�\��</td>
-          <td width="432">�y�z</td>
+          <td width="181">功能</td>
+          <td width="432">描述</td>
         </tr>
         <tr bgcolor="#FFFFFF">
-          <td>�إ����Y��</td>
+          <td>建立壓縮檔</td>
           <td><p>-a c:\archives\archive.sga -c c:\archives\buildarchive.txt -r c:\IC\Data</p>
-            <p>�W�����d�ҷ|�إ����Y�� c:\archives\archive.sga.�إ��ɮ׮ɩҨϥΪ� build script �O c:\archives\buildarchive.txt .�b build script �����ɮת��Ҧb���ڥؿ��O c:\IC\Data.��L������إ����Y�ɪ��Ӹ`�i�H�b���媺<a href="#CH4">�ĥ|�`</a>���.</p></td>
+            <p>上面的範例會建立壓縮檔 c:\archives\archive.sga.建立檔案時所使用的 build script 是 c:\archives\buildarchive.txt .在 build script 中的檔案的所在的根目錄是 c:\IC\Data.其他有關於建立壓縮檔的細節可以在本文的<a href="#CH4">第四節</a>找到.</p></td>
         </tr>
         <tr bgcolor="#FFFFFF">
-          <td>�Ѷ}���Y��</td>
+          <td>解開壓縮檔</td>
           <td><p>-a c:\archives\archive.sga -e c:\archives\archivecontents</p>
-            <p>�o�ӽd�ҷ|�N c:\archives\archive.sga �o�����Y�ɪ����e�����Y��  c:\archives\archivecontents ��Ƨ���.���F�������ɮ׳��|�Q�����Y�}�ӥH�~,�쥻���ؿ����c�]�|�Q���s�إ߰_��</p></td>
+            <p>這個範例會將 c:\archives\archive.sga 這個壓縮檔的內容解壓縮到  c:\archives\archivecontents 資料夾中.除了全部的檔案都會被解壓縮開來以外,原本的目錄結構也會被重新建立起來</p></td>
         </tr>
         <tr bgcolor="#FFFFFF">
-          <td>�C�X���Y�ɪ����e</td>
+          <td>列出壓縮檔的內容</td>
           <td><p>-a c:\archives\archive.sga -l</p>
-            <p>�o�ӽd�ҷ|���X���Y�� c:\archives\archive.sga ���������e.�L�|�C�X��Ƨ��M�ɮת��W��,�H�����Y�e���Y�᪺�j�p.�x�s����k�]�|�Q�C�X.�b�Ѽƫ᭱�W�[&quot; &lt;destext&gt; &quot;����,�|���X�g�J�� &lt;destext&gt; �o���ɮ׸̭�,��K��Excel�Ӱ��ˬd.</p></td>
+            <p>這個範例會頁出壓縮檔 c:\archives\archive.sga 的全部內容.他會列出資料夾和檔案的名稱,以及壓縮前壓縮後的大小.儲存的方法也會被列出.在參數後面增加&quot; &lt;destext&gt; &quot;的話,會把輸出寫入到 &lt;destext&gt; 這個檔案裡面,方便用Excel來做檢查.</p></td>
         </tr>
         <tr bgcolor="#FFFFFF">
-          <td>�������Y��</td>
+          <td>測試壓縮檔</td>
           <td><p>-a c:\archives\archive.sga -t</p>
-            <p>�o�|�����Y�ɶi�����.�p�G�ɮת�CRC�M�x�s�����������P,���մN���|�q�L.�i�H�ΨӦb���ɮץH���ˬd�ɮת������</p></td>
+            <p>這會對壓縮檔進行測試.如果檔案的CRC和儲存的的版本不同,測試就不會通過.可以用來在傳檔案以後檢查檔案的完整性</p></td>
         </tr>
       </table></td>
   </tr>
   <tr> 
-    <td class="Inversed"> <a name="CH3" id="CH3">3.</a>�إ����Y��</td>
+    <td class="Inversed"> <a name="CH3" id="CH3">3.</a>建立壓縮檔</td>
   </tr>
   <tr> 
-    <td><p>�إ����Y�ɬO�۷��������u�@, archive �u��|�h�ˬd build script�����e,�H�M�w�n�b���Y�ɤ��[�J�����ɮץH�Υ[�J���覡.�o�@�`�|���� build script ���y�k�H�Ψ�γ~</p>
-      <p><span class="textUnderlined"><a name="CH3_1" id="CH3_1"></a>3.1Build Script�y�k</span><br>
-        Build script �O�ѥ|�ӳ����զ���:���Y�ɸ�T,TOC��T,�ɮ׳]�w,�H���ɮצC��.�b Build script�̭��i�H�[�J����,��k�O�b�Ӧ檺�e���[�W��ӱ׽u // .�b�����ɮת��ɭ�,�Ŧ�|�Q������.</p>
-      <p>�y�k:<br>
+    <td><p>建立壓縮檔是相當複雜的工作, archive 工具會去檢查 build script的內容,以決定要在壓縮檔中加入哪些檔案以及加入的方式.這一節會解釋 build script 的語法以及其用途</p>
+      <p><span class="textUnderlined"><a name="CH3_1" id="CH3_1"></a>3.1Build Script語法</span><br>
+        Build script 是由四個部分組成的:壓縮檔資訊,TOC資訊,檔案設定,以及檔案列表.在 Build script裡面可以加入註解,方法是在該行的前面加上兩個斜線 // .在辨識檔案的時候,空行會被忽略掉.</p>
+      <p>語法:<br>
         <span class="GreyBGwithItalic">Archive name=&quot;</span><span class="GreyBGwithBold">&lt;archive name&gt;</span><span class="GreyBGwithItalic">&quot;</span><br>
-        �i�D�{���h�إߤ@�����Y��.���Y�ɪ��W��&lt;archive name&gt; �|�Q�s��b�ɮת����Y��.�o�ӦW�r�u�O�Ψӿ����ɮץ�.</p>
+        告訴程式去建立一個壓縮檔.壓縮檔的名稱&lt;archive name&gt; 會被存放在檔案的標頭中.這個名字只是用來辨識檔案用.</p>
       <p><span class="GreyBGwithItalic">TOCStart name=&quot;</span><span class="GreyBGwithBold">&lt;name&gt;</span><span class="GreyBGwithItalic">&quot; alias=&quot;</span><span class="GreyBGwithBold">&lt;alias&gt;</span><span class="GreyBGwithItalic">&quot; relativeroot=&quot;</span><span class="GreyBGwithBold">&lt;relative folder&gt;</span><span class="GreyBGwithItalic">&quot;</span><br>
-        �i�D�u��n�إߤ@�ӷs�����e��(Table of Contents, TOC).TOC�i�H���C���Ψӧֳt���o�����Y�ɸ̭��������ɮ�,�H�γo���ɮת��@�ǰ򥻸�T,�Ҧp�ɮפj�p. &lt;name&gt; �O�Ψӿ��� TOC ��. &lt;alias&gt;�h�Ψ����C�������Y�ɸ̭����ɮ׹�����C�����ɮרt��;���ӥû����n�]�� data. &lt;relative
-        folder&gt;�O�M�R�O�C�Ѽ� -r �@�˥Ψӫ��w�ɮת���m.�p�G -r �ѼƤw�g���w�F�ڥؿ�����,�o�@���N�i�H�d��.</p>
+        告訴工具要建立一個新的內容表(Table of Contents, TOC).TOC可以讓遊戲用來快速的得到壓縮檔裡面有哪些檔案,以及這些檔案的一些基本資訊,例如檔案大小. &lt;name&gt; 是用來辨識 TOC 用. &lt;alias&gt;則用來讓遊戲把壓縮檔裡面的檔案對應到遊戲的檔案系統;應該永遠都要設成 data. &lt;relative
+        folder&gt;是和命令列參數 -r 一樣用來指定檔案的位置.如果 -r 參數已經指定了根目錄的話,這一項就可以留空.</p>
       <p><span class="GreyBGwithItalic">FileSettingsStart defcompression=&quot;</span><span class="GreyBGwithBold">&lt;default storage&gt;</span><span class="GreyBGwithItalic">&quot;</span><br>
-        �}�l�ɮ׳]�w���Ϭq.�o�ӰϬq���]�w�]�t�F���P���ɮ׭n�p��Q�x�s�b���Y�ɸ̭�,�H�έ����ɮפ��|�Q�s�����Y�ɸ̭�. &lt;default storage&gt; �Ѽ����ӳ]���A�ҧƱ檺�w�]�ɮ��x�s�覡.�o�ӰѼƪ��Ȧp�U��:</p>
+        開始檔案設定的區段.這個區段的設定包含了不同的檔案要如何被儲存在壓縮檔裡面,以及哪些檔案不會被存到壓縮檔裡面. &lt;default storage&gt; 參數應該設成你所希望的預設檔案儲存方式.這個參數的值如下表:</p>
       <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#000000" class="text">
         <tr bgcolor="#FFFFFF">
           <td width="181">Ordinal</td>
-          <td width="432">�x�s��k</td>
+          <td width="432">儲存方法</td>
         </tr>
         <tr bgcolor="#FFFFFF">
           <td>0</td>
-          <td><p>�N�ɮת����x�s�����Y</p></td>
+          <td><p>將檔案直接儲存不壓縮</p></td>
         </tr>
         <tr bgcolor="#FFFFFF">
           <td>1</td>
-          <td><p>�N�ɮ����Y,��Ū���ɦP�ɶi������Y.�ϥΦb�j�ɮפW.</p></td>
+          <td><p>將檔案壓縮,當讀取時同時進行解壓縮.使用在大檔案上.</p></td>
         </tr>
         <tr bgcolor="#FFFFFF">
           <td>2</td>
-          <td><p>�N�ɮ����Y,�ɮ׷|�@�f������Y��Ū�q�O����Ū�^.�A�X�Φb�p�ɮפW.�ר�O .lua �ɮ�</p></td>
+          <td><p>將檔案壓縮,檔案會一口氣解壓縮後讀從記憶體讀回.適合用在小檔案上.尤其是 .lua 檔案</p></td>
         </tr>
       </table>
       <p><span class="GreyBGwithItalic">Override wildcard=&quot;</span><span class="GreyBGwithBold">&lt;wildcard&gt;</span><span class="GreyBGwithItalic">&quot; minsize=&quot;</span><span class="GreyBGwithBold">&lt;minbytes&gt;</span><span class="GreyBGwithItalic">&quot; maxsize=&quot;</span><span class="GreyBGwithBold">&lt;maxbytes&gt;</span><span class="GreyBGwithItalic">&quot; ct=&quot;</span><span class="GreyBGwithBold">&lt;storage&gt;</span><span class="GreyBGwithItalic">&quot;</span><br>
-        �Ψӳ]�w�Y�ǯS�w�ɮת��x�s�覡.�o�ӫ��O�i�H����n�X��,�H�N���A�ҧƱ檺�U�ثD�w�]�x�s�覡.�Ĥ@���� &lt;wildcard&gt; �]�w�n�л\�L���ɮצW��,�i�H�ϥ� * �M ? (��: *.* �N���Ҧ��ɮ�, *.ucs �N���Ҧ����ɦW�� ucs ���ɮ�). &lt;minbytes&gt; �h�O�n�]�w���ɮת��̤p�j�p.�����w���ܫh�]�� -1.&lt;maxbytes&gt; �h�O�n�]�w���ɮת��̤j�j�p.�����w���ܫh�@�˳]�� -1.&lt;storage&gt;�Ѽƫh�Ψӫ��w�e�T���ѼƩҫ��w���ɮת��x�s�覡.</p>
+        用來設定某些特定檔案的儲存方式.這個指令可以執行好幾次,以代表你所希望的各種非預設儲存方式.第一項的 &lt;wildcard&gt; 設定要覆蓋過的檔案名稱,可以使用 * 和 ? (例: *.* 代表所有檔案, *.ucs 代表所有副檔名為 ucs 的檔案). &lt;minbytes&gt; 則是要設定的檔案的最小大小.不指定的話則設為 -1.&lt;maxbytes&gt; 則是要設定的檔案的最大大小.不指定的話則一樣設為 -1.&lt;storage&gt;參數則用來指定前三項參數所指定的檔案的儲存方式.</p>
       <p><span class="GreyBGwithItalic">SkipFile wildcard=&quot;</span><span class="GreyBGwithBold">&lt;wildcard&gt;</span><span class="GreyBGwithItalic">&quot; minsize=&quot;</span><span class="GreyBGwithBold">&lt;minbytes&gt;</span><span class="GreyBGwithItalic">&quot; maxsize=&quot;</span><span class="GreyBGwithBold">&lt;maxbytes&gt;</span><span class="GreyBGwithItalic">&quot;</span><br>
-        �o�ӫ��O�Ψӫ��w�����ɮפ��|�Q�[�J���Y�ɤ�,�]�i�H����n�X���H�N�����P���ɮ�.�Ĥ@���� &lt;wildcard&gt; �]�w�n���L���x�s���ɮצW��,�i�H�ϥ� * �M ? (��: *.* �N���Ҧ��ɮ�, *.ucs �N���Ҧ����ɦW�� ucs ���ɮ�). &lt;minbytes&gt; �h�O�n�]�w���ɮת��̤p�j�p.�����w���ܫh�]�� -1.&lt;maxbytes&gt; �h�O�n�]�w���ɮת��̤j�j�p.�����w���ܫh�@�˳]�� -1.</p>
+        這個指令用來指定哪些檔案不會被加入壓縮檔中,也可以執行好幾次以代表不同的檔案.第一項的 &lt;wildcard&gt; 設定要跳過不儲存的檔案名稱,可以使用 * 和 ? (例: *.* 代表所有檔案, *.ucs 代表所有副檔名為 ucs 的檔案). &lt;minbytes&gt; 則是要設定的檔案的最小大小.不指定的話則設為 -1.&lt;maxbytes&gt; 則是要設定的檔案的最大大小.不指定的話則一樣設為 -1.</p>
       <p><span class="GreyBGwithItalic">FileSettingsEnd</span><br>
-        �i�D���Y�u���ɮ׳]�w�����w�g����,���U�ӬO�ɮצC��.</p>
+        告訴壓縮工具檔案設定部份已經結束,接下來是檔案列表.</p>
       <p><span class="GreyBGwithItalic">&lt; file listing ...&gt;</span><br>
-        �ɮצC���i�H�]�t���N�ƶq���ɮ�.�o���ɮץi�H�Ψ�ؤ覡�Q�C�X:<br>
-1) �۹��Q�� -r �ѼƥH�� TOCStart ���O &lt;relative folder&gt; �ҫ��w���ڸ�Ƨ����۹���|<br>
-        2) ���㪺�ɮ׸��|.���|�����]�A�b�Q�� -r �ѼƥH�� TOCStart ���O &lt;relative folder&gt; �ҫ��w���ڸ�Ƨ��̭�</p>
-      <p>        �b�A�Q�n�W�[�ɮ׶i�J���Y�ɪ���Ƨ���,�U�o�� Dos ���O &quot;dir /s /a-d /b *.* &gt; &lt;filelist&gt;&quot;.�o�|���ͤ@���ɮצC��,�i�H�Ψө�� build script ��. This can be used to generate a complete file listing since we don't support file additions using wildcards.</p>
+        檔案列表可以包含任意數量的檔案.這些檔案可以用兩種方式被列出:<br>
+1) 相對於利用 -r 參數以及 TOCStart 指令 &lt;relative folder&gt; 所指定的根資料夾的相對路徑<br>
+        2) 完整的檔案路徑.路徑必須包括在利用 -r 參數以及 TOCStart 指令 &lt;relative folder&gt; 所指定的根資料夾裡面</p>
+      <p>        在你想要增加檔案進入壓縮檔的資料夾中,下這個 Dos 指令 &quot;dir /s /a-d /b *.* &gt; &lt;filelist&gt;&quot;.這會產生一個檔案列表,可以用來放到 build script 中. This can be used to generate a complete file listing since we don't support file additions using wildcards.</p>
       <p><span class="GreyBGwithItalic">TOCEnd</span><br>
-�o�@������ɮץH�g�����C�X,�n�}�l�إ����Y��.�ѦҪ���A�@���Ψӫإ����Y�ɪ� Script ���d��</p></td>
+這一行表示檔案以經全部列出,要開始建立壓縮檔.參考附錄A作為用來建立壓縮檔的 Script 的範例</p></td>
   </tr>
   <tr> 
-    <td class="Inversed"> <a name="CH4" id="CH4">4.</a>����A-�d��Script</td>
+    <td class="Inversed"> <a name="CH4" id="CH4">4.</a>附錄A-範例Script</td>
   </tr>
   <tr> 
-    <td><p>�b�U�C���ؿ��̭����o���ɮ�:</p>
+    <td><p>在下列的目錄裡面有這些檔案:</p>
       <p><img src="HW2_ArchiveTool/1.gif" width="585" height="272">
         </p>
-      <p>�o�̬O�Ψӫإ����Y�ɥΪ� build script �ɮת����e<br>
-        c:\temp\ Test.build.lst �����e:</p>
+      <p>這裡是用來建立壓縮檔用的 build script 檔案的內容<br>
+        c:\temp\ Test.build.lst 的內容:</p>
       <p>                Archive name=&quot;ICTestArchive&quot;</p>
       <p>        TOCStart name=&quot;ICTestData&quot; alias=&quot;Data&quot; relativeroot=&quot;&quot;</p>
       <p>        FileSettingsStart defcompression=&quot;1&quot;</p>
@@ -189,7 +189,7 @@
         // File specified as a fully qualified path name<br>
         C:\Temp\test\SampleData.test</p>
       <p>        TOCEnd              </p>
-      <p>�U���O archive tool ����o��script ��e���W��X���T����r.<br>
+      <p>下面是 archive tool 執行這個script 後畫面上輸出的訊息文字.<br>
         <span class="dos">[c:\icpc\bin]Archive.exe -a c:\temp\test.sga -c &quot;c:\temp\Test.build.lst&quot; -r c:\temp\test<br>
         Parsing Build File 'c:\Temp\Test.build.lst'<br>
         Creating TOC Entry Name:'ictestdata' Alias:'data'<br>
@@ -212,43 +212,43 @@ Writing File Entries<br>
         Build Operation took 0.80 seconds.</span></p></td>
   </tr>
   <tr> 
-    <td class="Inversed"> <a name="CH5" id="CH5">5.����B</a></td>
+    <td class="Inversed"> <a name="CH5" id="CH5">5.附錄B</a></td>
   </tr>
   <tr> 
-    <td><p>�Uĥ���o2���C���W�hMod(Game Rules mod)�M Total Conversion mod�ä��ݩ�۰ʤU��������.�Ҧ����n�[�J�C�������a�������b�ҰʹC�����e�N�N�L�̦w�˦n�~��.</p>
+    <td><p>萬艦齊發2的遊戲規則Mod(Game Rules mod)和 Total Conversion mod並不屬於自動下載的項目.所有的要加入遊戲的玩家都必須在啟動遊戲之前就將他們安裝好才行.</p>
       <p><span class="textUnderlined"><a name="CH5_1" id="CH5_1"></a>5.1 Game Rules</span><br>
-        ��b bin\ GAMERULES ��Ƨ��̭����C���W�h Mod
-�|�۰ʪ��Q�C�����J</p>
+        放在 bin\ GAMERULES 資料夾裡面的遊戲規則 Mod
+會自動的被遊戲載入</p>
       <p><span class="textUnderlined"><a name="CH5_2" id="CH5_2"></a>5.2 Total Conversion</span><br>
-�ܩ� total conversion mod, �A�ݭn�b�Uĥ�G�����汶�|�[�W�U�����R�O�C�Ѽ�(Ķ��:�W�[�R�O�C�Ѽƪ���k�Ь�<a href="../about_modding_hw2.htm#PS1" target="_blank">�o��</a>�������@)</p>
-      <p>-mod &lt;�A���Ĥ@��mod&gt; ,;&lt;�A���ĤG��mod&gt;</p>
-      <p>�d��:<br>
+至於 total conversion mod, 你需要在萬艦二的執行捷徑加上下面的命令列參數(譯註:增加命令列參數的方法請看<a href="../about_modding_hw2.htm#PS1" target="_blank">這裡</a>的附註一)</p>
+      <p>-mod &lt;你的第一個mod&gt; ,;&lt;你的第二個mod&gt;</p>
+      <p>範例:<br>
         -mod modifiedUI.big ,;modifiedAI.big</p>
-      <p>�A�]�i�H��A��������Mod�@��@�檺�C�b�@�Ӥ�r�ɮפ�,���U���o��:<br>
+      <p>你也可以把你全部的的Mod一行一行的列在一個文字檔案中,像下面這樣:<br>
         <br>
                 nameofyourmod<br>
         nameofyoursecondmod </p>
-      <p>�d��:<br>
-���]mylistofmod.txt�����e�p�U:        <br>
+      <p>範例:<br>
+假設mylistofmod.txt的內容如下:        <br>
         <br>
 modifiedUI.Big<br>
         modifiedAI.Big<br>
         <br>
-                �A�i�H�Q�ΤU�����R�O�C�ѼƱN�o���Mod�P�ɸ��J<br>
+                你可以利用下面的命令列參數將這兩個Mod同時載入<br>
         -mod @mylistofmod.txt</p></td>
   </tr>
   <tr> 
-    <td class="Inversed"><a name="CH6" id="CH6">6.�ɥR</a></td>
+    <td class="Inversed"><a name="CH6" id="CH6">6.補充</a></td>
   </tr>
   <tr>
-    <td>�bRDN���X���u��]��,�èS���]�t���� Archive.exe ���n��.dll�ɮ�.��Uĥ�G�w�˸�Ƨ��U��&quot;Bin\Release&quot;��Ƨ����M�� msvcp70.dll �H�� msvcr70.dll �o����ɮ�,��L�̽ƻs�� archive.exe �Ҧb����Ƨ�,�o�˴N�L�N�i�H���T������F.</td>
+    <td>在RDN釋出的工具包中,並沒有包含執行 Archive.exe 必要的.dll檔案.到萬艦二安裝資料夾下的&quot;Bin\Release&quot;資料夾中尋找 msvcp70.dll 以及 msvcr70.dll 這兩個檔案,把他們複製到 archive.exe 所在的資料夾,這樣就他就可以正確的執行了.</td>
   </tr>
   <tr>
-    <td class="Inversed"><a name="CH7" id="CH7">7.�n��</a></td>
+    <td class="Inversed"><a name="CH7" id="CH7">7.聲明</a></td>
   </tr>
   <tr>
-    <td>�����D�n�O½Ķ��Relic Developers Network�����X��&quot;<span class="textUnderlined">HW2_ArchiveTool.pdf</span>&quot;.<br>
-      ½Ķ�̬���[�Ԧt�z�����ˤ��ߪ�CQD.��l����v��Relic�Ҧ�.</td>
+    <td>本文件主要是翻譯自Relic Developers Network所釋出的&quot;<span class="textUnderlined">HW2_ArchiveTool.pdf</span>&quot;.<br>
+      翻譯者為西加拉宇宙載具改裝中心的CQD.原始文件版權為Relic所有.</td>
   </tr>
 </table>
 </body>
