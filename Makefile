@@ -10,4 +10,4 @@ deploy: installNoDev
 	-gcloud app deploy -v 'prod'  --project='molten-gantry-844'
 
 server: installWithDev
-	-dev_appserver.py app.yaml -A 'local-dev-app-id'
+	php -S localhost:8080  -t public public/index.php
