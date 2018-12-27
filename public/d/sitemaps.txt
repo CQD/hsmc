@@ -1,9 +1,7 @@
-http://hw.hiigara.net/cqd.htm
 http://hw.hiigara.net/download/general.htm
 http://hw.hiigara.net/download/modkit_hw2.htm
 http://hw.hiigara.net/download/modkit_hw_cat.htm
 http://hw.hiigara.net/game/about_game.htm
-http://hw.hiigara.net/index.htm
 http://hw.hiigara.net/info/history/appendix_c_of_the_strategy_guide.htm
 http://hw.hiigara.net/info/history/appendix_c_of_the_strategy_guide2.htm
 http://hw.hiigara.net/info/history/cataclysm.htm
