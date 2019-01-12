@@ -103,7 +103,7 @@ LOCALE:leveldata\campaign\ascension\m01_tanis.ucs
 
 *****
 
-[回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2.htm)
+[回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2)
 
 MC
 ];

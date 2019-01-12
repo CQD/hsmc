@@ -224,7 +224,7 @@ loadShipPatchList(NewShipType,"data:sound/sfx/ship/Hiigaran/Fighter/",0,"HScoutE
   
 *****
 
-[回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2.htm)
+[回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2)
 
 MC
 ];

@@ -65,7 +65,7 @@ Lua scipt檔案（純文字文件）：
 
 *****
 
-[回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2.htm)
+[回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2)
 
 MC
 ];

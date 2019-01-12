@@ -45,7 +45,7 @@ Homeworld2.big 解開轉譯後的 script：[完整版](/d/download/modkit_hw2/da
 作者 4E534B，可以用來匯入自定的地圖背景。
 
 [HW2BgTool](/d/download/modkit_hw2/HW2BgTool.zip)、[RN討論串](http://forums.relicnews.com/showthread.php?t=67383)<br>
-作者 Evlijedi、Pesmontis、Supernova。可以將特定的TGA檔案轉換成萬艦二的地圖背景。使用方法請見[教學](/tutorial/hw2/background.htm)與 Relicnews 的討論串。
+作者 Evlijedi、Pesmontis、Supernova。可以將特定的TGA檔案轉換成萬艦二的地圖背景。使用方法請見[教學](/tutorial/hw2/background)與 Relicnews 的討論串。
 
 ### 音樂
 

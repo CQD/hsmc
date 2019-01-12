@@ -18,7 +18,7 @@ Big檔案裡面的檔案架構就像個把一堆檔案打包成一個虛擬的�
 
 *****
 
-[回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2.htm)
+[回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2)
 
 MC
 ];

@@ -20,7 +20,7 @@ Bigviwer是用來把存放遊戲相關資料的 .big 格式壓縮檔裡面的檔
 
 接下來的工作就是修改檔案。所有的 .shp 檔和 .script 檔都可以用筆記本改。前者紀錄所有船艦飛機的物理特性，包括火力大小，血的多少，或是SU等等的；後者記一些雜七雜八的東西。檔案能不能用筆記本改可以看bigviwer的右邊視窗，要是出現的東西是一堆FF 94 94 94 C8 00 00 00的就不能用筆記本改。
 
-最後要注意的是，Bigviwer這個程式只能讀取萬艦和地動的 .big 檔。萬艦二的 .big 格式和之前不同，用這個程式無法開啟，請使用 [Spooky's Relic Archive Tool 2.0](/download/modkit_hw2.htm)
+最後要注意的是，Bigviwer這個程式只能讀取萬艦和地動的 .big 檔。萬艦二的 .big 格式和之前不同，用這個程式無法開啟，請使用 [Spooky's Relic Archive Tool 2.0](/download/modkit_hw2)
 
 ******
 
@@ -30,7 +30,7 @@ PS2:在改文字檔的時候建議把「編輯」功能表裡的「自動換行�
 
 ******
 
-回到[萬艦齊發/地動天驚 MOD 技術文件](/tutorial/tutorial_hw_cat.htm)
+回到[萬艦齊發/地動天驚 MOD 技術文件](/tutorial/tutorial_hw_cat)
 
 MC
 ];
