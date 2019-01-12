@@ -1,7 +1,6 @@
 <?php
-include __DIR__ . '/../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+return [
     'title' => '萬艦齊發 Mod 列表',
     'desc' => '雖然大部分網站都爛了，還是列出來當個紀念...',
     'main_image' => null,
@@ -66,4 +65,4 @@ Raiders Ascendant mod的網站，有mod相關故事.
 **[Turanic Raiders vs Kadeshi](http://www.strategyplanet.com/piratesmod/)**<br>
 就是以Turanic Raiders和Kadeshi為主角的mod
 MC
-]);
+];

@@ -1,7 +1,6 @@
 <?php
-include __DIR__ . '/../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+return [
     'title' => '萬艦齊發二Mod列表',
     'desc' => '讓遊戲變成完全不一樣的東西',
     'main_image' => null,
@@ -57,4 +56,4 @@ Star Trek 的 Mod。
 一個野心勃勃的原創性MOD，故事和單位皆為自創，超級華麗的原創船艦為其特點。
 
 MC
-]);
+];

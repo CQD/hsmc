@@ -1,7 +1,6 @@
 <?php
-include __DIR__ . '/../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+return [
     'title' => '地動天驚 Mod 列表',
     'desc' => '雖然大部分網站都爛了，還是列出來當個紀念...',
     'main_image' => null,
@@ -28,4 +27,4 @@ echo \Q\Core\Templator::render('main.twig', [
 將許多遊戲中的單位換成萬艦和地動中未用到的船艦，品質相當不錯。
 
 MC
-]);
+];
