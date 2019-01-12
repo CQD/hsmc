@@ -22,6 +22,7 @@ function __redirectOldUrl($path)
     }
 
     $map = [
+        '/cqd.htm' => 'https://cqd.tw',
         '/link/all.htm' => '/link',
         '/info/history/appendix_c_of_the_strategy_guide2.htm' => '/info/history/appendix_c_of_the_strategy_guide',
     ];
@@ -107,7 +108,6 @@ function phpList()
     }
 
     $m = [
-        "/cqd",
         "/tutorial/hw2/change_unitcap",
         "/tutorial/hw2/bigfile",
         "/tutorial/hw2/wepn__flak_emp",
