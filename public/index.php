@@ -16,19 +16,18 @@ require __route($path);
 
 function __redirectOldUrl($path)
 {
+    $trimedPath = str_replace(['.htm', '.html'], '', $path);
+    if ($path === $trimedPath) {
+        return;
+    }
+
     $map = [
         '/link/all.htm' => '/link',
-        '/download/general.htm' => '/download/general',
-        '/download/modkit_hw_cat.htm' => '/download/modkit_hw_cat',
-        '/download/modkit_hw2.htm' => '/download/modkit_hw2',
-        '/mod/modlist_cat.htm' => '/mod/modlist_cat',
-        '/mod/modlist_hw.htm' => '/mod/modlist_hw',
-        '/mod/modlist_hw2.htm' => '/mod/modlist_hw2',
     ];
 
-    $newUrl = $map[$path] ?? false;
+    $newUrl = $map[$path] ?? phpList()[$trimedPath] ?? false;
     if ($newUrl) {
-        header("Location: {$newUrl}");
+        header("Location: " . str_replace('.php', '', $newUrl));
         http_response_code(301);
         exit;
     }
@@ -38,25 +37,10 @@ function __redirectOldUrl($path)
 function __renderBasicArticle($path)
 {
     $basicArticleList = [
-        '/link',
-        '/download/general',
-        '/download/modkit_hw_cat',
-        '/download/modkit_hw2',
-        '/mod/modlist_cat',
-        '/mod/modlist_hw',
-        '/mod/modlist_hw2',
         '/' => '/home.php',
     ];
 
-
-    if (in_array($path, $basicArticleList)) {
-        $dataFile = __DIR__ . $path . '.php';
-    } elseif (isset($basicArticleList[$path])) {
-        $dataFile = __DIR__ . $basicArticleList[$path];
-    } else {
-        $dataFile = false;
-    }
-
+    $dataFile = $basicArticleList[$path] ?? phpList()[$path] ?? false;
     if (!$dataFile) {
         return false;
     }
@@ -64,7 +48,7 @@ function __renderBasicArticle($path)
     $engine = new MarkdownEngine\MichelfMarkdownEngine();
     \Q\Core\Templator::addExtension(new MarkdownExtension($engine));
 
-    $data = require $dataFile;
+    $data = require __DIR__ . $dataFile;
     echo \Q\Core\Templator::render('main.twig', $data);
 
     exit;
@@ -111,26 +95,70 @@ function __route($path)
         return $file;
     }
 
-    $cate = explode('/', $path)[1] ?? null;
-    $ext = pathinfo($path, PATHINFO_EXTENSION);
-    $isHtml = in_array($ext, ['htm', 'html']);
-
-    $file = null;
-    if (!$isHtml) {
-        $file = null;
-    } elseif (in_array($cate, ['info', 'tutorial', 'game'])) {
-        $file = 'public' . str_replace(['.html', '.htm'], '.php', $path);
-    } elseif (false === strpos($path, '/', 1)) {
-        $file = 'public' . str_replace(['.html', '.htm'], '.php', $path);
-    }
-
-    $fourofourFile = __DIR__ . '/../error/404.php';
-    $file = $file
-        ? __DIR__ . '/../' . $file
-        : $fourofourFile;
-    $file = !is_file($file) ? $fourofourFile : $file;
-
-    return $file;
+    return __DIR__ . '/../error/404.php';
 }
 
+function phpList()
+{
+    static $map = null;
+    if ($map) {
+        return $map;
+    }
 
+    $m = [
+        "/cqd",
+        "/tutorial/hw2/change_unitcap",
+        "/tutorial/hw2/bigfile",
+        "/tutorial/hw2/wepn__flak_emp",
+        "/tutorial/hw2/addability",
+        "/tutorial/hw2/create_bigfile",
+        "/tutorial/hw2/ship_script",
+        "/tutorial/hw2/sound",
+        "/tutorial/hw2/background",
+        "/tutorial/hw2/about_modding_hw2",
+        "/tutorial/hw2/install_mod",
+        "/tutorial/hw2/make_badge",
+        "/tutorial/hw2/hw2_filetype",
+        "/tutorial/hw_cat/vme",
+        "/tutorial/hw_cat/dacolyte",
+        "/tutorial/hw_cat/shp_hwc_khc1",
+        "/tutorial/hw_cat/dreadnought",
+        "/tutorial/hw_cat/bigviwer",
+        "/tutorial/tutorial_hw_cat",
+        "/tutorial/tutorial_hw2",
+        "/link",
+        "/home",
+        "/info/history/cataclysm",
+        "/info/history/desertofkharak",
+        "/info/history/warof1sttime",
+        "/info/history/appendix_c_of_the_strategy_guide",
+        "/info/history/chronicle",
+        "/info/history/homeworld1",
+        "/info/history/appendix_c_of_the_strategy_guide2",
+        "/info/history/homeworld2",
+        "/info/race/taiidan",
+        "/info/race/kushan_hiigaran",
+        "/info/race/progenitor",
+        "/info/race/kadesh",
+        "/info/race/turanic",
+        "/info/race/bentusi",
+        "/info/race/vaygr",
+        "/info/what/kushan",
+        "/info/what/bentusi_weapon",
+        "/info/what/names",
+        "/info/mis/scale",
+        "/info/mis/hw2story",
+        "/download/modkit_hw2",
+        "/download/modkit_hw_cat",
+        "/download/general",
+        "/mod/modlist_hw2",
+        "/mod/modlist_cat",
+        "/mod/modlist_hw",
+    ];
+
+    foreach ($m as $i => $k) {
+        $map[$k] = $k . '.php';
+    }
+
+    return $map;
+}
