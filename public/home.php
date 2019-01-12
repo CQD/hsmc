@@ -1,7 +1,6 @@
 <?php
-include __DIR__ . '/../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+return [
 	'site_title' => '',
     'title' => '探索萬艦齊發的世界',
     'desc' => '西亞加拉宇宙載具改裝中心提供各種萬艦齊發系列遊戲的相關資訊，包括歷史、考證、設定、Mod等等，希望能夠帶領中文玩家更進一步了解萬艦齊發故事所在的世界。',
@@ -26,4 +25,4 @@ echo \Q\Core\Templator::render('main.twig', [
 不論遊戲內遊戲外，這都能算是遊戲史上最精彩的宇宙戰爭故事之一。
 
 MC
-]);
+];

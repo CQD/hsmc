@@ -39,16 +39,26 @@ function __renderBasicArticle($path)
         '/download/general',
         '/download/modkit_hw_cat',
         '/download/modkit_hw2',
+        '/' => '/home.php',
     ];
 
-    if (!in_array($path, $basicArticleList)) {
+
+    if (in_array($path, $basicArticleList)) {
+        $dataFile = __DIR__ . $path . '.php';
+    } elseif (isset($basicArticleList[$path])) {
+        $dataFile = __DIR__ . $basicArticleList[$path];
+    } else {
+        $dataFile = false;
+    }
+
+    if (!$dataFile) {
         return false;
     }
 
     $engine = new MarkdownEngine\MichelfMarkdownEngine();
     \Q\Core\Templator::addExtension(new MarkdownExtension($engine));
 
-    $data = require __DIR__ . $path . '.php';
+    $data = require $dataFile;
     echo \Q\Core\Templator::render('main.twig', $data);
 
     exit;
@@ -100,9 +110,7 @@ function __route($path)
     $isHtml = in_array($ext, ['htm', 'html']);
 
     $file = null;
-    if (!$cate) {
-        $file = 'public/home.php';
-    } elseif (!$isHtml) {
+    if (!$isHtml) {
         $file = null;
     } elseif (in_array($cate, ['info', 'mod', 'tutorial', 'game'])) {
         $file = 'public' . str_replace(['.html', '.htm'], '.php', $path);
