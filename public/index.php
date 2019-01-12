@@ -1,5 +1,27 @@
 <?php
 
+$path = explode('?', $_SERVER['REQUEST_URI'])[0];
+
+__redirectOldUrl($path);
+
+require __route(explode('?', $_SERVER['REQUEST_URI'])[0]);
+
+///////////////////////////////////////////////////
+
+function __redirectOldUrl($path)
+{
+    $map = [
+    ];
+
+    $newUrl = $map[$path] ?? false;
+    if ($newUrl) {
+        header("Location: {$newUrl}");
+        http_response_code(301);
+        exit;
+    }
+    return false;
+}
+
 function __staticFilePath($path)
 {
     $mimeMap = [
@@ -66,7 +88,5 @@ function __route($path)
 
     return $file;
 }
-
-include __route(explode('?', $_SERVER['REQUEST_URI'])[0]);
 
 
