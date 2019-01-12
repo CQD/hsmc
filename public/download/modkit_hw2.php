@@ -1,7 +1,5 @@
 <?php
-include __DIR__ . '/../../src/init.php';
-
-echo \Q\Core\Templator::render('main.twig', [
+return [
     'title' => '萬艦二 Mod 工具下載',
     'desc' => '各種工具...',
     'main_image' => "banner_vaygr_bombing.jpg",
@@ -58,4 +56,4 @@ Homeworld2.big 解開轉譯後的 script：[完整版](/d/download/modkit_hw2/da
 Relic官方工具。可以把wav檔轉成Relic所使用的aifr音效格式，內附中文說明。
 
 MC
-]);
+];

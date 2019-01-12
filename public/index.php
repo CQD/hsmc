@@ -18,6 +18,9 @@ function __redirectOldUrl($path)
 {
     $map = [
         '/link/all.htm' => '/link',
+        '/download/general.htm' => '/download/general',
+        '/download/modkit_hw_cat.htm' => '/download/modkit_hw_cat',
+        '/download/modkit_hw2.htm' => '/download/modkit_hw2',
     ];
 
     $newUrl = $map[$path] ?? false;
@@ -33,6 +36,9 @@ function __renderBasicArticle($path)
 {
     $basicArticleList = [
         '/link',
+        '/download/general',
+        '/download/modkit_hw_cat',
+        '/download/modkit_hw2',
     ];
 
     if (!in_array($path, $basicArticleList)) {
@@ -98,7 +104,7 @@ function __route($path)
         $file = 'public/home.php';
     } elseif (!$isHtml) {
         $file = null;
-    } elseif (in_array($cate, ['download', 'info', 'mod', 'tutorial', 'game'])) {
+    } elseif (in_array($cate, ['info', 'mod', 'tutorial', 'game'])) {
         $file = 'public' . str_replace(['.html', '.htm'], '.php', $path);
     } elseif (false === strpos($path, '/', 1)) {
         $file = 'public' . str_replace(['.html', '.htm'], '.php', $path);

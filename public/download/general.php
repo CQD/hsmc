@@ -1,7 +1,5 @@
 <?php
-include __DIR__ . '/../../src/init.php';
-
-echo \Q\Core\Templator::render('main.twig', [
+return [
     'title' => '修正檔/一般下載',
     'desc' => '一些常用到的檔案工具',
     'main_image' => "banner_vaygr_bombing.jpg",
@@ -13,7 +11,7 @@ echo \Q\Core\Templator::render('main.twig', [
 ### 萬艦齊發二相關下載
 
 [萬艦二1.1版 patch](/d/download/general/homeworld2_update_en_10_11.exe)<br>
-修正許多遊戲的問題以及調整遊戲平衡性。 
+修正許多遊戲的問題以及調整遊戲平衡性。
 
 [萬艦齊發二完全繁體中文化 v1.1](/d/download/general/hw2_cht_v11.zip)<br>
 使用說明放在壓縮檔裡面， Windows 9X 和 ME 的使用者無法使用。本中文化由遊俠網和9CCN論壇共同製作，西加拉宇宙載具改裝中心的 CQD 做繁中版修訂，適用 v1.0 和 v1.1 版的萬艦齊發二。注意，1.0 版的萬艦二要安裝 1.1 patch 時必須把 English.big 換回原本 1.0 英文版的 English.big
@@ -63,7 +61,7 @@ mp3 格式的原聲帶下載。
 某些玩家不安裝這個 patch 無法進行遊戲，而且做了一些不錯的修改。XP下要執行地動請務必安裝這個修正檔。
 
 [地動天驚中文攻略](/d/download/general/walkthrough_hwc.zip)<br>
-中文的單人戰役攻略 
+中文的單人戰役攻略
 
 [地動天驚英文攻略](/d/download/general/cat.zip)<br>
 地動的超完整英文攻略
@@ -72,4 +70,4 @@ mp3 格式的原聲帶下載。
 裡面包含了許多地圖，唯一的缺點是因為地圖太多，裝了以後很難找到自己要的地圖
 
 MC
-]);
+];
