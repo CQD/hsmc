@@ -23,6 +23,7 @@ function __redirectOldUrl($path)
 
     $map = [
         '/link/all.htm' => '/link',
+        '/info/history/appendix_c_of_the_strategy_guide2.htm' => '/info/history/appendix_c_of_the_strategy_guide',
     ];
 
     $newUrl = $map[$path] ?? phpList()[$trimedPath] ?? false;
@@ -134,7 +135,6 @@ function phpList()
         "/info/history/appendix_c_of_the_strategy_guide",
         "/info/history/chronicle",
         "/info/history/homeworld1",
-        "/info/history/appendix_c_of_the_strategy_guide2",
         "/info/history/homeworld2",
         "/info/race/taiidan",
         "/info/race/kushan_hiigaran",
