@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => '萬艦齊發二聲音檔案相關教學',
     'desc' => '說明如何處理遊戲中的音檔',
     'main_image' => "banner_hanger15.jpg",
@@ -58,4 +58,4 @@ enc <wav_file> <aifr_file>
 [回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2.htm)
 
 MC
-]);
+];

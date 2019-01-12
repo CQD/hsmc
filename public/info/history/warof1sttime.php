@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => '太初之戰',
     'desc' => '讓庫沈人失去家園的慘烈戰爭',
     'main_image' => 'banner_galaxy_poster.jpg',
@@ -32,4 +32,4 @@ echo \Q\Core\Templator::render('main.twig', [
 
 於是，庫沈人展開長達四千年的流亡生涯。一直到他們那早已忘記這段歷史的子孫發現了運囚船卡爾拖巴以及指引之石，才終於踏上返鄉之路。
 MC
-]);
+];

@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => '班圖西人',
     'desc' => '擁有神秘科技的銀河商人',
     'main_image' => 'banner_bentusi.jpg',
@@ -20,4 +20,4 @@ echo \Q\Core\Templator::render('main.twig', [
 
 在維格入侵時期，班圖西人被維格大軍有組織的獵殺殆盡。最後的班圖西船艦－港口艦班圖司為了拯救西亞加拉人免於被先祖文明的自動戰艦摧毀而自爆。不過據說在異獸肆虐時有部分的班圖西船艦跳躍到了其他的銀河系中，或許他們會在未來的某一天歸來。
 MC
-]);
+];

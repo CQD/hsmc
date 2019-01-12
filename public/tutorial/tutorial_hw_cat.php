@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => '萬艦齊發/地動天驚 MOD 技術文件 ',
     'desc' => '基礎 Mod 技術教學',
     'main_image' => "banner_hanger15.jpg",
@@ -19,4 +19,4 @@ echo \Q\Core\Templator::render('main.twig', [
 <!-- - [.big 檔案裡的檔案類型](/tutorial/hw_cat/filetype/filetype_big.htm)（萬艦/地動）-->
 
 MC
-]);
+];

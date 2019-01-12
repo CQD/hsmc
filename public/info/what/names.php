@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => '萬艦齊發系列遊戲內名詞典故',
     'desc' => '有些人就是喜歡鑽牛角尖做考證',
     'main_image' => null,
@@ -69,4 +69,4 @@ Abbasid 指阿拔斯王朝，阿拉伯帝國的第二個世襲王朝。在該王
 - Google
 - [家園官方論壇](http://tribescn.com/forumdisplay.php?fid=20)的網友四木笑補充 Arran 的意義
 MC
-]);
+];

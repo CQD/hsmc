@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => '庫沈一詞的由來',
     'desc' => '一代用了庫沈這個詞彙，二代卻完全看不到，為什麼？',
     'main_image' => null,
@@ -18,4 +18,4 @@ echo \Q\Core\Templator::render('main.twig', [
 
 在遊戲外的現實世界，Kushan 一詞是源自古代的[貴霜王朝](https://zh.wikipedia.org/wiki/%E8%B2%B4%E9%9C%9C%E5%B8%9D%E5%9C%8B)，在一世紀到三世紀時曾是歐亞四大強國之一。
 MC
-]);
+];

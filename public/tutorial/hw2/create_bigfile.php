@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => '用 archive.exe 建立萬艦二的 Big 檔案',
     'desc' => '以官方的命令列工具把檔案打包成 .big',
     'main_image' => "banner_hanger15.jpg",
@@ -106,4 +106,4 @@ LOCALE:leveldata\campaign\ascension\m01_tanis.ucs
 [回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2.htm)
 
 MC
-]);
+];

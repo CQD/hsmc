@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => '萬艦二 Mod 技術文件',
     'desc' => '萬艦二 Mod 技術教學文件整理',
     'main_image' => "banner_hanger15.jpg",
@@ -34,4 +34,4 @@ echo \Q\Core\Templator::render('main.twig', [
   - [透過.MADSTATE檔案結合模型動畫（Mesh Animation）與遊戲事件](/tutorial/hw2/RDN_Document/HW2_MadState.htm)（ HW2_MadState ）
 
 MC
-]);
+];

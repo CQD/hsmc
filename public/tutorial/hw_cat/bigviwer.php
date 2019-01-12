@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => 'Bigviewer',
     'desc' => '第一件事情是把打包起來的檔案解開',
     'main_image' => "banner_hanger15.jpg",
@@ -33,4 +33,4 @@ PS2:在改文字檔的時候建議把「編輯」功能表裡的「自動換行�
 回到[萬艦齊發/地動天驚 MOD 技術文件](/tutorial/tutorial_hw_cat.htm)
 
 MC
-]);
+];

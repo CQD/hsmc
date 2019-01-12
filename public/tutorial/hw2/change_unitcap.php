@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => '如何修改萬艦二人口上限',
     'desc' => '明明叫做萬艦齊發，畫面上只有十幾艘船說不過去',
     'main_image' => "banner_hanger15.jpg",
@@ -29,4 +29,4 @@ echo \Q\Core\Templator::render('main.twig', [
 [回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2.htm)
 
 MC
-]);
+];

@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => 'AddAbility 函式',
     'desc' => 'ship 檔案的 AddAbility 函式',
     'main_image' => "banner_hanger15.jpg",
@@ -48,4 +48,4 @@ AddAbility是船艦定義中非常重要的一個函式。已知可以透過本�
 [回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2.htm)
 
 MC
-]);
+];

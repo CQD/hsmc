@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => '船艦比例考證',
     'desc' => '遊戲中的船艦實際上到底有多大？',
     'main_image' => '../info/mis/scale/kushan.jpg',
@@ -28,4 +28,4 @@ echo \Q\Core\Templator::render('main.twig', [
 
 事實上，萬艦二的遊戲資料檔案中有著一代中也出現的船艦－流放者前往卡拉克所搭乘的運輸艦。如果用這艘船作為基準，將會發現一代與二代遊戲中移動圓盤的度量長度是不同的。這帶來了更多的比例問題。
 MC
-]);
+];

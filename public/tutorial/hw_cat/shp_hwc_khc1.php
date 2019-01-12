@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => '地動天驚SHP格式說明',
     'desc' => ' ',
     'main_image' => "banner_hanger15.jpg",
@@ -102,4 +102,4 @@ pilotViewOffsetZ                   800.0
 X是上下,Y是左右,Z是前後
 ```
 MC
-]);
+];

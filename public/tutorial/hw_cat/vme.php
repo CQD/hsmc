@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => 'Visual Mex Editor',
     'desc' => '簡介視覺化的船隻 hard point 編輯器',
     'main_image' => "banner_hanger15.jpg",
@@ -23,4 +23,4 @@ VME裡面，視角的移動和萬艦有所不同。壓住滑鼠右鍵可以把�
 現在提一些使用VME要注意的地方。首先VME的3D模型是用 .x 檔案。可以用 3D Exploration 把 peo 或 geo 轉成 .x。如果你是要修改已經有的 mex，把要修改的 mex 和轉好的 .x 放一起，注意主檔名要相同。用VME開的時候就會自動讀入 mex 了。VME 只支援原來的萬艦，地動的 mex 是沒辦法正確使用的。不過在改地動的 mex 時，VME還是有點用處的。因為可以用 VME 找到所要的座標位置，然後再用 mex editor 修改。
 
 MC
-]);
+];

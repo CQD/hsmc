@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => '末日前奏',
     'desc' => '從遺忘了數千年的古老歷史，串聯到末日時代的開始',
     'main_image' => 'banner_hanger15.jpg',
@@ -189,4 +189,4 @@ echo \Q\Core\Templator::render('main.twig', [
 
 末日的時代開始了。
 MC
-]);
+];

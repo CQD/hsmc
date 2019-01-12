@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => '班圖西人武裝之謎',
     'desc' => '班圖西人到底是超級 imba 的武裝部隊，還是兩手空空的和平主義者？',
     'main_image' => 'banner_bentusi.jpg',
@@ -29,4 +29,4 @@ echo \Q\Core\Templator::render('main.twig', [
 
 至於在貿易船裝上了強力武器的同時，堪稱班圖西旗艦的大港口艦班圖司為何沒有武裝，這或許是因為當年拆掉了以後就一直沒裝上去，以紀念西亞加拉人，或者是只有新造的班圖西船艦才重新配備有武器。
 MC
-]);
+];
