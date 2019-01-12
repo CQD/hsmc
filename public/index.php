@@ -1,16 +1,23 @@
 <?php
+include __DIR__ . '/../vendor/autoload.php';
+
+use Aptoma\Twig\Extension\MarkdownExtension;
+use Aptoma\Twig\Extension\MarkdownEngine;
 
 $path = explode('?', $_SERVER['REQUEST_URI'])[0];
 
 __redirectOldUrl($path);
 
-require __route(explode('?', $_SERVER['REQUEST_URI'])[0]);
+__renderBasicArticle($path);
+
+require __route($path);
 
 ///////////////////////////////////////////////////
 
 function __redirectOldUrl($path)
 {
     $map = [
+        '/link/all.htm' => '/link',
     ];
 
     $newUrl = $map[$path] ?? false;
@@ -20,6 +27,25 @@ function __redirectOldUrl($path)
         exit;
     }
     return false;
+}
+
+function __renderBasicArticle($path)
+{
+    $basicArticleList = [
+        '/link',
+    ];
+
+    if (!in_array($path, $basicArticleList)) {
+        return false;
+    }
+
+    $engine = new MarkdownEngine\MichelfMarkdownEngine();
+    \Q\Core\Templator::addExtension(new MarkdownExtension($engine));
+
+    $data = require __DIR__ . $path . '.php';
+    echo \Q\Core\Templator::render('main.twig', $data);
+
+    exit;
 }
 
 function __staticFilePath($path)
@@ -72,9 +98,7 @@ function __route($path)
         $file = 'public/home.php';
     } elseif (!$isHtml) {
         $file = null;
-    } elseif ('link' === $cate) {
-        $file = 'public/link/all.php';
-    } elseif (in_array($cate, ['download', 'link', 'info', 'mod', 'tutorial', 'game'])) {
+    } elseif (in_array($cate, ['download', 'info', 'mod', 'tutorial', 'game'])) {
         $file = 'public' . str_replace(['.html', '.htm'], '.php', $path);
     } elseif (false === strpos($path, '/', 1)) {
         $file = 'public' . str_replace(['.html', '.htm'], '.php', $path);
