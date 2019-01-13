@@ -76,6 +76,7 @@ function __staticFilePath($path)
     $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
 
     if (0 !== strpos($path, '/tutorial/hw2/RDN_Document')
+        && 0 !== strpos($path, '/d/')
         && !isset($mimeMap[$ext])
     ) {
         return null;
