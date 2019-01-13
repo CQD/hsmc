@@ -1,7 +1,6 @@
 http://hw.hiigara.net/download/general
 http://hw.hiigara.net/download/modkit_hw2
 http://hw.hiigara.net/download/modkit_hw_cat
-http://hw.hiigara.net/game/about_game
 http://hw.hiigara.net/info/history/appendix_c_of_the_strategy_guide
 http://hw.hiigara.net/info/history/cataclysm
 http://hw.hiigara.net/info/history/chronicle
