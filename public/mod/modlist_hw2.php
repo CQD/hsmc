@@ -1,7 +1,6 @@
 <?php
-include __DIR__ . '/../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+return [
     'title' => '萬艦齊發二Mod列表',
     'desc' => '讓遊戲變成完全不一樣的東西',
     'main_image' => null,
@@ -48,13 +47,13 @@ Star Trek 的 Mod。
 同樣是 9CCN 論壇起家的 Mod，以鋼彈 Seed 為背景
 
 **Gundam UC Mod：[ModDB](http://www.moddb.com/mods/gundam-mod-0079-to-0083)**<br>
-同樣是 9CCN 論壇起家的 Mod，時代背景為0079~0083，鋼彈迷絕對不可錯過。3.0版內附繁/簡體中文跟英文的語言檔，也可以獨立下載[繁體中文語言檔](/download/general.htm#HW2)。
+同樣是 9CCN 論壇起家的 Mod，時代背景為0079~0083，鋼彈迷絕對不可錯過。3.0版內附繁/簡體中文跟英文的語言檔，也可以獨立下載[繁體中文語言檔](/download/general#HW2)。
 
 **Gundam UC Mod：[ModDB](http://www.moddb.com/mods/gundam-mod-0079-to-0083)**<br>
-同樣是 9CCN 論壇起家的 Mod，時代背景為0079~0083，鋼彈迷絕對不可錯過。3.0版內附繁/簡體中文跟英文的語言檔，也可以獨立下載[繁體中文語言檔](/download/general.htm#HW2)。
+同樣是 9CCN 論壇起家的 Mod，時代背景為0079~0083，鋼彈迷絕對不可錯過。3.0版內附繁/簡體中文跟英文的語言檔，也可以獨立下載[繁體中文語言檔](/download/general#HW2)。
 
 **Angels Fall First：[ModDB](http://www.moddb.com/mods/angels-fall-first-naval-combat-operations)、[RN討論串](http://forums.relicnews.com/showthread.php?24677)**<br>
 一個野心勃勃的原創性MOD，故事和單位皆為自創，超級華麗的原創船艦為其特點。
 
 MC
-]);
+];

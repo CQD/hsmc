@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => '置換船艦入門：阿克萊換成超級阿克萊',
     'desc' => '有了這個就 IMBA 了',
     'main_image' => "banner_hanger15.jpg",
@@ -54,4 +54,4 @@ NUMBER_OF_GUNS改成4。之後加上gun2和gun3，內容如下：
 雖然說這一篇說的是超級阿克萊，但是其實要置換任兩艘船的技巧都是類似的。特別要注意的就是特殊功能常會造成置換上的問題，所以要幫松濤換船比更換異獸的船艦要麻煩的多。
 
 MC
-]);
+];

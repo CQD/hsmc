@@ -1,13 +1,5 @@
 <?php
-include __DIR__ . '/../../src/init.php';
-
-$uri = $_SERVER['REQUEST_URI'];
-if ( '/link/all.htm' !== $uri) {
-    header('Location: /link/all.htm');
-    die();
-}
-
-echo \Q\Core\Templator::render('main.twig', [
+return [
     'title' => '相關連結',
     'desc' => '收錄各種相關網站',
     'main_image' => "banner_veil_of_fire.jpg",
@@ -38,4 +30,4 @@ echo \Q\Core\Templator::render('main.twig', [
   難得的日文網站，曾經在自炊日文化，已經停頓
 
 MC
-]);
+];

@@ -1,6 +1,40 @@
 <?php
+include __DIR__ . '/../vendor/autoload.php';
 
-function __staticFilePath($path)
+use Q\HSMC\Controller\SimpleArticle;
+use Q\HSMC\Controller\Error404;
+
+$path = explode('?', $_SERVER['REQUEST_URI'])[0];
+
+__redirectOldUrl($path) or
+__servStaticFile($path) or
+__route($path)->run([
+    'path' => $path,
+]);
+
+///////////////////////////////////////////////////
+
+function __redirectOldUrl($path)
+{
+    $map = [
+        '/cqd.htm' => 'https://cqd.tw',
+        '/link/all.htm' => '/link',
+        '/info/history/appendix_c_of_the_strategy_guide2.htm' => '/info/history/appendix_c_of_the_strategy_guide',
+    ];
+
+    $trimedPath = str_replace(['.htm', '.html'], '', $path);
+    $newUrl = ($path !== $trimedPath) && SimpleArticle::pathInWhiteList($trimedPath) ? $trimedPath : false;
+    $newUrl = $map[$path] ?? $newUrl;
+
+    if ($newUrl) {
+        header("Location: " . str_replace('.php', '', $newUrl));
+        http_response_code(301);
+        return true;
+    }
+    return null;
+}
+
+function __servStaticFile($path)
 {
     $mimeMap = [
         'css'  => 'text/css',
@@ -20,6 +54,7 @@ function __staticFilePath($path)
     $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
 
     if (0 !== strpos($path, '/tutorial/hw2/RDN_Document')
+        && 0 !== strpos($path, '/d/')
         && !isset($mimeMap[$ext])
     ) {
         return null;
@@ -32,41 +67,15 @@ function __staticFilePath($path)
 
     $mimeType = $mimeMap[$ext] ?? 'text/html';
     header("Content-type: {$mimeType}");
-    return  __DIR__ . $path;
+    include __DIR__ . $path;
+    return true;
 }
 
 function __route($path)
 {
-    if ($file = __staticFilePath($path)) {
-        return $file;
+    if (SimpleArticle::pathInWhiteList($path)) {
+        return new SimpleArticle();
     }
 
-    $cate = explode('/', $path)[1] ?? null;
-    $ext = pathinfo($path, PATHINFO_EXTENSION);
-    $isHtml = in_array($ext, ['htm', 'html']);
-
-    $file = null;
-    if (!$cate) {
-        $file = 'public/home.php';
-    } elseif (!$isHtml) {
-        $file = null;
-    } elseif ('link' === $cate) {
-        $file = 'public/link/all.php';
-    } elseif (in_array($cate, ['download', 'link', 'info', 'mod', 'tutorial', 'game'])) {
-        $file = 'public' . str_replace(['.html', '.htm'], '.php', $path);
-    } elseif (false === strpos($path, '/', 1)) {
-        $file = 'public' . str_replace(['.html', '.htm'], '.php', $path);
-    }
-
-    $fourofourFile = __DIR__ . '/../error/404.php';
-    $file = $file
-        ? __DIR__ . '/../' . $file
-        : $fourofourFile;
-    $file = !is_file($file) ? $fourofourFile : $file;
-
-    return $file;
+    return new Error404();
 }
-
-include __route(explode('?', $_SERVER['REQUEST_URI'])[0]);
-
-

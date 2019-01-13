@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => 'Mod 安裝教學',
     'desc' => '萬艦二的 Mod 安裝教學',
     'main_image' => "banner_hanger15.jpg",
@@ -50,7 +50,7 @@ echo \Q\Core\Templator::render('main.twig', [
 
 *****
 
-[回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2.htm)
+[回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2)
 
 MC
-]);
+];

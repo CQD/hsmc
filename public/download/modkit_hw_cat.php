@@ -1,7 +1,5 @@
 <?php
-include __DIR__ . '/../../src/init.php';
-
-echo \Q\Core\Templator::render('main.twig', [
+return [
     'title' => '萬艦一代/地動天驚 Mod 工具下載',
     'desc' => '各種工具...',
     'main_image' => "banner_vaygr_bombing.jpg",
@@ -39,4 +37,4 @@ Homeworld Ship Editor是萬艦的終極船隻編輯器，能夠同時編輯數�
 也是用來修改.Mex檔的，但是能夠直接看到你設定的各點相對於船艦的位置，要讀取.x檔案作為船艦模型(可以用3D Exploration來轉換檔案格式)，不支援Cataclysm的Mex，不過仍然可以用來做為點的定位用。 
 
 MC
-]);
+];

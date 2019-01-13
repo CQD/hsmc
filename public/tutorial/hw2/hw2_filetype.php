@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => '萬艦齊發二所使用的檔案格式',
     'desc' => '這邊列出一些知道的檔案副檔名與其功能的對應',
     'main_image' => "banner_hanger15.jpg",
@@ -65,7 +65,7 @@ Lua scipt檔案（純文字文件）：
 
 *****
 
-[回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2.htm)
+[回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2)
 
 MC
-]);
+];

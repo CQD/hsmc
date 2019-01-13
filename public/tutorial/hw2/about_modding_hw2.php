@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => '萬艦二 Mod 概論',
     'desc' => '介紹萬艦二 Mod 開發的相關基本概念',
     'main_image' => "banner_hanger15.jpg",
@@ -47,7 +47,7 @@ Big 檔案裡面的檔案架構就像個把一堆檔案打包成一個虛擬的�
 
 ### 修改Script(lua/ship/wepn....)
 
-萬艦二大量使用了Lua Script，來讓遊戲更容易開發，也更有製作 MOD 的彈性空間。但是為了加快遊戲載入的速度，儲存在 big 檔裡面的 script 文件(lua/ship/wepn...等等可用筆記本編輯的文件)都做過組譯的動作，從 big 裡面解出來後不能夠直接修改。你可以到[下載區](/download/modkit_hw2.htm)去下載已經轉譯好的 Homeworld2.big 的完整內容[[註三]](#PS3)。
+萬艦二大量使用了Lua Script，來讓遊戲更容易開發，也更有製作 MOD 的彈性空間。但是為了加快遊戲載入的速度，儲存在 big 檔裡面的 script 文件(lua/ship/wepn...等等可用筆記本編輯的文件)都做過組譯的動作，從 big 裡面解出來後不能夠直接修改。你可以到[下載區](/download/modkit_hw2)去下載已經轉譯好的 Homeworld2.big 的完整內容[[註三]](#PS3)。
 
 *****
 
@@ -70,7 +70,7 @@ Big 檔案裡面的檔案架構就像個把一堆檔案打包成一個虛擬的�
 
 *****
 
-[回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2.htm)
+[回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2)
 
 MC
-]);
+];

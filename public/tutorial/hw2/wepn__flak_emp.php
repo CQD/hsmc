@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => '武器修改簡例-EMP防空砲艦',
     'desc' => '將防空砲艦的武器加上 EMP 功能',
     'main_image' => "banner_hanger15.jpg",
@@ -43,7 +43,7 @@ echo \Q\Core\Templator::render('main.twig', [
 
 *****
 
-[回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2.htm)
+[回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2)
 
 MC
-]);
+];

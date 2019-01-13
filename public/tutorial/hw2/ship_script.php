@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => '萬艦二船隻 Script 範例',
     'desc' => '以 hgn_scout.ship 為範例介紹 .ship 檔案的內容',
     'main_image' => "banner_hanger15.jpg",
@@ -224,7 +224,7 @@ loadShipPatchList(NewShipType,"data:sound/sfx/ship/Hiigaran/Fighter/",0,"HScoutE
   
 *****
 
-[回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2.htm)
+[回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2)
 
 MC
-]);
+];

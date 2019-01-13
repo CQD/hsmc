@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => '實做教學Step by Step：改裝超弩艦',
     'desc' => '實際動手做修改',
     'main_image' => "banner_hanger15.jpg",
@@ -41,4 +41,4 @@ echo \Q\Core\Templator::render('main.twig', [
 接下來存檔，不用移動它，就把這個檔案放那裡。最後，把遊戲調成不用研發科技，建造一堆超弩去凌虐你的對手吧。
 
 MC
-]);
+];

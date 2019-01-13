@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => '卡地許花園的守衛',
     'desc' => '忘記自己根源的宗教狂熱份子',
     'main_image' => 'banner_kadesh.jpg',
@@ -16,4 +16,4 @@ echo \Q\Core\Templator::render('main.twig', [
 
 庫沈流亡艦隊進入了這個區域，也發現卡地許守衛是自己的同胞，但是卡地許守衛並不理會，不斷的攻擊庫沈艦隊。為了自己的生存，也為了重回數萬光年外的家園，他們被迫摧毀大部分的卡地許船艦。只有少部分護衛艦等級的船艦以及其船員被成功捕獲，並一路跟著流亡艦隊回到他們久違的家園西亞加拉。
 MC
-]);
+];

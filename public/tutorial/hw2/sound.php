@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => '萬艦齊發二聲音檔案相關教學',
     'desc' => '說明如何處理遊戲中的音檔',
     'main_image' => "banner_hanger15.jpg",
@@ -13,7 +13,7 @@ echo \Q\Core\Templator::render('main.twig', [
 
 ### 概論
 
-萬艦齊發二使用的音樂和音效的檔案都存在 .big 檔案裡面。一代的音效檔案副檔名為 .aif，而二代音效檔案副檔名則是 .fda。雖然副檔名不同，他們的格式是幾乎完全一樣的，都是 .aifr 檔案，只是 Relic 的 aifr 是自訂的格式，不同於一般標準的aif/aifr。想要用 Winamp 聽這些檔案，需要用到 Relic 的 [In_Aif.dll](/download/general.htm#Homeworld)。In_Aif.dll 支援的副檔名是 .aif。
+萬艦齊發二使用的音樂和音效的檔案都存在 .big 檔案裡面。一代的音效檔案副檔名為 .aif，而二代音效檔案副檔名則是 .fda。雖然副檔名不同，他們的格式是幾乎完全一樣的，都是 .aifr 檔案，只是 Relic 的 aifr 是自訂的格式，不同於一般標準的aif/aifr。想要用 Winamp 聽這些檔案，需要用到 Relic 的 [In_Aif.dll](/download/general#Homeworld)。In_Aif.dll 支援的副檔名是 .aif。
 
 要修改萬艦二的音效/音樂，可以分成下面幾個步驟:
 
@@ -49,13 +49,13 @@ enc <wav_file> <aifr_file>
 
 ![homeworld2\Data\sound\music\staging\staging_01.fda](/d/tutorial/hw2/sound/2.gif)
 
-最後記得把萬艦二的執行捷徑加上「-overrideBigFile」參數（做法可以參考[這裡](/tutorial/hw2/about_modding_hw2.htm#PS1），然後進入遊戲，由於 staging_01.fda 對應的是主選單的背景音樂，所以在進入遊戲後會發現主選單的背景音樂已經變成我們剛剛自訂的音樂了。
+最後記得把萬艦二的執行捷徑加上「-overrideBigFile」參數（做法可以參考[這裡](/tutorial/hw2/about_modding_hw2#PS1），然後進入遊戲，由於 staging_01.fda 對應的是主選單的背景音樂，所以在進入遊戲後會發現主選單的背景音樂已經變成我們剛剛自訂的音樂了。
 
 當然你也可以把其他的音樂，甚至音效檔案改成你想要的檔案，只要找到對應的檔名就可以了。當然，也可以為自己做的地圖加上自己喜歡的音樂。只要把他轉成 .fda 後放在適當的位置，地圖裡面也有設定音樂的檔名就可以了。
 
 *****
 
-[回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2.htm)
+[回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2)
 
 MC
-]);
+];

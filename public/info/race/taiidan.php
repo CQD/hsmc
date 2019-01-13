@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => '泰丹帝國',
     'desc' => '殘酷統治數千年，卻因庫沈人回歸西亞加拉而瞬間垮台',
     'main_image' => 'banner_taiidan.jpg',
@@ -22,4 +22,4 @@ echo \Q\Core\Templator::render('main.twig', [
 
 星塵戰爭期間以及維格入侵時期的泰丹共和國狀態不詳，僅知有泰丹勢力加入維格軍團。
 MC
-]);
+];

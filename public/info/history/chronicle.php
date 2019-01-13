@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => '萬艦齊發系列年表',
     'desc' => '長達數萬年的編年史',
     'main_image' => null,
@@ -51,4 +51,4 @@ echo \Q\Core\Templator::render('main.twig', [
 |約1331|約115|約9625|由凱蘭‧沙捷設計的第二艘母艦「西亞加拉的榮光」在大荒地中的坦尼斯遺跡建造完成，進行最後測試時候被維格人攻擊，所幸得以逃離，但坦尼斯遺跡和周邊設施則被摧毀。母艦在回到西亞加拉附近進行人員物資的補給後踏上了尋找沙鳩克的旅程。（萬艦齊發二）|
 
 MC
-]);
+];

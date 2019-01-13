@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => 'BIG 檔案的架構',
     'desc' => '打包遊戲資料的 big 檔案的簡單解說',
     'main_image' => "banner_hanger15.jpg",
@@ -18,7 +18,7 @@ Big檔案裡面的檔案架構就像個把一堆檔案打包成一個虛擬的�
 
 *****
 
-[回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2.htm)
+[回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2)
 
 MC
-]);
+];

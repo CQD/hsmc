@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../../../src/init.php';
 
-echo \Q\Core\Templator::render('main.twig', [
+
+return [
     'title' => '艦徽製作教學',
     'desc' => '說明如何以自己喜歡的圖片作為對戰用的艦徽',
     'main_image' => "banner_hanger15.jpg",
@@ -33,7 +33,7 @@ echo \Q\Core\Templator::render('main.twig', [
 
 *****
 
-[回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2.htm)
+[回到萬艦二 Mod 教學文件頁](/tutorial/tutorial_hw2)
 
 MC
-]);
+];
