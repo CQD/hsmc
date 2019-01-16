@@ -10,6 +10,8 @@ return [
     ],
     'content' => <<<MC
 
+目前尋找 Mod 最好的方式是，透過 Steam 購買[萬艦齊發重製版](https://store.steampowered.com/app/244160)，然後透過 Steam Workshop 尋找並安裝想要的 Mod。
+
 實際上這裡差不多所有的 Mod 網站都已經不在。但是還是在此列出來，也算紀錄也算紀念...
 
 ******

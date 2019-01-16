@@ -10,13 +10,12 @@ return [
     ],
     'content' => <<<MC
 
-要尋找 Mod 最好的去處有二
-- Relicnews 討論區的 [Tanis Shipyard](http://forums.relicnews.com/forumdisplay.php?72)。有很多很多的Mod沒有自己的網頁，相關消息散落在討論串之中。而那些最活耀的Mod也都在這裡有專門的討論串。
-- ModDB 的[萬艦二專區](http://www.moddb.com/games/homeworld-2)。很多 Mod 以此為主要的散佈管道。
+目前尋找 Mod 最好的方式是，透過 Steam 購買[萬艦齊發重製版](https://store.steampowered.com/app/244160)，然後透過 Steam Workshop 尋找並安裝想要的 Mod。
 
-附帶一提，差不多所有的Mod都需要把萬艦升級到1.1版後才能正常運作。
+下面的清單作為歷史遺跡保留，不再更新。其中有些在重製版依然活躍，有些成為歷史的註腳。
 
-以下只列出一些比較有代表性的 Mod。
+附帶一提，如果安裝原版的萬艦二的 Mod，差不多所有的Mod都需要把萬艦升級到1.1版後才能正常運作。
+
 ******
 
 **Complex Mod：[RN討論串](http://forums.relicnews.com/showthread.php?37486)、[網站](http://www.homeworld2complex.com/)**<br>
