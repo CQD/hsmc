@@ -25,8 +25,8 @@ return [
 - [KarosGraveyard](http://hw2wiki.net/wiki.hw2.info/KarosGraveyard.html)<br>
   萬艦 Mod 技術主題 Wiki
 - ModDB 的[萬艦一代](http://www.moddb.com/games/homeworld)、[萬艦二代](http://www.moddb.com/games/homeworld-2)、[萬艦重製版](https://www.moddb.com/games/homeworld-remastered)專區
-- 深度時空論壇的[家園討論板](http://bbs.deeptimes.org/forum.php?mod=forumdisplay&fid=42)<br>
-  大陸的討論區。原本有過 9CCN、《家園》官方論壇、指揮官基地...等主要集散地，但這些論壇都已經陣亡。
+- 深度時空論壇的[家園討論板](http://bbs.deeptimes.org/forum.php?mod=forumdisplay&fid=42)與[泰坦帝國](http://www.taiidan.net)<br>
+  大陸的萬艦齊發討論區。過去還有過 9CCN、《家園》官方論壇...等大型集散地，但不少論壇都已經陣亡。
 - [巴哈姆特萬艦齊發討論板](http://forum.gamer.com.tw/A.php?bsn=01029)
 - [遊戲基地萬艦齊發討論板](http://www.gamebase.com.tw/forum/1535)
 - [The Gaming Union討論版](http://www.thegamingunion.co.uk/forums/)<br>
