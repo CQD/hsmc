@@ -2,6 +2,8 @@
 
 namespace Q\HSMC\Controller;
 
+use Q\HSMC\Exception\NotFoundException;
+
 class SimpleArticle extends ControllerBase
 {
     const WHITELIST = [
@@ -64,7 +66,7 @@ class SimpleArticle extends ControllerBase
         $path = $params['path'];
 
         if (!static::pathInWhiteList($path)) {
-            throw new \RuntimeException('Path not allowed');
+            throw new NotFoundException();
         }
 
         $path = ('/' === $path) ? '/home' : $path;

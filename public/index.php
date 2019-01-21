@@ -3,14 +3,21 @@ include __DIR__ . '/../vendor/autoload.php';
 
 use Q\HSMC\Controller\SimpleArticle;
 use Q\HSMC\Controller\Error404;
+use Q\HSMC\Exception\NotFoundException;
 
 $path = explode('?', $_SERVER['REQUEST_URI'])[0];
+
+try {
 
 __redirectOldUrl($path) or
 __servStaticFile($path) or
 __route($path)->run([
     'path' => $path,
 ]);
+
+} catch (NotFoundException $e) {
+    (new Error404())->run();
+}
 
 ///////////////////////////////////////////////////
 
