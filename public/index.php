@@ -74,7 +74,7 @@ function __servStaticFile($path)
 
     $mimeType = $mimeMap[$ext] ?? 'text/html';
     header("Content-type: {$mimeType}");
-    include __DIR__ . $path;
+    echo file_get_contents(__DIR__ . $path);
     return true;
 }
 
