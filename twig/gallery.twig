@@ -1,0 +1,30 @@
+{% extends "main.twig" %}
+
+{% block header %}
+<style>
+.c{
+    max-width:150px;
+    border:1px solid #ddd;
+    min-height:30px;
+    margin:10px;
+    border-radius:4px;
+    overflow:hidden;
+}
+.c img{width:100%;}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div style="display:flex;align-content:stretch;flex-wrap:wrap; font-size:14px;">
+{% for image in images %}
+<div class="c">
+    <a href="{{ image.image }}">
+    <img src="{{ image.thumb }}">
+    </a>
+    <p style="margin:5px 10px">{{ image.desc }}
+</div>
+{% endfor %}
+</div>
+
+{% endblock %}

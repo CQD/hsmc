@@ -69,6 +69,13 @@
 <li><a href="/info/mis/hw2story">萬艦二初期設定</a></li>
 </ul>
 </li>
+<li>圖庫
+<ul class="w7">
+<li><a href="/concept_art/hw">萬艦齊發概念畫</a></li>
+<li><a href="/concept_art/cat">地動天驚概念畫</a></li>
+<li><a href="/concept_art/hw2">萬艦二概念畫</a></li>
+</ul>
+</li>
 <li>Mod
 <ul class="w7">
 <li><a href="/mod/modlist_hw">萬艦齊發Mod</a></li>
@@ -103,7 +110,9 @@
 {% if content %}
 <div id="content">
 <div class="wrapper">
+{% block content %}
 {{content|markdown}}
+{% endblock %}
 </div>
 </div>
 {% endif %}

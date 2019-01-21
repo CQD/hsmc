@@ -1,6 +1,7 @@
 <?php
 include __DIR__ . '/../vendor/autoload.php';
 
+use Q\HSMC\Controller\ConceptArt;
 use Q\HSMC\Controller\SimpleArticle;
 use Q\HSMC\Controller\Error404;
 use Q\HSMC\Exception\NotFoundException;
@@ -82,6 +83,10 @@ function __route($path)
 {
     if (SimpleArticle::pathInWhiteList($path)) {
         return new SimpleArticle();
+    }
+
+    if (0 === strpos($path, '/concept_art/')) {
+        return new ConceptArt();
     }
 
     return new Error404();
