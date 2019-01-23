@@ -13,7 +13,7 @@ class ControllerBase
 
     public function __construct()
     {
-        $loader = new \Twig_Loader_Filesystem(__DIR__ . '/../../../../twig');
+        $loader = new \Twig_Loader_Filesystem(__DIR__ . '/../../twig');
         $this->twig = new \Twig_Environment($loader);
 
         $markdownEngine = new MarkdownEngine\MichelfMarkdownEngine();

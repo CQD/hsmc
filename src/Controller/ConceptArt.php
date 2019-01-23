@@ -46,7 +46,7 @@ class ConceptArt extends ControllerBase
 
     private function getData($id)
     {
-        $data = json_decode(file_get_contents(__DIR__ . "/../../../../public/i/concept/{$id}/data.json"), true);
+        $data = json_decode(file_get_contents(__DIR__ . "/../../public/i/concept/{$id}/data.json"), true);
 
         foreach ($data as $key => $row) {
             $data[$key]['image'] = sprintf('/i/concept/%s/%s', $id, $row['image']);

@@ -71,7 +71,7 @@ class SimpleArticle extends ControllerBase
 
         $path = ('/' === $path) ? '/home' : $path;
 
-        $data = require __DIR__ . '/../../../../public' . $path . '.php';
+        $data = require __DIR__ . '/../../public' . $path . '.php';
         $this->render($data);
     }
 }
