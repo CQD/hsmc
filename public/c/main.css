@@ -115,13 +115,15 @@ header{
     border-bottom: 1px solid rgba(255,255,255,0.3);
 }
 
-#logo{
+#logo, #logo_link{
     display: inline-block;
-    vertical-align: text-bottom;
+    vertical-align: text-top;
 }
 
 nav{
+    padding-top:10px;
     display: inline-block;
+    vertical-align: text-top;
 }
 nav a:link, nav a:visited{
     color:#fff;
@@ -294,10 +296,6 @@ footer a:link, footer a:visited{
 
 
 
-
-
-
-
 /* ==========================================================================
    Media Queries
    ========================================================================== */
@@ -307,6 +305,20 @@ footer a:link, footer a:visited{
         width:auto;
         margin:1em 0;
         padding:1em;
+    }
+
+    nav {
+        padding-top:0;
+        width: calc(100% - 50px - 0.5em);
+    }
+
+    nav li{
+        padding-right:5px;
+    }
+    #logo{height:50px}
+    #logo_link{
+        width:50px;
+        overflow:hidden;
     }
 }
 
