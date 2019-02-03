@@ -320,6 +320,10 @@ footer a:link, footer a:visited{
         width:50px;
         overflow:hidden;
     }
+
+    nav > ul > li > ul{
+        margin-left:-3em;
+    }
 }
 
 @media print,
