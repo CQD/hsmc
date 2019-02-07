@@ -277,6 +277,20 @@ nav li ul li:hover{
     border-radius:4px;
 }
 
+.embedimg{
+    float:right;
+    padding:5px 1em;
+
+}
+#content .footnotes, .embedimg{
+    font-size:80%;
+    opacity:0.8;
+}
+
+#content .embedimg p {
+    margin:0.3em 0;
+}
+
 footer{
     background-color: #333;
     color:#999;
