@@ -34,6 +34,9 @@ return [
 
 ### 萬艦齊發相關下載
 
+[萬艦齊發一代說明書(英文版)](/d/download/general/hw1_manual_eng.pdf)<br>
+萬艦齊發一代的說明書，圖文並茂的描述了萬艦齊發開始前幾百年的歷史以及科技演進。
+
 [萬艦1.05版patch](/d/download/general/Homeworld105Patch.exe)<br>
 某些玩家不安裝這個patch不能玩萬艦，而且有很多萬艦的mod都必須要安裝過這個修正檔才能正常工作。XP下要執行萬艦請務必安裝這個修正檔
 
