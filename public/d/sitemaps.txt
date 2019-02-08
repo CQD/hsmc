@@ -1,4 +1,7 @@
 https://hw.hiigara.net/
+https://hw.hiigara.net/concept_art/cat
+https://hw.hiigara.net/concept_art/hw
+https://hw.hiigara.net/concept_art/hw2
 https://hw.hiigara.net/download/general
 https://hw.hiigara.net/download/modkit_hw2
 https://hw.hiigara.net/download/modkit_hw_cat
@@ -7,6 +10,8 @@ https://hw.hiigara.net/info/history/cataclysm
 https://hw.hiigara.net/info/history/chronicle
 https://hw.hiigara.net/info/history/desertofkharak
 https://hw.hiigara.net/info/history/homeworld1
+https://hw.hiigara.net/info/history/homeworld1_manual_a
+https://hw.hiigara.net/info/history/homeworld1_manual_b
 https://hw.hiigara.net/info/history/homeworld2
 https://hw.hiigara.net/info/history/warof1sttime
 https://hw.hiigara.net/info/mis/hw2story
@@ -21,7 +26,7 @@ https://hw.hiigara.net/info/race/vaygr
 https://hw.hiigara.net/info/what/bentusi_weapon
 https://hw.hiigara.net/info/what/kushan
 https://hw.hiigara.net/info/what/names
-https://hw.hiigara.net/link/all
+https://hw.hiigara.net/link
 https://hw.hiigara.net/mod/modlist_cat
 https://hw.hiigara.net/mod/modlist_hw
 https://hw.hiigara.net/mod/modlist_hw2
@@ -44,6 +49,3 @@ https://hw.hiigara.net/tutorial/hw_cat/shp_hwc_khc1
 https://hw.hiigara.net/tutorial/hw_cat/vme
 https://hw.hiigara.net/tutorial/tutorial_hw2
 https://hw.hiigara.net/tutorial/tutorial_hw_cat
-https://hw.hiigara.net/concept_art/hw
-https://hw.hiigara.net/concept_art/cat
-https://hw.hiigara.net/concept_art/hw2
