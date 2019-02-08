@@ -26,6 +26,7 @@ class SimpleArticle extends ControllerBase
         "/tutorial/hw_cat/bigviwer",
         "/tutorial/tutorial_hw_cat",
         "/tutorial/tutorial_hw2",
+        "/info/history/homeworld1_manual_a",
         "/info/history/cataclysm",
         "/info/history/desertofkharak",
         "/info/history/warof1sttime",
