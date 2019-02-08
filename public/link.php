@@ -18,6 +18,8 @@ return [
 - Blackbird Interactive  的[卡拉克荒漠討論區](http://forums.blackbirdinteractive.com/forum/deserts-of-kharak)
 - [Homeworld Universe@Discord](https://discordapp.com/channels/128196211969753088)<br>
   萬艦齊發的 Discord 頻道。
+- [Fists of Heaven](http://www.fistsofheaven.com/)<br>
+  2013 年才成立的萬艦齊發粉絲網站，有粉絲創作、人物訪談、甚至是其他遊戲的評鑑。
 - [Homeworld Shipyard](http://shipyards.relicnews.com/)<br>
   介紹萬艦系列的各種船艦。
 - [Encyclopedia Hiigara](http://homeworld.wikia.com)<br>
