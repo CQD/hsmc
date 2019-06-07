@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="150px" height="150px" viewBox="0 0 150 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="kiith_gaalsien" transform="translate(3.000000, 3.000000)">
+            <path d="M72,0 C32.2362686,0 0,32.2362686 0,72 C0,111.763731 32.2362686,144 72,144 C111.763731,144 144,111.763731 144,72 C144,32.2362686 111.763731,0 72,0 Z" id="Fill-392" fill="#FFFFFE"></path>
+            <path d="M72,0 C32.2362686,0 0,32.2362686 0,72 C0,111.763731 32.2362686,144 72,144 C111.763731,144 144,111.763731 144,72 C144,32.2362686 111.763731,0 72,0 Z" id="Stroke-394" stroke="#111207" stroke-width="3.406"></path>
+            <path d="M6,71.9993273 C6,108.45005 35.5499495,138 71.9993273,138 C108.45005,138 138,108.45005 138,71.9993273 C138,35.5499495 108.45005,6 71.9993273,6 C35.5499495,6 6,35.5499495 6,71.9993273" id="Fill-395" fill="#111207"></path>
+            <path d="M72.5,6 L72.5,138" id="Fill-396" fill="#111207"></path>
+            <path d="M72.5,6 L72.5,138" id="Stroke-397" stroke="#FFFFFE" stroke-width="5.451" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M138,72.5 L6,72.5" id="Fill-398" fill="#111207"></path>
+            <path d="M138,72.5 L6,72.5" id="Stroke-399" stroke="#FFFFFE" stroke-width="5.451" stroke-linecap="round" stroke-linejoin="round"></path>
+            <polygon id="Fill-400" fill="#111207" points="119 72.5 72.4993297 26 26 72.5 72.4993297 119"></polygon>
+            <polygon id="Stroke-401" stroke="#FFFFFE" stroke-width="5.451" stroke-linecap="round" points="119 72.5 72.4993297 26 26 72.5 72.4993297 119"></polygon>
+            <polyline id="Fill-402" fill="#FFFFFE" points="93 98.5987085 107 107 98.5987085 93 93 98.5987085"></polyline>
+            <polyline id="Fill-403" fill="#FFFFFE" points="100.2009 50 108 37 95 44.8005997 100.2009 50"></polyline>
+            <polyline id="Fill-404" fill="#FFFFFE" points="53 46.6007381 37 37 46.6007381 53 53 46.6007381"></polyline>
+            <polyline id="Fill-405" fill="#FFFFFE" points="45.7997002 94 38 107 51 99.1994003 45.7997002 94"></polyline>
+        </g>
+    </g>
+</svg>
