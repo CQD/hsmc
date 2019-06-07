@@ -58,6 +58,7 @@ function __servStaticFile($path)
         'rar'  => 'application/rar',
         'exe'  => 'application/octet-stream',
         'pdf'  => 'application/pdf',
+        'svg'  => 'image/svg+xml',
     ];
 
     $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));

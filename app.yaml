@@ -13,9 +13,9 @@ handlers:
   upload: public/i/favicon.ico
   secure: always
 
-- url: /(.*\.(gif|png|jpg))$
+- url: /(.*\.(gif|png|jpg|svg))$
   static_files: public/\1
-  upload: public/.*\.(gif|png|jpg)$
+  upload: public/.*\.(gif|png|jpg|svg)$
   secure: always
 
 - url: /c
