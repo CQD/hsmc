@@ -1,8 +1,8 @@
 {
     "require": {
-        "twig/twig": "~1.18",
-        "aptoma/twig-markdown": "~1.1",
-        "michelf/php-markdown": "~1.3"
+        "twig/twig": "^2",
+        "aptoma/twig-markdown": "^3",
+        "michelf/php-markdown": "^1"
     },
     "autoload": {
         "psr-4": {

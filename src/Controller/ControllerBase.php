@@ -4,6 +4,8 @@ namespace Q\HSMC\Controller;
 
 use Aptoma\Twig\Extension\MarkdownExtension;
 use Aptoma\Twig\Extension\MarkdownEngine;
+use Twig\Loader\FilesystemLoader as TwigFileLoader;
+use Twig\Environment as Twig;
 
 class ControllerBase
 {
@@ -13,8 +15,8 @@ class ControllerBase
 
     public function __construct()
     {
-        $loader = new \Twig_Loader_Filesystem(__DIR__ . '/../../twig');
-        $this->twig = new \Twig_Environment($loader);
+        $loader = new TwigFileLoader(__DIR__ . '/../../twig');
+        $this->twig = new Twig($loader);
 
         $markdownEngine = new MarkdownEngine\MichelfMarkdownEngine();
         $markdownExtension = new MarkdownExtension($markdownEngine);
