@@ -117,13 +117,13 @@ header{
 
 #logo, #logo_link{
     display: inline-block;
-    vertical-align: text-top;
+    vertical-align: middle;
 }
 
 nav{
     padding-top:10px;
     display: inline-block;
-    vertical-align: text-top;
+    vertical-align: middle;
 }
 nav a:link, nav a:visited{
     color:#fff;
@@ -327,7 +327,8 @@ footer a:link, footer a:visited{
     }
 
     nav li{
-        padding-right:5px;
+        padding-right:10px;
+        padding-left:10px;
     }
     #logo{height:50px}
     #logo_link{
