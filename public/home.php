@@ -28,5 +28,6 @@ return [
 
 不論遊戲內遊戲外，這都是遊戲史上值得記上一筆的宇宙戰爭故事。
 
+<div class="video-container"><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/iJkoBNOPvjU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 MC
 ];
