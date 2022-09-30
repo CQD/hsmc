@@ -1,6 +1,6 @@
 {
     "require": {
-        "twig/twig": "^2",
+        "twig/twig": "^2.15.3",
         "aptoma/twig-markdown": "^3",
         "michelf/php-markdown": "^1"
     },
