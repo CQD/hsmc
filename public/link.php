@@ -31,7 +31,7 @@ return [
   介紹萬艦系列的各種船艦。
 - [Encyclopedia Hiigara](https://homeworld.wikia.com)<br>
   西亞加拉大百科是萬艦系列主題 Wiki
-- 深度時空論壇的[家園討論板](https://bbs.deeptimes.org/forum.php?mod=forumdisplay&fid=42)與[泰坦帝國](https://www.taiidan.net)<br>
+- 深度時空論壇的[家園討論板](https://bbs.deeptimes.net/forum.php?mod=forumdisplay&fid=42)，與[泰坦帝國](https://www.taiidan.net)<br>
   大陸的萬艦齊發討論區。過去還有過 9CCN、《家園》官方論壇...等大型集散地，但不少論壇都已經陣亡。
 - [巴哈姆特萬艦齊發討論板](https://forum.gamer.com.tw/A.php?bsn=01029)
 MC
