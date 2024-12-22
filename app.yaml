@@ -6,43 +6,34 @@ handlers:
 - url: /robots.txt
   static_files: public/robots.txt
   upload: public/robots.txt
-  secure: always
 
 - url: /favicon.ico
   static_files: public/i/favicon.ico
   upload: public/i/favicon.ico
-  secure: always
 
 - url: /(.*\.(gif|png|jpg|svg))$
   static_files: public/\1
   upload: public/.*\.(gif|png|jpg|svg)$
-  secure: always
 
 - url: /c
   static_dir: public/c
-  secure: always
 
 - url: /j
   static_dir: public/j
-  secure: always
 
 - url: /i
   static_dir: public/i
-  secure: always
 
 - url: /d
   static_dir: public/d
-  secure: always
 
 - url: /tutorial/hw2/RDN_Document
   static_dir: public/tutorial/hw2/RDN_Document
-  secure: always
 
 ####################################################
 
 - url: /.*
   script: auto
-  secure: always
   redirect_http_response_code: 301
 
 ###################################################
